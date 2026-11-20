@@ -8,6 +8,7 @@ project:
     classification for every fixed uniformity k >= 3 and all sufficiently large matching
     parameters, uniformly over n >= k(s+1).
   authors:
+  - Heng Li
   - Xizhi Liu
   license: Apache-2.0
   responsible_maintainers:

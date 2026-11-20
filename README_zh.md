@@ -1,6 +1,6 @@
 # 锐尾概率与大匹配定理的 Lean 形式化
 
-本项目形式化了 Cheng Chi、Shuang Sun、Yan Wang 的锐尾概率定理和大匹配情形的 Erdős 匹配定理，证明组织参考了 [paper/](paper/) 中的详细稿。稿件中的全部证明由 GPT 在他们原有论证的基础上简化和展开，并非独立于他们工作的证明。形式化作者及负责人为 Xizhi Liu。仓库采用 Apache-2.0 许可证；数学来源和依赖保留各自的许可证。
+本项目形式化了 Cheng Chi、Shuang Sun、Yan Wang 的锐尾概率定理和大匹配情形的 Erdős 匹配定理，证明组织参考了 [paper/](paper/) 中的详细稿。稿件中的全部证明由 GPT 在他们原有论证的基础上简化和展开，并非独立于他们工作的证明。形式化作者为 Heng Li、Xizhi Liu，负责人为 Xizhi Liu。仓库采用 Apache-2.0 许可证；数学来源和依赖保留各自的许可证。
 
 九项主声明都有完整证明。2026 年 11 月 20 日，本机从干净目录完成了 macOS 构建；59 项声明的公理审计仅发现三个标准 Lean 公理，导出的证明项也通过了 Lean、NanoDa 和 con-ron 检查。结果见 [verification/RESULTS.json](verification/RESULTS.json) 和相应日志。受保护 Comparator 需要 Linux namespaces，未能在 macOS 原生环境运行，故尚未通过 Palomar 的正式机械验收。本项目尚未向 Palomar 提交或登记。
 
