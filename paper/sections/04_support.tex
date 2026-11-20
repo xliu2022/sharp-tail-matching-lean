@@ -1,0 +1,406 @@
+\section{Optimality and separation of the support}\label{sec:support}
+
+We now consider the range that is not excluded by \cref{lem:initial-comparison}. The first-variation condition and conditional moment relations below follow Chi, Sun, and Wang~\cite[Observation 4.1 and Corollary 4.2]{CSW2026}.
+Throughout this section, $k\ge6$, $x=\beta_k$, and $P$ is a maximizing distribution with $0<w<W_k$.
+Thus $W_4<w<W_k$.
+We retain the notation $a=kx$, $\delta=1-a=cx$, and $c=c_k$ from \cref{sec:comparison}.
+For independent variables $X_i$ with distribution $P$, define
+\begin{align}
+ S_j&\coloneqq\sum_{i\in[j]}X_i,
+ &F&\coloneqq F_k(P),
+ &H_0&\coloneqq F_{k-1}(P),
+ &p&\coloneqq1-F,
+ &p_0&\coloneqq(1-x)^k=1-a^k.
+ \label{eq:optimal-parameters}
+\end{align}
+Since the standard distributions attain $a^k$, we have $0<p\le p_0$; positivity follows also from $\E S_k=a<1$.
+The estimates in \cref{lem:crossing-bounds} give
+\begin{align}
+ \frac{11}{24}+\frac{2}{25k}<c<\frac12,
+ \qquad \frac{12}{13}<a<1,
+ \qquad \frac13<p_0<e^{-1}.
+ \label{eq:critical-numerical-bounds}
+\end{align}
+
+The next step uses the fact that $P$ maximizes $F_k$, rather than merely satisfying the mean constraint.
+For a fixed value $z$ of the last variable, the probability of success is
+\begin{align*}
+ h(z)\coloneqq\Pr(S_{k-1}\ge1-z).
+\end{align*}
+We compare this function with an affine function whose average under $P$ is also $F$.
+
+For $z\in[0,1]$, consider the signed perturbation
+\begin{align*}
+ P_\varepsilon\coloneqq P+\varepsilon\left[\delta_z-\frac zxP+\left(\frac zx-1\right)\delta_0\right].
+\end{align*}
+The expression in brackets has total mass and first moment zero.
+Moreover, \cref{lem:normalization} gives $P(\{0\})\ge\delta>0$, so $P_\varepsilon$ is a probability distribution for all sufficiently small positive $\varepsilon$.
+Differentiating the polynomial $F_k(P_\varepsilon)$ at $\varepsilon=0$ and using maximality gives
+\begin{align*}
+ 0\ge \left.\frac{d}{d\varepsilon}F_k(P_\varepsilon)\right|_{\varepsilon=0}
+ =k\left[h(z)-\frac zxF+\left(\frac zx-1\right)H_0\right].
+\end{align*}
+Consequently,
+\begin{align}
+ h(z)\le H_0+\frac{F-H_0}{x}z
+ \qquad(z\in[0,1]).
+ \label{eq:supporting-line}
+\end{align}
+The two sides have the same integral against $P$, because $\E h(X_1)=F$ and $\E X_1=x$.
+Hence equality holds in \cref{eq:supporting-line} for $P$-almost every $z$.
+We call such a value a \emph{contact point}.
+
+At $z=1$, \cref{eq:supporting-line} gives $F-H_0\ge x(1-H_0)>0$, where $H_0<1$ follows from $(k-1)x<1$ and Markov's inequality.
+Define
+\begin{align}
+ M&\coloneqq\frac{x(1-H_0)}{F-H_0},
+ &D&\coloneqq M-x=\frac{xp}{F-H_0},
+ &r&\coloneqq\E[1-S_k\mid S_k<1],
+ &B&\coloneqq r-\delta.
+ \label{eq:failure-parameters}
+\end{align}
+The preceding inequality and $p>0$ imply $x<M\le1$.
+The affine function in \cref{eq:supporting-line} equals $1$ at $M$.
+Since $h\le1$ and equality holds at almost every sampled value, $P([0,M])=1$.
+At a contact point $z$, we therefore have
+\begin{align}
+ \Pr(S_{k-1}<1-z)=\frac{p(M-z)}D.
+ \label{eq:contact-failure}
+\end{align}
+By conditioning on $X_1$, this identity determines the distribution of one summand when the sum fails:
+\begin{align}
+ \E[\varphi(X_1)\mid S_k<1]
+ =\frac1D\E[(M-X_1)\varphi(X_1)]
+ \label{eq:failure-tilt}
+\end{align}
+for every bounded Borel function $\varphi$.
+In particular, failure gives a linear reweighting of the original distribution.
+
+We record three consequences needed below.
+Taking $\varphi(z)=z$ in \cref{eq:failure-tilt} gives
+\begin{align*}
+ 1-r=\E[S_k\mid S_k<1]
+ =\frac{k(Mx-\E X_1^2)}D.
+\end{align*}
+Since $M-x=D$ and $kx=1-\delta$, rearrangement yields
+\begin{align}
+ \Var(S_k)=k(\E X_1^2-x^2)=DB>0.
+ \label{eq:unconditional-variance}
+\end{align}
+The strict inequality holds because $P$ has positive mean and positive mass at zero.
+Thus $B>0$.
+The identity $(1-y)_+-(y-1)_+=1-y$, together with \cref{eq:failure-parameters}, also gives
+\begin{align}
+ pr=\delta+\E(S_k-1)_+,
+ \qquad 1-H_0=\frac{pM}D.
+ \label{eq:failure-identities}
+\end{align}
+
+The first moment relation above is not sufficient to determine $P$.
+We next compare the unconditional variance with the variance conditional on failure.
+The following identity is Chi, Sun, and Wang~\cite[Lemma 4.3]{CSW2026}. It retains an additional nonnegative term; later, that term will also measure the separation between the two parts of the distribution.
+
+\begin{lemma}\label{lem:covariance}
+Let $v\coloneqq\Var(S_k\mid S_k<1)$, and let $X,X'$ be independent with distribution $P$.
+Then
+\begin{align}
+ B(M-r)
+ =v+\frac{k}{2p}\E\left[(X-X')\int_{X'}^X\bigl(h(y)-h(0)\bigr)\,dy\right].
+ \label{eq:covariance-identity}
+\end{align}
+In particular, $r\le M$ and $v\le B(M-r)$.
+\end{lemma}
+
+\begin{proof}
+Define $K(z)\coloneqq\E(1-S_{k-1}-z)_+$.
+Independence and symmetry give
+\begin{align*}
+ \Cov(X,K(X))
+ &=\E[(X_1-x)(1-S_k)_+]\\
+ &=\frac1k\E[(S_k-kx)(1-S_k)_+].
+\end{align*}
+Conditional on $S_k<1$, the variable $1-S_k$ has mean $r$ and variance $v$.
+As $S_k-kx=\delta-(1-S_k)$, the last expression equals
+\begin{align}
+ \Cov(X,K(X))=-\frac pk\bigl(v+rB\bigr).
+ \label{eq:covariance-first}
+\end{align}
+
+On the other hand, symmetrizing the covariance gives
+\begin{align*}
+ \Cov(X,K(X))
+ =\frac12\E[(X-X')(K(X)-K(X'))].
+\end{align*}
+The function $K$ is absolutely continuous and satisfies
+\begin{align*}
+ K(z)-K(z')=-\int_{z'}^z(1-h(y))\,dy.
+\end{align*}
+Separating the constant $1-h(0)=1-H_0$ inside this integral, and then using \cref{eq:unconditional-variance,eq:failure-identities}, gives
+\begin{align*}
+ \Cov(X,K(X))
+ &=-(1-H_0)\Var(X)+\frac12\E\left[(X-X')\int_{X'}^X(h(y)-h(0))\,dy\right]\\
+ &=-\frac{pMB}{k}+\frac12\E\left[(X-X')\int_{X'}^X(h(y)-h(0))\,dy\right].
+\end{align*}
+Comparing with \cref{eq:covariance-first} proves \cref{eq:covariance-identity}.
+The function $h$ is nondecreasing on $[0,M]$, so the integrand after multiplication by $X-X'$ is nonnegative.
+Since $B>0$, both conclusions follow.
+\end{proof}
+
+We use the interpolants from \cref{sec:comparison} to show that the difference $M-r$ in \cref{eq:covariance-identity} is small.
+Choose the integer $t$ with $4\le t<k$ and $W_t\le w<W_{t+1}$.
+Define
+\begin{align}
+ E^*&\coloneqq\frac{a^k}{k}\left(w+\sum_{j<k}b_je_j^*(w)\right),
+ &V^*&\coloneqq\sum_{j<k}v_jf_j^*(w),
+ &L&\coloneqq\frac{t(t-1)}{2k},\notag\\
+ r_b&\coloneqq\frac{x(t+c)H(W_t)}{p_0},
+ &r^*&\coloneqq\frac{\delta+E^*}{p_0},
+ &M^*&\coloneqq x+\frac{xp_0}{a^k-V^*}.
+ \label{eq:comparison-definitions}
+\end{align}
+Here, as before, sums indexed by $j<k$ run over $1\le j<k$.
+The quantities $E^*$ and $V^*$ are the interpolated values of the excess and the $(k-1)$-variable tail.
+The next lemma collects the estimates needed here from Chi, Sun, and Wang~\cite[Lemmas 4.6--4.9]{CSW2026}.
+Its proof is deferred to \cref{sec:estimates}, where only scalar functions of $k,t,c,w$ are considered.
+
+\begin{lemma}\label{lem:comparison-estimates}
+With the quantities in \cref{eq:comparison-definitions}, we have
+\begin{align}
+ a^k>V^*,\qquad
+ r_b>x,\qquad
+ \frac{Lx}{(r_b-x)^2}<\frac9{10},\qquad
+ r^*-\frac{19}{20}M^*>\frac x5.
+ \label{eq:comparison-bounds}
+\end{align}
+Moreover, the multipliers in \cref{lem:interpolation} are nonnegative when its weights and costs are
+$\kappa_j=Lv_j$ and $c_j=a^kb_j/k$.
+\end{lemma}
+
+The weights $v_j$ increase with $j$, since
+\begin{align*}
+ \frac{v_{j+1}}{v_j}=\frac{k(k-1-j)}{c(j+1)}>1
+ \qquad(1\le j<k-1).
+\end{align*}
+Applying \cref{lem:interpolation} first with weights $v_j$ and zero costs, and then with weights $Lv_j$ and costs $a^kb_j/k$, gives
+\begin{align}
+ H_0\le V^*,
+ \qquad
+ \E(S_k-1)_+-LH_0\ge E^*-LV^*.
+ \label{eq:actual-interpolated-comparison}
+\end{align}
+Indeed, the first assertion follows from \cref{eq:thinning-short-tail}.
+For the second, subtract the weighted inequality from the common term $a^kw/k$ and use \cref{eq:thinning-excess}.
+
+The next bound is Chi, Sun, and Wang~\cite[Lemma 4.4]{CSW2026}, expressed in the present notation.
+\begin{lemma}\label{lem:mean-deficit}
+The support endpoint $M$ and the conditional deficit $r$ satisfy
+\begin{align}
+ 0\le M-r<\frac{D-3x}{20},
+ \qquad D>3x.
+ \label{eq:mean-deficit-proximity}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+Use the representation $X_i=I_iY_i$, where the $I_i$ are independent Bernoulli variables with mean $a$ and the $Y_i$ are independent with distribution $Q$.
+Conditional on the $Y_i$, if $R_k<1$, then $S_k<1$ and the expected deficit is $1-aR_k$.
+Discarding the nonnegative contribution from $R_k\ge1$, we obtain
+\begin{align*}
+ pr=\E(1-S_k)_+
+ &\ge\E[(1-aR_k)\1_{\{R_k<1\}}]\\
+ &=\delta\Pr(R_k<1)+a\E(1-R_k)_+\\
+ &\ge\delta H(w)+xw.
+\end{align*}
+For the second equality, we used $\E R_k=1$, which also implies $k\E(1-R_k)_+=w$.
+The function $H$ is concave between consecutive nodes, and its values at the nodes increase.
+It follows that $H(w)\ge H(W_t)$.
+Since $W_t=tH(W_t)$ and $\delta=cx$, we have
+\begin{align*}
+ pr\ge x(t+c)H(W_t).
+\end{align*}
+Dividing by $p\le p_0$ gives $r\ge r_b$.
+
+The definition of $M$, the inequalities $F\ge a^k$ and $H_0\le V^*$, and \cref{eq:comparison-bounds} give
+\begin{align*}
+ M=x+\frac{xp}{F-H_0}\le x+\frac{xp_0}{a^k-V^*}=M^*.
+\end{align*}
+Next, \cref{eq:failure-identities,eq:actual-interpolated-comparison} imply
+\begin{align*}
+ r+\frac{LM}{M-x}
+ &=\frac{\delta+\E(S_k-1)_++L(1-H_0)}p\\
+ &\ge\frac{\delta+E^*+L(1-V^*)}{p}\\
+ &\ge\frac{\delta+E^*+L(1-V^*)}{p_0}
+ =r^*+\frac{LM^*}{M^*-x}.
+\end{align*}
+The numerator in the third line is positive.
+For the last equality, note that $M^*/(M^*-x)=(1-V^*)/p_0$.
+Thus
+\begin{align*}
+ r^*-r
+ &\le L\left(\frac{M}{M-x}-\frac{M^*}{M^*-x}\right)\\
+ &=\frac{Lx(M^*-M)}{(M-x)(M^*-x)}
+ \le\frac9{10}(M^*-M),
+\end{align*}
+where we used $M^*\ge M\ge r\ge r_b$ and \cref{eq:comparison-bounds}.
+Consequently,
+\begin{align*}
+ r-\frac{19}{20}M
+ &\ge r^*-\frac{19}{20}M^*+\frac1{20}(M^*-M)
+ >\frac x5.
+\end{align*}
+Rearranging gives $M-r<(M-4x)/20=(D-3x)/20$.
+Since \cref{lem:covariance} gives $M-r\ge0$, we also obtain $D>3x$.
+\end{proof}
+
+The next inequality applies to sums of independent centered variables with bounded ranges. This cubic argument replaces the normal-approximation steps in Chi, Sun, and Wang~\cite[Sections 5--6]{CSW2026}.
+It will first show that the upper part of the support is nonempty, and then control the sum of the lower observations in \cref{sec:exclusion}.
+
+\begin{lemma}\label{lem:cubic}
+Let $Z_i$ be independent centered random variables, each supported on an interval of length at most $b>0$.
+Write $Z\coloneqq\sum_iZ_i$ and $V\coloneqq\Var Z>0$.
+For $\tau>0$ and $z\in\R$, set $Q\coloneqq\E[(Z+z)^2\1_{\{Z<\tau\}}]$.
+Then
+\begin{align}
+ \left(V+\frac{(z-b)_+^2}{12}\right)Q
+ \ge\frac{(\tau+z-2b)_+^3}{3}\E[Z\1_{\{Z\ge\tau\}}].
+ \label{eq:cubic-test}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+We first establish an inequality for a suitable test function.
+Let $f$ be absolutely continuous, and let $G$ be nonnegative.
+Suppose that $f'(y)\le G(w)$ whenever $|y-w|\le b$, with derivatives chosen arbitrarily at the finitely many corners of the function used below.
+For each $i$, write $T_i\coloneqq Z-Z_i$, and take an independent copy $Z_i'$ of $Z_i$.
+Since $\E Z_i=0$ and $Z_i$ is independent of $T_i$,
+\begin{align*}
+ \E[Z_if(Z)]
+ &=\E[Z_i(f(T_i+Z_i)-f(T_i))]\\
+ &=\E\left[Z_i^2\int_0^1 f'(T_i+\alpha Z_i)\,d\alpha\right].
+\end{align*}
+The support interval of $Z_i$ contains zero, because $Z_i$ is centered.
+Thus $0$, $\alpha Z_i$, and $Z_i'$ lie in a common interval of length at most $b$.
+The derivative assumption and independence give
+\begin{align*}
+ \E[Z_if(Z)]\le\E[Z_i^2G(T_i+Z_i')]
+ =\E Z_i^2\,\E G(Z).
+\end{align*}
+Summing over $i$, we obtain
+\begin{align}
+ \E[Zf(Z)]\le V\E G(Z).
+ \label{eq:test-function-bound}
+\end{align}
+
+If $L\coloneqq\tau+z-2b\le0$, then \cref{eq:cubic-test} is immediate.
+Otherwise choose
+\begin{align*}
+ f(w)\coloneqq\frac13\min\{(w+z-b)_+^3,L^3\},
+ \qquad
+ G(w)\coloneqq(w+z)^2\1_{\{w<\tau\}}.
+\end{align*}
+Set $f'=0$ at the two corners.
+If $f'(y)>0$, then $0<y+z-b<L$, so $y<\tau-b$.
+For $|y-w|\le b$, it follows that $w<\tau$ and $w+z\ge y+z-b>0$.
+Hence $f'(y)=(y+z-b)^2\le G(w)$, as required.
+
+On $Z\ge\tau$, we have $f(Z)=L^3/3$, whereas on $0\le Z<\tau$, the product $Zf(Z)$ is nonnegative.
+To control negative values, put $W\coloneqq Z+z$.
+If $Z<0$ and $f(Z)>0$, then $b<W<z$, and
+\begin{align*}
+ -Zf(Z)
+ &\le\frac{(z-W)(W-b)^3}{3}\\
+ &\le\frac{(z-b)_+^2}{12}W^2.
+\end{align*}
+The last inequality uses $(z-W)(W-b)\le(z-b)^2/4$ and $(W-b)^2\le W^2$.
+Therefore
+\begin{align*}
+ \E[Zf(Z)]
+ \ge\frac{L^3}{3}\E[Z\1_{\{Z\ge\tau\}}]
+ -\frac{(z-b)_+^2}{12}Q.
+\end{align*}
+Combining this with \cref{eq:test-function-bound}, where $\E G(Z)=Q$, proves the lemma.
+\end{proof}
+
+We can now separate the possible values of a maximizing variable.
+The statement follows the support-separation argument of Chi, Sun, and Wang~\cite[Proposition 5.1]{CSW2026}, using \cref{lem:cubic} to show that the upper part is nonempty. The constants leave a strict inequality in both applications of the conditional variance bound.
+
+\begin{lemma}\label{lem:support-gap}
+The distribution $P$ gives full mass to
+\begin{align*}
+ [0,x+D/16]\ \cup\ (x+17D/20,M],
+\end{align*}
+and the second interval has positive mass.
+\end{lemma}
+
+\begin{proof}
+For this proof, write $u\coloneqq x/D$ and $\mu\coloneqq(M-r)/D$.
+By \cref{lem:mean-deficit}, $0<u<1/3$ and $0\le\mu<(1-3u)/20$.
+Moreover,
+\begin{align*}
+ \frac BD=1+(1-c)u-\mu\le1+\frac{13u}{24}-\mu.
+\end{align*}
+The function $\mu(1+13u/24-\mu)$ increases for $0\le\mu\le(1-3u)/20$.
+Applying \cref{lem:covariance} therefore gives
+\begin{align}
+ \frac v{D^2}
+ \le\mu\frac BD
+ \le\frac{(114+83u)(1-3u)}{2400}
+ <\frac{19}{400}.
+ \label{eq:small-conditional-variance}
+\end{align}
+For the last inequality, expand the numerator as $114-259u-249u^2$ and use $u>0$.
+
+Let $W$ have the conditional distribution of $1-S_k$ given $S_k<1$.
+Thus $\E W=r$ and $\Var W=v$.
+If a contact point has the form $y=x+\xi D$ with $1/16\le\xi\le17/20$, then nonnegativity of the summands and \cref{eq:contact-failure} imply
+\begin{align*}
+ \Pr(W>y)
+ =\frac{\Pr(S_k<1-y)}p
+ \le\frac{\Pr(S_{k-1}<1-y)}p
+ =1-\xi.
+\end{align*}
+Consequently $\Pr(W\le y)\ge\xi$.
+Since $r-y=D(1-\mu-\xi)>0$, Cantelli's inequality gives
+\begin{align*}
+ \frac v{D^2}
+ \ge\frac{\xi(1-\mu-\xi)^2}{1-\xi}
+ \ge\frac{\xi(19/20-\xi)^2}{1-\xi}.
+\end{align*}
+On $[1/16,17/20]$, the derivative of the last function has the sign of $19/20-3\xi+2\xi^2$.
+It first increases and then decreases, so its minimum occurs at an endpoint.
+The two endpoint values are $5041/96000$ and $17/300$, both greater than $19/400$.
+This contradicts \cref{eq:small-conditional-variance}.
+Almost every value sampled from $P$ is a contact point, so the stated union has full mass.
+
+Suppose now that the second interval has zero mass, and put $b_0\coloneqq x+D/16$.
+Then every $X_i-x$ is supported on an interval of length at most $b_0$.
+Apply \cref{lem:cubic} to
+\begin{align*}
+ Z=S_k-kx,
+ \qquad \tau=\delta,
+ \qquad z=B,
+ \qquad b=b_0.
+\end{align*}
+The identities established above give
+\begin{align*}
+ Q=pv,\qquad V=DB,\qquad \E[Z\1_{\{Z\ge\delta\}}]=pB.
+\end{align*}
+For the first equality, note that $Z+B=S_k+r-1$ has conditional mean zero on failure.
+The last equality follows by centering $Z$, whose conditional mean on failure is $-B$.
+Furthermore,
+\begin{align*}
+ \frac{r-2b_0}{D}
+ &=\frac78-u-\mu
+ >\frac{33}{40}-\frac{17u}{20}
+ >\frac{13}{24},\\
+ \frac{(B-b_0)_+^2}{DB}
+ &\le\frac BD<\frac43.
+\end{align*}
+After dividing \cref{eq:cubic-test} by $pDB$, these estimates yield
+\begin{align*}
+ \frac v{D^2}
+ >\frac3{10}\left(\frac{13}{24}\right)^3
+ =\frac{19}{400}+\frac{41}{230400}.
+\end{align*}
+This again contradicts \cref{eq:small-conditional-variance}, proving that the upper interval has positive mass.
+\end{proof}

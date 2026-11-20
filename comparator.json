@@ -1,0 +1,17 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "SharpTailMatching.sharp_tail_bound",
+    "SharpTailMatching.sharp_tail_attained",
+    "SharpTailMatching.critical_mean_exists_unique",
+    "SharpTailMatching.sharp_tail_equality",
+    "SharpTailMatching.zero_mean_iff",
+    "SharpTailMatching.one_sample_equality",
+    "SharpTailMatching.tail_eq_one_iff",
+    "SharpTailMatching.large_matching_bound",
+    "SharpTailMatching.large_matching_equality"
+  ],
+  "definition_names": [],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

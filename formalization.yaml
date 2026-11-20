@@ -1,0 +1,222 @@
+---
+version: v0.4
+project:
+  name: Sharp i.i.d. tail probabilities and large hypergraph matchings
+  description: A Lean formalization of the sharp upper tail bound for sums of independent
+    identically distributed nonnegative random variables, including all maximizing
+    laws and boundary cases, and the exact Erdős matching bound with its equality
+    classification for every fixed uniformity k >= 3 and all sufficiently large matching
+    parameters, uniformly over n >= k(s+1).
+  authors:
+  - Xizhi Liu
+  license: Apache-2.0
+  responsible_maintainers:
+  - Xizhi Liu
+classification:
+  arxiv:
+  - math.CO
+  - math.PR
+  msc2020:
+  - 05C65
+  - 05C70
+  - 60E15
+  - 68V15
+sources:
+- title: A proof of the Erdős matching conjecture for large matchings via sharp tail
+    probability for sums of i.i.d. nonnegative random variables
+  authors:
+  - Cheng Chi
+  - Shuang Sun
+  - Yan Wang
+  id: arXiv:2610.16203v1
+  location: https://arxiv.org/abs/2610.16203v1
+  type: paper
+  relationship: formalizes
+  note: Source of the principal mathematical results. All probability and matching
+    Challenge targets are now proved. No endorsement by the source authors is claimed.
+  author_endorsement: not-contacted
+- title: Simplified proofs of sharp tail bounds and the Erdős matching theorem for large matchings
+  type: paper
+  relationship: adapts
+  note: Unpublished expanded manuscript dated November 20, 2026, bundled in paper/.
+    Theorem 1.1 is the matching result; Theorem 1.2 is the probability result. This
+    is the immediate proof-organization source and does not claim priority over Chi,
+    Sun, and Wang.
+  location: paper/main.pdf
+- title: A near-optimal linear range for the Erdős matching conjecture
+  authors:
+  - Mengyu Cao
+  - Hong Liu
+  - Haixiang Zhang
+  id: arXiv:2608.19118v2
+  location: https://arxiv.org/abs/2608.19118v2
+  type: paper
+  relationship: formalizes
+  note: The approximate fractional cover dependency is fully proved from weighted
+    weak regularity, capacity matching-cover duality and actual rounding. The formalized
+    version also removes the restriction ξ < 1/k; this stronger conclusion has its
+    own proof and is not obtained by silently discarding a literature hypothesis.
+  author_endorsement: not-contacted
+related_formalizations: []
+status:
+  scope: All nine original Challenge targets have complete proofs. A fresh native
+    macOS build, an audit of 59 declarations, explicit unfolded matching statements,
+    and Lean, NanoDa and con-ron proof-term checks passed on November 20, 2026. Evidence
+    is in verification/RESULTS.json and verification/logs/. Challenge contains nine
+    deliberate statement holes. Protected Comparator requires Linux namespaces and
+    did not run on macOS; the official Palomar pipeline, submission and registration
+    remain pending.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Classical.choice
+  - Quot.sound
+automation:
+  methods:
+  - method: agent
+    models:
+    - GPT-6 Astra Pro
+    framework: ChatGPT
+    tool_setup: AI-assisted mathematical interface design, Lean proof development,
+      source inspection, compiler feedback, and independent agent checks.
+  notes: The original development reports the model and agent work listed above. Codex
+    assisted with local reproduction and repository packaging. The proof sources were
+    preserved byte for byte; verification outcomes are supported by saved compiler
+    and kernel logs. AI assistance is credited here rather than in the human authorship
+    fields.
+fidelity:
+  divergences: The sharp optimization value is expressed by an upper-bound theorem
+    and an attainment theorem, jointly equivalent to the supremum formula. Laws are
+    arbitrary Borel probability measures on the nonnegative reals, with mean defined
+    by an extended nonnegative integral; there is no finite-support or bounded-support
+    restriction. The matching universe is Fin n, preserving arbitrary finite hypergraphs
+    up to relabeling. The approximate-cover lemma is proved in a stronger form without
+    ξ < 1/k, permitting a uniform compact stability proof through both endpoints.
+    The original nine Challenge targets and all equality cases are retained. Mathematical
+    proof completion is distinct from the pending protected Palomar verification.
+review:
+  status: agent-reviewed
+  notes: Earlier development records agent review of the statement interfaces and
+    proof chains. The current source was reproduced locally with a fresh Lean build,
+    an explicit matching-statement check, standard-axiom checks for 59 declarations,
+    and three proof-term kernel checks. See verification/RESULTS.json. This does not
+    claim human peer review, source-author endorsement, protected Comparator acceptance,
+    or a Palomar editorial outcome.
+alignment:
+  namespace: SharpTailMatching
+  statements:
+  - source: 'Expanded manuscript, Theorem 1.2: optimal tail value'
+    lean: SharpTailMatching.sharp_tail_bound
+    module: Solution
+    status: proved
+    note: Complete bound for all k >= 1, x >= 0 and arbitrary feasible laws; all critical
+      analysis premises are discharged.
+  - source: 'Expanded manuscript, Theorem 1.2: attainment by standard laws'
+    lean: SharpTailMatching.sharp_tail_attained
+    module: Solution
+    status: proved
+    note: All k >= 1 and x >= 0, including the saturated regime.
+  - source: 'Expanded manuscript, Lemma 2.1: normalization of all maximizers'
+    lean: SharpTailMatching.Probability.maximizer_normalized_representation
+    module: SharpTailMatching.Probability.Normalization
+    status: proved
+    note: Actual arbitrary-law normalization, including an explicitly constructed
+      probability law Q.
+  - source: 'Expanded manuscript, Lemma 4.4: capped cubic inequality'
+    lean: SharpTailMatching.Probability.capped_cubic_inequality
+    module: SharpTailMatching.Probability.Cubic
+    status: adapted
+    note: Proved for arbitrary probability spaces; direct secant inequalities replace
+      derivatives at corners.
+  - source: 'Expanded manuscript, Lemma 3.1: independent product bound'
+    lean: SharpTailMatching.Probability.ProductBound.bounded_independent_product_bound
+    module: SharpTailMatching.Probability.IndependentProduct
+    status: proved
+    note: Arbitrary bounded independent variables; finite capping, termination and
+      general-law limit are proved.
+  - source: 'Expanded manuscript, Lemma 5.1: small deviations'
+    lean: SharpTailMatching.Probability.ProductBound.small_deviation
+    module: SharpTailMatching.Probability.ProductConsequences
+    status: proved
+    note: Includes arbitrary nonnegative integrable independent variables and mean
+      completion.
+  - source: 'Expanded manuscript, Appendix A: critical-parameter lower bound'
+    lean: SharpTailMatching.CriticalEstimates.critical_parameter_lower
+    module: SharpTailMatching.CriticalLowerBound
+    status: proved
+    note: Full exact bound, including the central binomial and logarithmic estimates.
+  - source: 'Expanded manuscript, Section 6: endpoint rigidity at zero excess'
+    lean: SharpTailMatching.Probability.normalized_excess_zero_rigidity
+    module: SharpTailMatching.Probability.EndpointRigidity
+    status: proved
+    note: Does not assume finite support; independence and variance force a Dirac
+      law.
+  - source: 'Expanded manuscript, Section 6: endpoint rigidity at maximal excess'
+    lean: SharpTailMatching.Probability.normalized_excess_max_rigidity
+    module: SharpTailMatching.Probability.EndpointRigidity
+    status: proved
+    note: Strict product comparison excludes all interior mass and determines the
+      Bernoulli law.
+  - source: 'Expanded manuscript, Lemma 8.1: sparse matching theorem and equality'
+    lean: SharpTailMatching.Matching.sparse_matching_bound_and_equality
+    module: SharpTailMatching.Matching.Sparse
+    status: proved
+    note: Exact counting theorem on an arbitrary finite ground set.
+  - source: 'Expanded manuscript, Lemma 8.2: local cover exactification'
+    lean: SharpTailMatching.Matching.local_cover_exact
+    module: SharpTailMatching.Matching.CoverExact
+    status: proved
+    note: Includes explicit choices discharging the small-error and capacity conditions.
+  - source: 'Expanded manuscript, Theorem 1.2: all extremizers'
+    lean: SharpTailMatching.sharp_tail_equality
+    module: Solution
+    status: proved
+    note: Together with the boundary declarations, gives all maximizing laws. No critical
+      classification or upper-bound hypothesis remains.
+  - source: 'Expanded manuscript, Theorem 1.1: exact matching bound'
+    lean: SharpTailMatching.large_matching_bound
+    module: Solution
+    status: proved
+    note: Uniform for every n >= k(s+1) once s is sufficiently large; approximate
+      cover, stability and local exactification are all proved.
+  - source: 'Expanded manuscript, Theorem 1.1: equality classification'
+    lean: SharpTailMatching.large_matching_equality
+    module: Solution
+    status: proved
+    note: Both directions, including comparison of the two finite candidate edge counts
+      and the tie case, are proved.
+  - source: Expanded manuscript, critical mean
+    lean: SharpTailMatching.critical_mean_exists_unique
+    module: Solution
+    status: proved
+    note: Unique positive crossing below 1/k for every k >= 2.
+  - source: Expanded manuscript, zero-mean boundary
+    lean: SharpTailMatching.zero_mean_iff
+    module: Solution
+    status: proved
+    note: The only zero-mean law is the Dirac mass at zero.
+  - source: Expanded manuscript, one-sample boundary
+    lean: SharpTailMatching.one_sample_equality
+    module: Solution
+    status: proved
+    note: Complete equality classification for k=1 and 0<=x<=1.
+  - source: Expanded manuscript, saturated-tail boundary
+    lean: SharpTailMatching.tail_eq_one_iff
+    module: Solution
+    status: proved
+    note: Tail one iff support is almost surely at least 1/k; no integrability assumption.
+  - source: Cao--Liu--Zhang approximate fractional cover lemma
+    lean: SharpTailMatching.Matching.approximate_fractional_cover
+    module: SharpTailMatching.Matching.ApproximateCover
+    status: adapted
+    note: Fully proved, with an unrestricted nonnegative fixed ξ parameter.
+  - source: Expanded manuscript, Section 7 stability
+    lean: SharpTailMatching.Matching.matching_stability
+    module: SharpTailMatching.Matching.Stability
+    status: proved
+    note: Uniform near-extremal editing statement for every admissible n, including
+      all limiting ratio regimes.
+acknowledgements: Lean, Mathlib, and the Palomar starter project. Mathematical results
+  remain attributed to their bibliographic authors. AI contributions are disclosed
+  in the automation section.

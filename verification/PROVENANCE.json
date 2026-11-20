@@ -1,0 +1,87 @@
+{
+  "layout_reference": {
+    "repository": "xliu2022/improved-sidorenko-lean",
+    "commit": "ba6f109bf01436ca15e55fdf5d35dbea85ffd9c9",
+    "relationship": "Directory layout, bilingual README organization and verification entry points; no mathematical proof dependency."
+  },
+  "palomar_template": {
+    "repository": "PalomarRegistry/PalomarTemplate",
+    "commit": "2891de4c48955af824969a263d31b25e7a9a1406",
+    "files": [
+      {
+        "path": "lean-toolchain",
+        "sha": "acc704ffe6eefbbe8ec09452a276202748aac923",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/lean-toolchain"
+      },
+      {
+        "path": "lakefile.toml",
+        "sha": "28ca97ade0346d0b60083dc145ce74c26f48ec30",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/lakefile.toml"
+      },
+      {
+        "path": "lake-manifest.json",
+        "sha": "b2760a3fcb95fe5f11b512f506cb3baafcd39011",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/lake-manifest.json"
+      },
+      {
+        "path": "comparator.json",
+        "sha": "d533362265f031a4cdea528d9efb1569f7db70df",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/comparator.json"
+      },
+      {
+        "path": "Challenge.lean",
+        "sha": "5e4d93a456a259a9cdb9deee8bd29085302022c8",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/Challenge.lean"
+      },
+      {
+        "path": "Solution.lean",
+        "sha": "88bb61b3ac3a93136d2463672ef5fdcc73732cc1",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/Solution.lean"
+      },
+      {
+        "path": "formalization.yaml",
+        "sha": "c9b8c375b3b5740e981a14ba9d2230522b53db74",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/formalization.yaml"
+      },
+      {
+        "path": "LICENSE",
+        "sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/LICENSE"
+      },
+      {
+        "path": "scripts/verify-comparator.sh",
+        "sha": "2175ef098878f9d01749f2f8a82e6179c1af8426",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/scripts/verify-comparator.sh"
+      },
+      {
+        "path": "scripts/check-lean-sources.py",
+        "sha": "5265fd6eca81be3c2ead4388ebe637440cbe1399",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/scripts/check-lean-sources.py"
+      },
+      {
+        "path": "scripts/validate-formalization.rb",
+        "sha": "0b2f3ad63924f91dcb75fb4f9e11fec3111d1fa0",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/scripts/validate-formalization.rb"
+      },
+      {
+        "path": "Gemfile",
+        "sha": "bf1522bf289699697aef1249685db2214844d892",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/Gemfile"
+      },
+      {
+        "path": "Gemfile.lock",
+        "sha": "2d800fb6c822f9f016c184f5989b1016002c17ee",
+        "source": "https://github.com/PalomarRegistry/PalomarTemplate/blob/2891de4c48955af824969a263d31b25e7a9a1406/Gemfile.lock"
+      }
+    ]
+  },
+  "fresh_local_verification": {
+    "date": "2026-11-20",
+    "report_sha256": "4009447d63670c717dda17dcd7a36940808fb088fa64b51b036b56d4d9348938",
+    "proof_export_sha256": "a4a0bcd892556e214908473a2c62bd599846945e498eb903cbcadce9fdf71099"
+  },
+  "packaging": {
+    "proof_files_preserved": 154,
+    "changes": "Bilingual repository documentation, portable verification scripts, metadata normalization, workflows, bundled manuscript, and current evidence. Original mathematical sources unchanged."
+  }
+}

@@ -1,0 +1,40 @@
+name: Palomar full mechanical preflight
+
+# Official reusable workflow and input contract, inspected at this exact revision:
+# https://github.com/PalomarRegistry/PalomarSubmission/blob/14aa8d6b3c2f14a8540605e37144560b9a00e7e7/.github/workflows/submission.yml
+# https://github.com/PalomarRegistry/PalomarSubmission/blob/14aa8d6b3c2f14a8540605e37144560b9a00e7e7/README.md
+# https://submit.palomar-registry.org/llms.txt
+#
+# This file only prepares a manual preflight. It has not been executed as part
+# of the local formalization checks. A passing mechanical-report.json is still
+# required; preflight does not submit, run editorial review, or register a result.
+# The Lean project and comparator.json are assumed to be at the repository root.
+# If the project is moved, supply the official repository-relative project_path,
+# comparator_config_path, and (when necessary) formalization_metadata_path options.
+
+on:
+  workflow_dispatch:
+    inputs:
+      authorization_relationship:
+        description: 'Enter either: I am a responsible author or maintainer OR I have approval from a responsible author or maintainer'
+        required: true
+        type: string
+
+# The official jobs need only read access. No secrets are passed to the verifier.
+permissions:
+  contents: read
+
+jobs:
+  palomar-preflight:
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ github.sha }}
+      pipeline_commit: 14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+      request_id: preflight001
+      mode: full
+      execution_profile: palomar-standard-v1
+      # Use an explicit, truthful relationship supplied by the person launching
+      # this workflow. JSON encoding preserves the official options contract.
+      options: >-
+        {"comparator_config_path":"comparator.json","authorization_relationship":${{ toJSON(inputs.authorization_relationship) }}}

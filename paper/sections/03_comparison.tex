@@ -1,0 +1,347 @@
+\section{Probability bounds and interpolation}\label{sec:comparison}
+
+The normalization in \cref{lem:normalization} fixes the mean of $Q$ at $1/k$. We will compare the probabilities that its partial sums reach $1$ with the expected amounts by which those sums exceed $1$. A bound for independent variables with possibly different distributions supplies these comparisons. We prove that bound first, keeping track of the conditional deficit because it will also be used in \cref{sec:exclusion}.
+
+\subsection{A product bound for the failure probability}
+
+Let $S$ be a sum of independent nonnegative variables. Conditional on $S<1$, the mean of $1-S$ records how far a typical unsuccessful sum lies below the threshold. The next lemma combines the truncation argument and product bound of Chi, Sun, and Wang~\cite[Lemmas 2.11--2.12]{CSW2026} to bound this probability in terms of the conditional deficit and the individual means.
+
+\begin{lemma}\label{lem:product}
+Let $j\ge1$, let $X_1,\ldots,X_j$ be independent bounded nonnegative random variables, and define
+\begin{align*}
+ S\coloneqq\sum_{i\in[j]}X_i,
+ \qquad p\coloneqq\Pr(S<1)>0,
+ \qquad r\coloneqq\E[1-S\mid S<1],
+ \qquad B\coloneqq r-1+\E S.
+\end{align*}
+If $r>\max_{i\in[j]}\E X_i$, then there exist $z_1,\ldots,z_j$ such that
+\begin{align}\label{eq:product-bound}
+ p\ge\prod_{i\in[j]}\left(1-\frac{z_i}{r}\right),
+ \qquad 0\le z_i\le\E X_i,
+ \qquad \sum_{i\in[j]}z_i=B.
+\end{align}
+\end{lemma}
+
+\begin{proof}
+We first assume that each variable has finite support. The proof repeatedly replaces a nonconstant coordinate by a capped version of that coordinate. We choose each cap so that the conditional deficit does not decrease, and record the resulting decrease in $B$.
+
+Suppose that at least one coordinate is nonconstant. Since
+\begin{align*}
+ \sum_{i\in[j]}\Cov(S,X_i\mid S<1)=\Var(S\mid S<1)\ge0,
+\end{align*}
+there is a nonconstant coordinate $X_i$ with $\Cov(S,X_i\mid S<1)\ge0$. Constant coordinates contribute zero to this sum, so one may indeed choose a nonconstant coordinate. Write $T=S-X_i$ and $\supp X_i=\{x_1<\cdots<x_N\}$. Define
+\begin{align*}
+ K(t)&\coloneqq\E\bigl[(1-r-T-t)\1_{\{T+t<1\}}\bigr],\\
+ A_q&\coloneqq\E\bigl[K(X_i)\1_{\{X_i\le x_q\}}\bigr]
+ \quad (1\le q\le N),
+ \qquad A_0\coloneqq0.
+\end{align*}
+The definition of $r$ gives $A_N=0$. Also,
+\begin{align*}
+ \E[X_iK(X_i)]
+ &=\E\bigl[X_i(1-r-S)\1_{\{S<1\}}\bigr]
+ =-p\Cov(S,X_i\mid S<1).
+\end{align*}
+Applying summation by parts to the left side therefore yields
+\begin{align*}
+ \sum_{q<N}(x_{q+1}-x_q)A_q
+ =p\Cov(S,X_i\mid S<1)\ge0.
+\end{align*}
+Thus some $q<N$ satisfies $A_q\ge0$. Choose the first such $q$. Since $A_{q-1}\le0$ and $\Pr(X_i=x_q)>0$, the identity
+\begin{align*}
+ A_q-A_{q-1}=\Pr(X_i=x_q)K(x_q)
+\end{align*}
+implies $K(x_q)\ge0$.
+
+Replace $X_i$ by $X_i'\coloneqq\min\{X_i,x_q\}$, and use primes for the corresponding parameters. The new sum is no larger than the old sum, so $p'\ge p$. Splitting according to whether $X_i\le x_q$ gives
+\begin{align*}
+ p'(r'-r)
+ =\E\bigl[(1-r-T-X_i')\1_{\{T+X_i'<1\}}\bigr]
+ =A_q+\Pr(X_i>x_q)K(x_q)\ge0.
+\end{align*}
+Hence $r'\ge r$ as required.
+
+We next quantify the change in the failure probability. For an arbitrary cap $\tau$, put $X_i'=\min\{X_i,\tau\}$ and $d\coloneqq\E(X_i-\tau)_+$. The pointwise inequality
+\begin{align*}
+ (1-T-X_i')_+-(1-T-X_i)_+
+ \le (X_i-\tau)_+\1_{\{T+\tau<1\}}
+\end{align*}
+and independence show that
+\begin{align*}
+ p'r'-pr\le d\Pr(T+\tau<1)\le p'd.
+\end{align*}
+The last inequality follows because $T+\tau<1$ implies $T+X_i'<1$. Set $\zeta\coloneqq B-B'$. Since $\E S'=\E S-d$, the definitions give $r'-r=d-\zeta$. Substituting into the preceding inequality yields
+\begin{align}\label{eq:cap-step}
+ p'(r-\zeta)\le pr.
+\end{align}
+For the selected cap we already know that $r'\ge r$ and $p'\ge p$. The first fact gives $\zeta\le d$, and \cref{eq:cap-step} gives $\zeta\ge r(1-p/p')\ge0$.
+
+Each selected cap removes at least one point from the support of a nonconstant coordinate. After finitely many steps all coordinates are constant. At every step the means decrease and the conditional deficit does not decrease, so the strict hypothesis $r>\max_i\E X_i$ continues to hold. The final failure probability is $1$, because it is positive and the final sum is constant. The final value of $B$ is consequently zero.
+
+Index the successive steps by $h$, and write $p_h,r_h,\zeta_h$ for the failure probability and deficit immediately before step $h$, and for the loss in $B$ at that step. From \cref{eq:cap-step},
+\begin{align*}
+ p_0
+ &\ge\prod_h\left(1-\frac{\zeta_h}{r_h}\right)
+ \ge\prod_h\left(1-\frac{\zeta_h}{r_0}\right).
+\end{align*}
+The factors are positive: $\zeta_h\le d_h$ is at most the mean of the coordinate being capped, and this mean is less than the original $r_0$. For each coordinate $i$, let $z_i$ be the sum of the losses $\zeta_h$ assigned to that coordinate. The total loss of its mean bounds this sum, so $0\le z_i\le\E X_i$. The final value of $B$ is zero, and hence $\sum_i z_i=B$. Finally, applying $\prod_h(1-u_h)\ge1-\sum_hu_h$ separately to the steps assigned to each coordinate gives \cref{eq:product-bound}.
+
+For bounded variables with arbitrary supports, round each $X_i$ upward to a dyadic grid. The rounded variables decrease almost surely to $X_i$, their sums decrease to $S$, and their failure events increase to $\{S<1\}$. Their means and the expectations of their positive deficits converge, so their failure probabilities and conditional deficits converge to $p$ and $r$. The strict hypothesis of the lemma therefore holds for all sufficiently fine grids. The vectors $(z_1,\ldots,z_j)$ supplied by the finite-support argument lie in a bounded set. Passing to a convergent subsequence preserves all constraints and the product inequality, proving the general case.
+\end{proof}
+
+When the means are equal, the product in \cref{eq:product-bound} can be minimized explicitly. This gives the following consequence, stated in Chi, Sun, and Wang~\cite[Lemma 2.13]{CSW2026}. The relevant integer records how many of the $z_i$ can be moved to their upper bound.
+
+\begin{corollary}\label{cor:equal-product}
+Under the definitions in \cref{lem:product}, suppose $\E X_i=m$ for all $i\in[j]$, $jm\le1$, and
+\begin{align*}
+ 1-(j-\ell)m\le r\le1-(j-\ell-1)m
+ \qquad\text{for some }0\le\ell<j.
+\end{align*}
+Then
+\begin{align}\label{eq:equal-product}
+ p\ge\left(1-\frac mr\right)^{\ell}\frac{1-(j-\ell)m}{r}.
+\end{align}
+\end{corollary}
+
+\begin{proof}
+If $m=0$, all variables vanish almost surely and the assertion is immediate. Suppose first that $r>m$, so that \cref{lem:product} applies. We have $B=r-1+jm\in[\ell m,(\ell+1)m]$. Subject to $\sum_i z_i=B$ and $0\le z_i\le m$, the product is minimized by moving all but at most one coordinate to an endpoint of $[0,m]$. Indeed, if $0<u\le v<m$, replacing $(u,v)$ by $(u-\eta,v+\eta)$ changes the product of their two factors by
+\begin{align*}
+ -\frac{\eta(v-u+\eta)}{r^2}\le0
+\end{align*}
+as long as the new pair remains in $[0,m]^2$. A minimizing vector may thus be chosen with $\ell$ coordinates equal to $m$, one equal to $B-\ell m$, and the rest zero. Substitution into \cref{eq:product-bound} gives
+\begin{align*}
+ p\ge\left(1-\frac mr\right)^{\ell}
+ \left(1-\frac{B-\ell m}{r}\right)
+ =\left(1-\frac mr\right)^{\ell}\frac{1-(j-\ell)m}{r}.
+\end{align*}
+
+If $r\le m$, the lower bound $r\ge1-jm+\ell m$ permits only $\ell=0$, or $\ell=1$ with $r=m$ and $jm=1$. In the latter case the right side of \cref{eq:equal-product} is zero. In the former case the assertion follows from $pr=\E(1-S)_+\ge1-jm$.
+\end{proof}
+
+\subsection{Partial sums and comparison curves}
+
+The following comparison curves and envelopes follow Chi, Sun, and Wang~\cite[Section 3]{CSW2026}.
+
+Let $P=(1-a)\delta_0+aQ$ be a law of the form \cref{eq:normalized-law}, where $a=kx$ and $\delta\coloneqq1-a$. Take independent variables $Y_i\sim Q$, and define
+\begin{align}\label{eq:partial-sum-parameters}
+ R_j\coloneqq\sum_{i\in[j]}Y_i,
+ \qquad f_j\coloneqq\Pr(R_j\ge1),
+ \qquad e_j\coloneqq k\E(R_j-1)_+,
+ \qquad w\coloneqq e_k.
+\end{align}
+All sums below with index $j<k$ run over $1\le j<k$. Define the coefficients
+\begin{align*}
+ b_j\coloneqq\binom kj\left(\frac\delta a\right)^{k-j},
+ \qquad v_j\coloneqq\binom{k-1}{j}a^j\delta^{k-1-j}.
+\end{align*}
+To relate these quantities to $P$, let $I_i$ be independent Bernoulli variables of mean $a$, independent of the $Y_i$, and put $X_i=I_iY_i$. Then $X_i\sim P$. Conditioning on the number of indices with $I_i=1$ gives
+\begin{align}
+ a^{-k}F_k(P)&=f_k+\sum_{j<k}b_jf_j,\label{eq:thinning-tail}\\
+ F_{k-1}(P)&=\sum_{j<k}v_jf_j,\label{eq:thinning-short-tail}\\
+ \E(S_k-1)_+&=\frac{a^k}{k}\left(w+\sum_{j<k}b_je_j\right),
+ \qquad S_k\coloneqq\sum_{i\in[k]}X_i.\label{eq:thinning-excess}
+\end{align}
+These identities account for every possible number of nonzero Bernoulli selectors; they do not require that $Q$ itself have no atom at zero.
+
+Since $Y_i\in[0,1]$, we have $e_1=0$. On the event $R_j\ge1$, adding $Y_{j+1}$ increases the positive excess by exactly $Y_{j+1}$. Outside that event it increases the positive excess by a nonnegative amount. Independence and $\E Y_{j+1}=1/k$ therefore give
+\begin{align}\label{eq:excess-recursion}
+ e_{j+1}\ge e_j+f_j\qquad(1\le j<k).
+\end{align}
+This relation is the reason to retain the excesses of all partial sums, rather than only $w$.
+
+We next specify the points used in the comparison. For integers $t\in[k]$, let
+\begin{align}\label{eq:comparison-nodes}
+ W_1\coloneqq0,
+ \qquad W_t\coloneqq t(1-1/t)^t\quad(t\ge2),
+\end{align}
+and, for $j\in[k]$, define
+\begin{align}\label{eq:node-pairs}
+ (e_{j,t},f_{j,t})\coloneqq
+ \begin{cases}
+ (0,0),&j\le k-t,\\
+ \bigl(j-k+t(1-1/t)^{j-k+t},\ 1-(1-1/t)^{j-k+t}\bigr),&j>k-t.
+ \end{cases}
+\end{align}
+At $t=1$, the second case is used only for $j=k$, with a positive exponent, so its values are unambiguous.
+
+These pairs come from an auxiliary sequence consisting of $k-t$ constant variables equal to $1/k$, followed by $t$ independent variables equal to $t/k$ with probability $1/t$ and zero otherwise. Each variable has mean $1/k$. After the constants, one nonzero variable is sufficient for the partial sum to reach $1$. This gives the formula for $f_{j,t}$. The identity $\E(R_j-1)_+=\E(1-R_j)_++j/k-1$ then gives the formula for $e_{j,t}$. The auxiliary variables are not identically distributed in general; their role is to define comparison points, not to supply additional extremizers for the original problem.
+
+The nodes $W_t$ are strictly increasing. Indeed, for real $t>1$,
+\begin{align*}
+ \frac{d}{dt}\bigl[t(1-1/t)^t\bigr]
+ =(1-1/t)^t\left(1+t\log(1-1/t)+\frac{t}{t-1}\right)>0,
+\end{align*}
+where the last step uses $\log(1-1/t)>-1/(t-1)$. For $w\in[W_t,W_{t+1}]$, define $e_j^*(w)$ and $f_j^*(w)$ by linear interpolation between their values at nodes $t$ and $t+1$. The node formulas give
+\begin{align}\label{eq:star-recursion}
+ e_1^*(w)=0,
+ \qquad e_{j+1}^*(w)=e_j^*(w)+f_j^*(w),
+ \qquad e_k^*(w)=w.
+\end{align}
+
+For $1\le j<k$, let $C_j$ be the piecewise linear function joining the points $(e_{j,t},f_{j,t})$ with $k-j+1\le t\le k$, extended constantly to the right of the last point. Its domain is $[0,\infty)$. In particular, $C_1$ is the constant function $1/k$. The first point on each of these curves has excess zero, but its tail probability is positive; points $(0,0)$ occurring earlier in \cref{eq:node-pairs} are not vertices of $C_j$.
+
+\begin{lemma}\label{lem:envelopes}
+For every $j<k$, the function $C_j$ is nonnegative, nondecreasing, and concave, and $f_j\le C_j(e_j)$. Moreover, $0\le w\le W_k$. There is a continuous nondecreasing function $H\colon[0,W_k]\to[0,1]$ such that
+\begin{align}\label{eq:failure-envelope}
+ 1-f_k\ge H(w),
+ \qquad H(W_t)=(1-1/t)^t\quad(t\in[k]),
+\end{align}
+where the node value at $t=1$ is zero. On each interval $[W_t,W_{t+1}]$,
+\begin{align}\label{eq:H-piece}
+ H(u)=u-t^{-1/t}u^{1+1/t}.
+\end{align}
+In particular, $H$ is strictly concave on each interval between consecutive nodes.
+\end{lemma}
+
+\begin{proof}
+For $y_i\in[0,1]$, the elementary product inequality gives $(1-\sum_i y_i)_+\le\prod_i(1-y_i)$. Independence and $\E Y_i=1/k$ imply
+\begin{align}\label{eq:excess-range}
+ 0\le e_j\le k(1-1/k)^j-(k-j).
+\end{align}
+The assertion about the range of $w$ is the case $j=k$. For $j=1$, Markov's inequality gives $f_1\le1/k=C_1(e_1)$. We therefore consider $2\le j\le k$ and write $\ell=k-j$.
+
+For $\ell+1\le v\le k$, define the continuous piecewise function
+\begin{align*}
+ \Psi_\ell(v)\coloneqq t(1-1/v)^{t-\ell}
+ \quad\text{when }t\le v\le t+1,
+ \quad \ell+1\le t<k.
+\end{align*}
+The formulas on neighboring intervals agree at their common endpoint, since
+\begin{align*}
+ t\left(\frac{t}{t+1}\right)^{t-\ell}
+ =(t+1)\left(\frac{t}{t+1}\right)^{t+1-\ell}.
+\end{align*}
+Each piece is strictly increasing. The full function maps $[\ell+1,k]$ bijectively onto $[\ell,k(1-1/k)^j]$, so it has a well-defined inverse on this interval.
+
+Whenever $f_j<1$, define $r_j\coloneqq\E[1-R_j\mid R_j<1]$. The identity for positive and negative deviations gives
+\begin{align*}
+ k(1-f_j)r_j=\ell+e_j.
+\end{align*}
+Put $v=kr_j$. If $v>\ell+1$ and $t\le v\le t+1$, apply \cref{cor:equal-product} with $j$ variables of mean $1/k$ and with the integer $t-\ell$. It gives
+\begin{align*}
+ 1-f_j\ge\frac{t}{v}(1-1/v)^{t-\ell},
+ \qquad \ell+e_j\ge\Psi_\ell(v).
+\end{align*}
+If $v\le\ell+1$, the inequality $v\le\Psi_\ell^{-1}(\ell+e_j)$ follows directly from the range of the inverse. Thus in either case
+\begin{align}\label{eq:inverse-bound}
+ kr_j\le\Psi_\ell^{-1}(\ell+e_j),
+ \qquad 1-f_j\ge\frac{\ell+e_j}{\Psi_\ell^{-1}(\ell+e_j)}.
+\end{align}
+The arguments of the inverse lie in its domain by \cref{eq:excess-range}. For $j<k$, the inequality $f_j<1$ follows from $\E R_j=j/k<1$. For $j=k$, it holds whenever $w>0$, since an almost surely successful sum with mean $1$ must equal $1$ almost surely.
+
+Consider first $j<k$, so $\ell\ge1$. On the piece of the inverse indexed by $t$, put $u=\ell+e_j$. Solving $u=t(1-1/v)^{t-\ell}$ for $1/v$ converts \cref{eq:inverse-bound} into
+\begin{align*}
+ f_j\le 1-u+t^{-1/(t-\ell)}u^{1+1/(t-\ell)}.
+\end{align*}
+This expression is convex in $u$. Its endpoint values are exactly $f_{j,t}$ and $f_{j,t+1}$, with endpoint excesses $e_{j,t}$ and $e_{j,t+1}$. It is therefore at most the chord defining $C_j$ on this interval.
+
+To verify that these chords have decreasing slopes, regard their nodes as points on a curve parametrized by real $t\ge\ell+1$. Set
+\begin{align*}
+ f(t)\coloneqq1-(1-1/t)^{t-\ell},
+ \qquad e(t)\coloneqq-\ell+t(1-1/t)^{t-\ell},
+\end{align*}
+and define
+\begin{align*}
+ g(t)\coloneqq\log\frac{t}{t-1}-\frac{t-\ell}{t(t-1)}
+ =\sum_{m\ge2}\frac{\ell-1+1/m}{t^m}.
+\end{align*}
+The series shows that $0<g(t)<\ell/[t(t-1)]\le1/t$. Differentiation gives
+\begin{align*}
+ g'(t)&=\frac{\ell-(2\ell-1)t}{t^2(t-1)^2},\\
+ g'(t)+g(t)^2
+ &<\frac{\ell^2+\ell-(2\ell-1)t}{t^2(t-1)^2}\le0.
+\end{align*}
+For the last inequality, $t\ge\ell+1$ and the numerator at $t=\ell+1$ is $(\ell+1)(1-\ell)\le0$. Along the curve,
+\begin{align*}
+ e'(t)=(1-f(t))(1-tg(t))>0,
+ \qquad f'(t)=(1-f(t))g(t)>0.
+\end{align*}
+Its slope is $g(t)/(1-tg(t))$, whose derivative is
+\begin{align*}
+ \frac{g'(t)+g(t)^2}{(1-tg(t))^2}<0.
+\end{align*}
+Hence the successive chord slopes are positive and decreasing. Extending constantly after the final node preserves concavity and monotonicity. This proves the assertions about $C_j$.
+
+For $j=k$, take $\ell=0$ and define $H(w)=w/\Psi_0^{-1}(w)$, with $H(0)=0$. The preceding argument proves \cref{eq:failure-envelope} when $w>0$, and the case $w=0$ is immediate. Solving for the inverse on $[W_t,W_{t+1}]$ gives \cref{eq:H-piece}. It follows that
+\begin{align*}
+ H''(u)=-(t+1)t^{-2-1/t}u^{1/t-1}<0
+\end{align*}
+in the interior of this interval. Its derivative is nonnegative there and vanishes at the right endpoint, since $\Psi_0(t+1)=t(t/(t+1))^t$. Thus $H$ is nondecreasing on each piece and therefore on the full interval. The stated node values follow by substitution.
+\end{proof}
+
+\subsection{Weighted interpolation and the first exclusions}
+
+The preceding lemma controls each pair $(e_j,f_j)$ separately. We also need bounds for weighted sums of the tails, sometimes with an excess term subtracted. The recurrence \cref{eq:excess-recursion} makes it possible to compare such a weighted sum with the interpolated sequence. The next lemma gives a common formulation of the interpolation arguments in Chi, Sun, and Wang~\cite[Lemmas 3.6 and 4.5]{CSW2026}.
+
+\begin{lemma}\label{lem:interpolation}
+Suppose nonnegative quantities $e_j,f_j$ satisfy $e_1=0$, $e_{j+1}\ge e_j+f_j$, and $f_j\le C_j(e_j)$ for $j<k$. Let $e_k\le w\in[W_t,W_{t+1}]$, where $1\le t<k$, and put $q=k-t$. For $q<j<k$, let $\alpha_j$ be the slope of $C_j$ between nodes $t$ and $t+1$.
+
+Let $0\le\kappa_1\le\cdots\le\kappa_{k-1}$ and $c_j\ge0$. Define
+\begin{align}\label{eq:multiplier-recursion}
+ \Gamma_q\coloneqq\kappa_q,
+ \qquad \Gamma_j\coloneqq\frac{\Gamma_{j-1}-c_j+\kappa_j\alpha_j}{1+\alpha_j}
+ \quad(q<j<k).
+\end{align}
+If every $\Gamma_j$ is nonnegative, then
+\begin{align}\label{eq:weighted-interpolation}
+ \sum_{j<k}(\kappa_jf_j-c_je_j)
+ \le\sum_{j<k}\bigl(\kappa_jf_j^*(w)-c_je_j^*(w)\bigr).
+\end{align}
+The nonnegativity condition holds automatically when all $c_j$ are zero.
+\end{lemma}
+
+\begin{proof}
+Write $d_j=e_j-e_j^*(w)$ and $g_j=f_j-f_j^*(w)$. By \cref{eq:star-recursion},
+\begin{align*}
+ d_{j+1}\ge d_j+g_j,
+ \qquad d_1=0,
+ \qquad d_k\le0.
+\end{align*}
+For $j\le q$, the node formulas give $e_j^*(w)=0$, so $d_j=e_j\ge0$. Weighted summation of the recurrence therefore gives
+\begin{align*}
+ \sum_{j\le q}(\kappa_jg_j-c_jd_j)
+ &\le\sum_{j\le q}\kappa_j(d_{j+1}-d_j)\\
+ &=\kappa_qd_{q+1}+\sum_{2\le j\le q}(\kappa_{j-1}-\kappa_j)d_j
+ \le\kappa_qd_{q+1}.
+\end{align*}
+For $j>q$, the point $(e_j^*(w),f_j^*(w))$ lies on the indicated segment of $C_j$. Concavity and $f_j\le C_j(e_j)$ imply $g_j\le\alpha_jd_j$. Also, \cref{eq:multiplier-recursion} and the increase of $\kappa_j$ imply $\Gamma_j\le\kappa_j$ by induction. Consequently,
+\begin{align*}
+ \kappa_jg_j-c_jd_j
+ &=\Gamma_j(d_j+g_j)-\Gamma_{j-1}d_j
+   +(\kappa_j-\Gamma_j)(g_j-\alpha_jd_j)\\
+ &\le\Gamma_jd_{j+1}-\Gamma_{j-1}d_j.
+\end{align*}
+The equality is exactly the recurrence defining $\Gamma_j$; the inequality uses $\Gamma_j\ge0$ and $\kappa_j-\Gamma_j\ge0$. Summing over $j>q$ cancels the intermediate terms and, together with the preceding estimate for $j\le q$, leaves $\Gamma_{k-1}d_k\le0$. This is \cref{eq:weighted-interpolation}. If $q=k-1$, the first summation already proves the assertion. If all $c_j=0$, nonnegativity of the multipliers follows directly from their recurrence.
+\end{proof}
+
+We apply this comparison first without excess terms. The coefficients $b_j$ satisfy
+\begin{align*}
+ \frac{b_{j+1}}{b_j}=\frac{k-j}{j+1}\frac a\delta,
+\end{align*}
+so they are nondecreasing whenever $\delta/a\le2/(k-1)$. Define
+\begin{align}\label{eq:A-definition}
+ A(w)\coloneqq\sum_{j<k}b_jf_j^*(w).
+\end{align}
+Combining \cref{eq:thinning-tail,lem:envelopes,lem:interpolation}, with $\kappa_j=b_j$ and $c_j=0$, gives
+\begin{align}\label{eq:first-comparison}
+ a^{-k}F_k(P)\le1-H(w)+A(w).
+\end{align}
+Here $A$ is affine on each interval $[W_t,W_{t+1}]$, whereas $H$ is strictly concave on that interval.
+
+At the critical mean, $a=k/(k+c_k)$ and $\delta/a=c_k/k$, so the required monotonicity of the $b_j$ holds. The node estimates in \cref{lem:node-estimates}, proved in \cref{sec:estimates}, are
+\begin{align*}
+ A(W_1)=H(W_1)=0,
+ \qquad A(W_k)=H(W_k),
+ \qquad A(W_t)<H(W_t)\quad(2\le t\le\min\{4,k-1\}).
+\end{align*}
+We record their consequence separately because it determines exactly which cases remain for the variational argument.
+
+\begin{lemma}\label{lem:initial-comparison}
+Let $P$ maximize $F_k(P)$ at mean $\beta_k$, and let $w$ be defined by \cref{eq:partial-sum-parameters} for its normalized law $Q$. If $2\le k\le5$, then $w\in\{0,W_k\}$. If $k\ge6$, then either $w=0$ or $W_4<w\le W_k$.
+\end{lemma}
+
+\begin{proof}
+The law $C_{k,\beta_k}$ is feasible and has success probability $a^k$. Thus $F_k(P)\ge a^k$, and \cref{eq:first-comparison} implies $A(w)\ge H(w)$. On an interval whose endpoint values satisfy $A\le H$, strict concavity of $H$ and linearity of $A$ give $A<H$ at every interior point. For $k\le5$, the node estimates cover every node, and all internal nodes satisfy a strict inequality. Only $0$ and $W_k$ remain. For $k\ge6$, the same argument excludes every point in $(0,W_4]$.
+\end{proof}
+
+For $k\le5$, the endpoint argument in \cref{sec:equality} now completes the proof. For larger $k$, the probability inequalities alone have left a possible interval of excesses. We next use the fact that $P$ maximizes the original probability, rather than merely satisfying the comparison inequalities.

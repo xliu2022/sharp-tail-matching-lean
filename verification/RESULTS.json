@@ -1,0 +1,392 @@
+{
+  "date": "2026-11-20",
+  "lean_version": "4.35.0-rc2",
+  "lean_commit": "11acb17ec6b07a8f9e9173e6845197929540936b",
+  "mathlib_commit": "065356127b1dc0016f66b7283ce0ce2c4055aa55",
+  "verified_platform": "macOS arm64",
+  "fresh_build_exit_code": 0,
+  "fresh_build_jobs": 3807,
+  "axiom_audit_exit_code": 0,
+  "explicit_unfolded_matching_statements_checked": true,
+  "audited_declarations": 59,
+  "axioms": {
+    "SharpTailMatching.sharp_tail_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.sharp_tail_attained": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.critical_mean_exists_unique": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.sharp_tail_equality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.zero_mean_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.one_sample_equality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.tail_eq_one_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.large_matching_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.large_matching_equality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.ScalarCertificates.fourth_node_positive_gap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.ScalarCertificates.derivative_boundary_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.RationalCertificates.phi_lower_bound_large": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.RationalCertificates.phi_lower_bound_four": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.InterpolationAlgebra.local_multiplier_inequality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.InterpolationAlgebra.endpoint_comparison": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.CubicAlgebra.negative_part_estimate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.sparse_matching_bound_and_equality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.sharp_tail_bound_of_critical_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.exists_maximizer": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.maximizer_normalized_representation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.capped_cubic_inequality": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.cantelli_variance_lower_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.maximizer_supporting_line": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.SupportAlgebra.no_intermediate_contact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.ExclusionAlgebra.normalized_variance_contradiction": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.ProductAlgebra.bounded_product_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.local_cover_exact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.CriticalEstimates.critical_parameter_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.CriticalEstimates.critical_elementary_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.ProductBound.bounded_independent_product_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.ProductBound.equal_mean_failure_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.ProductBound.small_deviation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.normalized_excess_zero_rigidity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.normalized_excess_max_rigidity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.maximizer_covariance_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.maximizer_ae_support_gap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.weighted_interpolation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.ProductBound.normalized_failure_envelope": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.clique_bound_and_singleton_equality_of_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.CriticalEstimates.phi_at_critical_large": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.CriticalEstimates.phi_at_critical_four": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.maximizer_upper_support_positive": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.CriticalEstimates.node_deficitTest_gap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.TailEstimates.fourth_binomial_tail_strict": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.sharp_tail_equality_of_critical": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.critical_cost_multipliers_nonnegative": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.ComparisonGeometry.critical_base_deficit_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.initial_exclusion_small": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.initial_exclusion_large": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.conditionalUpperProbability_lower": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.local_near_clique_exact": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.exists_capacity_matching_cover": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.weighted_rectangular_regularity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.critical_normalized_maximizer_proximity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Probability.maximizer_proximity_rigid": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.approximate_fractional_cover": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.candidate_density_le_binomial_max": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.matching_stability": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "SharpTailMatching.Matching.matching_branch_separation": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "headline_targets": [
+    "SharpTailMatching.sharp_tail_bound",
+    "SharpTailMatching.sharp_tail_attained",
+    "SharpTailMatching.critical_mean_exists_unique",
+    "SharpTailMatching.sharp_tail_equality",
+    "SharpTailMatching.zero_mean_iff",
+    "SharpTailMatching.one_sample_equality",
+    "SharpTailMatching.tail_eq_one_iff",
+    "SharpTailMatching.large_matching_bound",
+    "SharpTailMatching.large_matching_equality"
+  ],
+  "proof_sources_unchanged": {
+    "files": 154,
+    "all_identical_to_freshly_verified_source": true
+  },
+  "standalone_kernels": {
+    "lean-kernel": {
+      "exit_code": 0,
+      "stdout": "verification/logs/lean-kernel.log",
+      "stderr": "verification/logs/lean-kernel-stderr.log"
+    },
+    "nanoda": {
+      "exit_code": 0,
+      "stdout": "verification/logs/nanoda.log",
+      "stderr": "verification/logs/nanoda-stderr.log"
+    },
+    "con-ron": {
+      "exit_code": 0,
+      "stdout": "verification/logs/con-ron.log",
+      "stderr": "verification/logs/con-ron-stderr.log"
+    }
+  },
+  "nanoda_checked_declarations": 49433,
+  "nanoda_typechecker_errors": 0,
+  "nanoda_pretty_printer_errors": 1,
+  "nanoda_note": "The one pretty-printer diagnostic is Unable to print axioms; all typechecking passed. The separate Lean axiom audit passed for all 59 targets.",
+  "con_ron_accepted_declarations": 47487,
+  "proof_export": {
+    "sha256": "a4a0bcd892556e214908473a2c62bd599846945e498eb903cbcadce9fdf71099",
+    "bytes": 404409956,
+    "matches_original_archived_export": true,
+    "included_in_source_package": false,
+    "reproduce": "bash verify.sh --kernels"
+  },
+  "protected_comparator_passed": false,
+  "protected_comparator_macos_exit_code": 2,
+  "protected_comparator_reason": "The default bubblewrap sandbox requires Linux namespaces.",
+  "comparator_sandbox_disabled": false,
+  "official_full_pipeline_passed": false,
+  "ci_executed_remotely": false,
+  "palomar_submitted": false,
+  "palomar_registered": false,
+  "package_validation": {
+    "status": "pass",
+    "command": [
+      "bash",
+      "verify.sh",
+      "--kernels"
+    ],
+    "exit_code": 0,
+    "seconds": 86.636,
+    "axioms_checked": 59,
+    "kernel_exit_codes": {
+      "lean": 0,
+      "nanoda": 0,
+      "con-ron": 0
+    },
+    "proof_export_sha256": "a4a0bcd892556e214908473a2c62bd599846945e498eb903cbcadce9fdf71099",
+    "same_proof_export_as_fresh_original_build": true,
+    "log": "verification/logs/package-check.log",
+    "stderr_log": "verification/logs/package-check-stderr.log",
+    "note": "The repackaged verification entry point was executed locally, reusing the verified build cache. The earlier recorded build was from a fresh project directory."
+  },
+  "source_scan_exit_code": 0,
+  "metadata_starter_validation_exit_code": 0,
+  "workflow_yaml_parsed": true,
+  "readme_relative_links_checked": true,
+  "regular_lean_source_files": 155,
+  "largest_source_lines": 478,
+  "challenge_lines": 168,
+  "challenge_bytes": 8181,
+  "proof_sorry_count": 0,
+  "challenge_statement_holes": 9
+}

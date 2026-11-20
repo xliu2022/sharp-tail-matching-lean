@@ -1,0 +1,90 @@
+\section{From the tail theorem to hypergraph stability}\label{sec:stability}
+
+We now fix $k\ge3$ and apply \cref{thm:tail} to hypergraphs. The first step gives a structural approximation, with an error of order $o(n^k)$. The arguments in \cref{sec:exact} will remove this error from the extremal bound.
+
+A \emph{fractional vertex cover} of a $k$-graph assigns a nonnegative weight to each vertex so that every edge has total weight at least one. We need an approximate cover whose total weight is controlled by the integer matching number. We use the following statement from Cao, Liu, and Zhang~\cite[Lemma 3.2]{CLZ2026}.
+\begin{lemma}[Approximate fractional cover]\label{lem:approximate-cover}
+For fixed $k\ge2$, $0\le\xi<1/k$, and $\varepsilon>0$, there is $n_0$ such that the following holds. If $n\ge n_0$, $0\le x\le\xi$, and $H$ is an $n$-vertex $k$-graph with $\nu(H)\le xn$, then there are weights $w_v\in[0,1]$ satisfying
+\begin{align*}
+\sum_{v\in V(H)}w_v\le(x+\varepsilon)n,
+\qquad
+\bigl|\{E\in H\colon\sum_{v\in E}w_v<1\}\bigr|\le\varepsilon n^k.
+\end{align*}
+\end{lemma}
+
+The proof in~\cite{CLZ2026} uses weak regularity and rounds a fractional matching in a reduced hypergraph. An earlier use of this regularity and rounding method appears in K\"uhn, Osthus, and Townsend~\cite[proof of Lemma 5.6]{KOT2014}, in a minimum-degree setting. The approximate-cover formulation above is the one stated in~\cite[Lemma 3.2]{CLZ2026}.
+
+The strict bound $\xi<1/k$ is part of the hypothesis. We will handle sequences with $s/n\to1/k$ directly, without applying this lemma. We also retain its allowance for uncovered edges; it cannot be replaced here by an exact cover of weight $s$.
+
+The empirical law of vertex weights is a probability measure on $[0,1]$. Sampling independently from this law allows repeated vertices, whereas hypergraph edges have distinct vertices. This causes no difficulty for an upper bound: every covered edge contributes exactly $k!$ successful ordered samples, and repeated samples only add to the probability. This observation, followed by compactness and the equality classification in \cref{thm:tail}, gives the following uniform formulation of the sequential stability result in Chi, Sun, and Wang~\cite[Lemma 8.3]{CSW2026}. The earlier compactness argument of Cao, Liu, and Zhang~\cite[Theorem 4.1]{CLZ2026} gives the cover alternative in their range. For $4$-uniform hypergraphs, Frankl, Lu, Ma, and Wu~\cite[Sections 2--4]{FLMW2026} had also used fractional stability, a transfer to integer matchings, and local exact bounds.
+\begin{proposition}\label{prop:matching-stability}
+Fix $k\ge3$. For every $\varepsilon>0$, there are $\delta>0$ and $s_0$ such that, whenever $s\ge s_0$, $n\ge k(s+1)$, and an $n$-vertex $k$-graph $H$ satisfies
+\begin{align*}
+\nu(H)\le s,
+\qquad
+|H|\ge D(n,s)-\delta n^k,
+\end{align*}
+one of the following holds:
+\begin{enumerate}[label=(\roman*)]
+\item there is an $s$-set $S\subseteq V(H)$ with $|H\triangle\mathcal A(V(H),S)|\le\varepsilon n^k$;
+\item there is a $(ks+k-1)$-set $Q\subseteq V(H)$ with $|H\triangle\binom Qk|\le\varepsilon n^k$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Suppose the assertion fails for some fixed $\varepsilon>0$. Choosing the error successively smaller and the matching parameter successively larger gives a sequence $H_i$ on $n_i$ vertices, with integers $s_i\to\infty$, such that $n_i\ge k(s_i+1)$, $\nu(H_i)\le s_i$, and
+\begin{align}
+|H_i|\ge D(n_i,s_i)-o(n_i^k),
+\label{eq:stability-near-extremal}
+\end{align}
+but neither conclusion holds for $H_i$. Pass to a subsequence such that $n_i/s_i$ converges in the extended interval $[k,\infty]$; denote its limit by $R$.
+
+If $R=\infty$, the vertices of a maximal matching meet every edge. There are at most $ks_i$ such vertices, so $|H_i|\le ks_i\binom{n_i-1}{k-1}=o(n_i^k)$. For any $s_i$-set $S_i$, the complete cover has at most $s_i\binom{n_i-1}{k-1}=o(n_i^k)$ edges. Their symmetric difference is therefore $o(n_i^k)$, contrary to the choice of the sequence.
+
+If $R=k$, put $m_i=ks_i+k-1$. Then $m_i/n_i\to1$, so $\binom{m_i}k=\binom{n_i}k-o(n_i^k)$. By \cref{eq:stability-near-extremal}, $H_i$ misses only $o(n_i^k)$ edges of the complete $k$-graph on its whole vertex set. Any $m_i$-set $Q_i$ has $\binom{n_i}k-\binom{m_i}k=o(n_i^k)$ edges outside it. Consequently $|H_i\triangle\binom{Q_i}k|=o(n_i^k)$, another contradiction.
+
+We may thus assume $k<R<\infty$. Write $x_i=s_i/n_i$ and $x=1/R$, so $0<x<1/k$. Choose a constant $\xi$ with $x<\xi<1/k$. Eventually $x_i\le\xi$. Applying \cref{lem:approximate-cover} along a diagonal subsequence gives vertex weights $w_{i,v}\in[0,1]$ whose sum is at most $s_i+o(n_i)$ and which fail to cover only $o(n_i^k)$ edges. More explicitly, for each positive integer $j$ use the lemma with error $1/j$ and then take the subsequence indices sufficiently large for its threshold $n_0(k,\xi,1/j)$.
+
+Define the empirical laws
+\begin{align*}
+P_i\coloneqq\frac1{n_i}\sum_{v\in V(H_i)}\delta_{w_{i,v}}.
+\end{align*}
+Their means are at most $x_i+o(1)$. The space of probability measures on $[0,1]$ is compact for weak convergence, so, after passing to a further subsequence, $P_i\Rightarrow P$. Since the function $z\mapsto z$ is continuous and bounded, $m(P)\le x$.
+
+Each covered edge gives $k!$ successful ordered samples from $P_i$. Therefore
+\begin{align}
+F_k(P_i)\ge\frac{k!|H_i|}{n_i^k}-o(1).
+\label{eq:empirical-tail-bound}
+\end{align}
+The product measures $P_i^{\otimes k}$ converge weakly to $P^{\otimes k}$. The set $\{(z_1,\ldots,z_k)\in[0,1]^k\colon\sum z_j\ge1\}$ is closed. The closed-set form of the Portmanteau theorem~\cite{Billingsley1999} consequently gives
+\begin{align*}
+F_k(P)\ge\limsup_iF_k(P_i)
+\ge\max\{1-(1-x)^k,(kx)^k\},
+\end{align*}
+where the second inequality follows from \cref{eq:stability-near-extremal,eq:empirical-tail-bound} and the limits of the two binomial expressions in \cref{eq:matching-counts}. By \cref{thm:tail}, equality holds and $P$ is one of $B_x,C_{k,x}$.
+
+We next convert this conclusion about weights into a conclusion about edges. Fix $0<\tau<1/(2k^2)$. If $P=B_x$, let $S_i$ consist of the vertices with weight in $(1-\tau,1]$. The number of vertices with weight outside $[0,\tau)\cup(1-\tau,1]$ is $o(n_i)$, and $|S_i|=xn_i+o(n_i)=s_i+o(n_i)$. These statements follow from weak convergence because the interval endpoints $\tau,1-\tau$ carry no mass under $B_x$. A covered edge that avoids $S_i$ must meet one of the exceptional vertices: otherwise its total weight is less than $k\tau<1$. Thus all but $o(n_i^k)$ edges of $H_i$ meet $S_i$. Add or remove $o(n_i)$ vertices to obtain an $s_i$-set $S'_i$. This changes the complete cover by at most $o(n_i)\binom{n_i-1}{k-1}=o(n_i^k)$ edges. Hence
+\begin{align*}
+|H_i\setminus\mathcal A(V(H_i),S'_i)|=o(n_i^k).
+\end{align*}
+Since $|\mathcal A(V(H_i),S'_i)|=M(n_i,s_i)\le D(n_i,s_i)$, \cref{eq:stability-near-extremal} also gives
+\begin{align*}
+|\mathcal A(V(H_i),S'_i)\setminus H_i|
+&=|\mathcal A(V(H_i),S'_i)|-|H_i|+|H_i\setminus\mathcal A(V(H_i),S'_i)|\\
+&=o(n_i^k).
+\end{align*}
+This contradicts the failure of conclusion (i).
+
+If $P=C_{k,x}$, let $Q_i$ consist of the vertices with weight in $(1/k-\tau,1/k+\tau)$. Then $|Q_i|=kxn_i+o(n_i)=ks_i+o(n_i)$, and only $o(n_i)$ vertices have weights outside this interval and $[0,\tau)$. A $k$-set with no exceptional vertex and with at least one vertex outside $Q_i$ has total weight less than
+\begin{align*}
+(k-1)(1/k+\tau)+\tau=1-1/k+k\tau<1.
+\end{align*}
+Every covered edge must therefore lie in $Q_i$ or meet an exceptional vertex. Adjust $Q_i$ by $o(n_i)$ vertices to have size $ks_i+k-1$. This affects only $o(n_i^k)$ $k$-sets. The same subtraction as in the cover case, now using $C(s_i)\le D(n_i,s_i)$, proves that the symmetric difference from the resulting complete clique is $o(n_i^k)$. This contradicts the failure of conclusion (ii).
+\end{proof}
+
+The proof also identifies the range in which each limiting structure can occur. Put $\rho_k\coloneqq1/\beta_k=k+c_k$. If $n_i/s_i\to R\in(k,\infty)$ and a sequence satisfying \cref{eq:stability-near-extremal} is $o(n_i^k)$-close to a complete cover, comparison of its limiting density with the clique density gives $R\ge\rho_k$. If it is close to a clique, the same comparison gives $R\le\rho_k$. For $k\ge3$, we have
+\begin{align}
+k<\rho_k<k+\tfrac12.
+\label{eq:matching-transition}
+\end{align}
+At $R=\rho_k$ both alternatives are possible, but \cref{thm:tail} gives no additional limiting law. We use only these inequalities, not a claim about an exact finite-$s$ transition.

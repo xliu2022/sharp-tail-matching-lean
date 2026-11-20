@@ -1,0 +1,47 @@
+\section{Equality and all means}\label{sec:equality}
+
+We now finish the critical-mean classification and then apply the mixing operations from \cref{sec:reduction}, following the equality analysis of Chi, Sun, and Wang~\cite[Section 7]{CSW2026}. The endpoint values of the excess parameter identify the maximizing laws without any further estimates.
+
+\begin{proof}[Proof of \cref{prop:critical}]
+Let $P$ be a maximizing law at $x=\beta_k$, and use its representation $P=(1-kx)\delta_0+kxQ$ from \cref{lem:normalization}. By \cref{lem:initial-comparison}, if $2\le k\le5$, then $w\in\{0,W_k\}$. The same conclusion holds when $k\ge6$ by \cref{prop:no-interior-maximizer}.
+
+Suppose first that $w=0$. Since $\E R_k=1$ and $\E(R_k-1)_+=0$, we have $R_k=1$ almost surely. Independence gives $0=\Var(R_k)=k\Var(Y_1)$, so $Q=\delta_{1/k}$. Substituting this into the representation of $P$ gives $P=C_{k,x}$.
+
+Now suppose that $w=W_k$. The equality of the positive and negative deviations of $R_k$ from its mean implies
+\begin{align*}
+ \E(1-R_k)_+=\frac{W_k}{k}=\left(1-\frac1k\right)^k.
+\end{align*}
+For every $(y_1,\ldots,y_k)\in[0,1]^k$,
+\begin{align*}
+ \left(1-\sum_{i\in[k]}y_i\right)_+\le\prod_{i\in[k]}(1-y_i).
+\end{align*}
+The expectations of the two sides are equal for independent $Y_i\sim Q$, because $\E Y_i=1/k$. If all $y_i$ lie in $(0,1)$, the inequality is strict. When the sum is at least $1$, the left side is zero and the right side is positive. When the sum is less than $1$, the difference equals
+\begin{align*}
+ \prod_{i\in[k]}(1-y_i)-\left(1-\sum_{i\in[k]}y_i\right)
+ =\sum_{2\le i\le k}y_i\left(1-\prod_{h<i}(1-y_h)\right)>0.
+\end{align*}
+If $Q((0,1))>0$, independence would give positive probability to this strict inequality. Hence $Q((0,1))=0$, and its mean forces
+\begin{align*}
+ Q=\left(1-\frac1k\right)\delta_0+\frac1k\delta_1.
+\end{align*}
+It follows that $P=B_x$.
+
+Every maximizing law has now been identified, and each of the two identified laws has success probability $(kx)^k$. Existence from \cref{lem:normalization} therefore proves both the upper bound and the equality assertion.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:tail}]
+For $k\ge2$, the upper bounds at all means in $(0,1/k)$ follow from \cref{prop:critical} and the calculations following \cref{eq:mix-one,eq:mix-zero}. We verify the equality cases explicitly.
+
+Fix $0<x<\beta_k$, and let $P$ be a maximizing law with mean at most $x$. By \cref{lem:normalization}, its mean is $x$. Set $\vartheta=(\beta_k-x)/(1-x)$. Equality in the sharp bound for $P$ and \cref{eq:mix-one} shows that $(1-\vartheta)P+\vartheta\delta_1$ is maximizing at mean $\beta_k$. It has positive mass at $1$, so \cref{prop:critical} identifies it as $B_{\beta_k}$ rather than $C_{k,\beta_k}$. Thus $P$ is supported on $\{0,1\}$, and its mean identifies it as $B_x$.
+
+Next fix $\beta_k<x<1/k$, and set $q=\beta_k/x$. For a maximizing law $P$, \cref{eq:mix-zero} and the critical-mean bound give
+\begin{align*}
+ (k\beta_k)^k\ge F_k\bigl(qP+(1-q)\delta_0\bigr)
+ \ge q^kF_k(P)=(k\beta_k)^k.
+\end{align*}
+Both inequalities are equalities. In the expansion in \cref{eq:mix-zero}, all coefficients of $F_j(P)$ for $1\le j<k$ are strictly positive. Consequently, $F_j(P)=0$ for each such $j$. In particular, $P$ has no mass at $1$. The critical-mean maximizing law $qP+(1-q)\delta_0$ must therefore be $C_{k,\beta_k}$. Comparing its mass at $1/k$ gives $P=C_{k,x}$. The case $x=\beta_k$ is exactly \cref{prop:critical}.
+
+At $x=0$, nonnegativity forces the law $\delta_0$. For $x\ge1/k$, the law $\delta_{1/k}$ is feasible and has success probability $1$. A nonnegative i.i.d. sum is at least $1$ almost surely if and only if its common law gives full mass to $[1/k,\infty)$. Indeed, if $\Pr(X<1/k)>0$, all $k$ samples lie below $1/k$ with positive probability, and their sum is then less than $1$. At mean at most $1/k$, support in $[1/k,\infty)$ forces $X=1/k$ almost surely. For $x>1/k$, it gives exactly the stated class of feasible maximizing laws.
+
+Finally, when $k=1$ and $0\le x\le1$, Markov's inequality gives $F_1(P)\le x$. Equality requires $\E X=x$, $X=0$ on $\{X<1\}$, and $X=1$ on $\{X\ge1\}$. Thus the unique maximizing law is $B_x$. The characterization for $x>1$ is the support condition already proved.
+\end{proof}

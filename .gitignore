@@ -1,0 +1,13 @@
+.lake/
+.DS_Store
+__pycache__/
+*.pyc
+*.olean
+*.ilean
+/paper/*.aux
+/paper/*.log
+/paper/*.out
+/paper/*.blg
+/paper/*.fls
+/paper/*.fdb_latexmk
+/paper/*.synctex.gz

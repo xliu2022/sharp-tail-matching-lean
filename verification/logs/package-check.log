@@ -1,0 +1,236 @@
+Lean source files: 153 (including the aggregate import file)
+Source lines, including comments and blank lines: 25714
+Named theorem/lemma declarations: 1275
+Definitions/structures/abbreviations: 272
+PASS: no proof placeholders, extra axioms, native_decide, or unsafe declarations in project sources.
+Challenge.lean is excluded: its nine deliberate statement holes are checked against Solution by Comparator.
+This textual check supplements, and does not replace, Lean's kernel and #print axioms checks.
+formalization.yaml contains no TEMPLATE values
+⚠ [3209/3545] Replayed SharpTailMatching.SmallDeviationAlgebra
+warning: SharpTailMatching/SmallDeviationAlgebra.lean:65:62: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: SharpTailMatching/SmallDeviationAlgebra.lean:65:62: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: SharpTailMatching/SmallDeviationAlgebra.lean:68:51: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: SharpTailMatching/SmallDeviationAlgebra.lean:88:60: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3220/3545] Replayed SharpTailMatching.CubicAlgebra
+warning: SharpTailMatching/CubicAlgebra.lean:113:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: SharpTailMatching/CubicAlgebra.lean:135:54: Variable name `hτ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hτ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3221/3545] Replayed SharpTailMatching.SupportAlgebra
+warning: SharpTailMatching/SupportAlgebra.lean:19:5: Variable name `hμ0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hμ0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3664/3807] Replayed SharpTailMatching.Probability.MixtureRigidity
+warning: SharpTailMatching/Probability/MixtureRigidity.lean:24:65: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/Probability/MixtureRigidity.lean:59:5: Variable name `hp0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hp0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3672/3807] Replayed SharpTailMatching.Probability.SupportGap
+warning: SharpTailMatching/Probability/SupportGap.lean:123:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3673/3807] Replayed SharpTailMatching.Probability.Cubic
+warning: SharpTailMatching/Probability/Cubic.lean:208:25: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/Probability/Cubic.lean:295:30: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+⚠ [3674/3807] Replayed SharpTailMatching.Probability.CubicMoments
+warning: SharpTailMatching/Probability/CubicMoments.lean:55:18: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: SharpTailMatching/Probability/CubicMoments.lean:68:18: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: SharpTailMatching/Probability/CubicMoments.lean:102:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: SharpTailMatching/Probability/CubicMoments.lean:113:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+⚠ [3681/3807] Replayed SharpTailMatching.Probability.UpperMass
+warning: SharpTailMatching/Probability/UpperMass.lean:66:28: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3683/3807] Replayed SharpTailMatching.Probability.UpperComponent
+warning: SharpTailMatching/Probability/UpperComponent.lean:17:47: Variable name `hx` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hx
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/Probability/UpperComponent.lean:79:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3686/3807] Replayed SharpTailMatching.Probability.UpperCount
+warning: SharpTailMatching/Probability/UpperCount.lean:37:36: This simp argument is unused:
+  Nat.cast_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [upperCount, upperIndicator]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SharpTailMatching/Probability/UpperCount.lean:48:20: This simp argument is unused:
+  Finset.sum_eq_zero_iff
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [upperCount, not_lt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3688/3807] Replayed SharpTailMatching.Probability.ConditionalSplit
+warning: SharpTailMatching/Probability/ConditionalSplit.lean:75:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3694/3807] Replayed SharpTailMatching.Probability.LowerConditionalMoments
+warning: SharpTailMatching/Probability/LowerConditionalMoments.lean:77:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3700/3807] Replayed SharpTailMatching.ExclusionEstimates
+warning: SharpTailMatching/ExclusionEstimates.lean:22:5: Variable name `hθ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hθ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/ExclusionEstimates.lean:51:18: Variable name `hθ0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hθ0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/ExclusionEstimates.lean:136:40: Variable name `hc1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3701/3807] Replayed SharpTailMatching.Probability.ExclusionRanges
+warning: SharpTailMatching/Probability/ExclusionRanges.lean:60:43: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: SharpTailMatching/Probability/ExclusionRanges.lean:98:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: SharpTailMatching/Probability/ExclusionRanges.lean:141:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3702/3807] Replayed SharpTailMatching.Probability.ExclusionMoments
+warning: SharpTailMatching/Probability/ExclusionMoments.lean:55:48: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: SharpTailMatching/Probability/ExclusionMoments.lean:94:65: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: SharpTailMatching/Probability/ExclusionMoments.lean:94:65: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [3703/3807] Replayed SharpTailMatching.ExclusionMoments
+warning: SharpTailMatching/ExclusionMoments.lean:143:19: Variable name `hu0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hu0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3708/3807] Replayed SharpTailMatching.ReciprocalPower
+warning: SharpTailMatching/ReciprocalPower.lean:12:54: Variable name `hq1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hq1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3722/3807] Replayed SharpTailMatching.Matching.CompactStability
+warning: SharpTailMatching/Matching/CompactStability.lean:42:23: Variable name `t` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _t
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/Matching/CompactStability.lean:95:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [3745/3807] Replayed SharpTailMatching.Matching.BinomialApproximation
+warning: SharpTailMatching/Matching/BinomialApproximation.lean:183:5: Variable name `hs` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hs
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3748/3807] Replayed SharpTailMatching.Matching.WeightEditing
+warning: SharpTailMatching/Matching/WeightEditing.lean:85:0: automatically included section variable(s) unused in theorem `SharpTailMatching.Matching.card_outside_le_uncovered`:
+  [Fintype α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: SharpTailMatching/Matching/WeightEditing.lean:175:42: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3800/3807] Replayed SharpTailMatching.Matching.BranchSeparation
+warning: SharpTailMatching/Matching/BranchSeparation.lean:106:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3804/3807] Replayed Challenge
+warning: Challenge.lean:62:8: declaration uses `sorry`
+warning: Challenge.lean:70:8: declaration uses `sorry`
+warning: Challenge.lean:76:8: declaration uses `sorry`
+warning: Challenge.lean:85:8: declaration uses `sorry`
+warning: Challenge.lean:98:8: declaration uses `sorry`
+warning: Challenge.lean:104:8: declaration uses `sorry`
+warning: Challenge.lean:113:8: declaration uses `sorry`
+warning: Challenge.lean:152:8: declaration uses `sorry`
+warning: Challenge.lean:160:8: declaration uses `sorry`
+Build completed successfully (3807 jobs).
+Starting axioms
+axioms: passed
+Starting export
+export: passed
+Starting lean
+lean: passed
+Starting nanoda
+nanoda: passed
+Starting con-ron
+con-ron: passed
+Report: .lake/verification/20261120T131826899757Z/RESULTS.json

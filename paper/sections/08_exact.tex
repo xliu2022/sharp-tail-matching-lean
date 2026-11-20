@@ -1,0 +1,215 @@
+\section{Exact bounds near the two standard constructions}\label{sec:exact}
+
+The stability statement leaves an error of order $o(n^k)$. To prove \cref{thm:matching}, we need exact upper bounds for hypergraphs close to each of the two standard constructions. We first record a consequence of the classical theorem of Bollob\'as, Daykin, and Erd\H{o}s~\cite[Theorem 1]{BDE1976}, which gives the bound and equality case under the weaker assumption $n>2k^3b$ for $b\ge1$. The self-contained induction below follows the high-degree-vertex argument of Erd\H{o}s~\cite[pp.~94--95]{Erdos1965}.
+
+\begin{lemma}\label{lem:sparse-matching}
+Let $k\ge2$ and $b\ge0$ be integers. If $H$ is an $n$-vertex $k$-graph, $\nu(H)\le b$, and $n\ge4k^3b$, then $|H|\le M(n,b)$. Equality holds only for a complete $b$-cover.
+\end{lemma}
+\begin{proof}
+We induct on $b$. If $b=0$, then $H$ has no edge. Suppose $b\ge1$. We may assume $|H|\ge M(n,b)$, since a smaller family already satisfies the strict bound. The vertices of a maximal matching meet every edge, and there are at most $kb$ such vertices. Some vertex $v$ among them has degree
+\begin{align}
+d_H(v)\ge\frac{|H|}{kb}
+\ge\frac1k\binom{n-b}{k-1}
+>kb\binom{n-2}{k-2}.
+\label{eq:sparse-large-degree}
+\end{align}
+For the middle inequality, write $M(n,b)=\sum_{j\in[b]}\binom{n-j}{k-1}\ge b\binom{n-b}{k-1}$. For the strict inequality, the product formula for binomial coefficients gives
+\begin{align*}
+\frac{\binom{n-b}{k-1}}{\binom{n-1}{k-1}}
+=\prod_{0\le h\le k-2}\left(1-\frac{b-1}{n-1-h}\right)
+\ge1-\frac{(k-1)(b-1)}{n-k+1}>\frac12.
+\end{align*}
+The assumption on $n$ also implies $n-1>2k^2(k-1)b$. Since $\binom{n-1}{k-1}=\frac{n-1}{k-1}\binom{n-2}{k-2}$, these two bounds prove \cref{eq:sparse-large-degree}.
+
+If $H-v$ had a matching of size $b$, the number of edges through $v$ meeting its $kb$ vertices would be at most $kb\binom{n-2}{k-2}$. By \cref{eq:sparse-large-degree}, an edge through $v$ avoids the matching, contradicting $\nu(H)\le b$. Thus $\nu(H-v)\le b-1$. Since $n-1\ge4k^3(b-1)$, induction yields
+\begin{align*}
+|H|\le\binom{n-1}{k-1}+M(n-1,b-1)=M(n,b).
+\end{align*}
+Equality requires every $k$-set through $v$ to be present and $H-v$ to be a complete $(b-1)$-cover. Their union is a complete $b$-cover.
+\end{proof}
+
+\subsection{Hypergraphs close to a complete cover}
+
+For a vertex in the center set of a complete cover, the link on the outside vertices is complete. If only a few of these link edges are missing, that vertex can still extend a prescribed matching. The following lemma is the form with a bound only on missing cover edges in Chi, Sun, and Wang~\cite[Lemma 8.6]{CSW2026}. Its argument follows Cao, Liu, and Zhang~\cite[Lemma 5.2]{CLZ2026}, whose statement assumes closeness in symmetric difference.
+\begin{lemma}\label{lem:cover-exact}
+Fix $k\ge3$, $\gamma>0$, and $K\ge k+\gamma$. There are $\eta>0$ and $s_0$ such that the following holds. Suppose $s\ge s_0$, $(k+\gamma)s\le n\le Ks$, and $H$ is an $n$-vertex $k$-graph with $\nu(H)\le s$. If an $s$-set $S$ satisfies
+\begin{align*}
+|\mathcal A(V(H),S)\setminus H|\le\eta n^k,
+\end{align*}
+then $|H|\le M(n,s)$. Equality holds only for a complete $s$-cover, whose center set need not be the original set $S$.
+\end{lemma}
+\begin{proof}
+Set $W=V(H)\setminus S$. Choose
+\begin{align*}
+\beta\coloneqq\min\{\gamma/4,(k-1)/(8k^3),1/4\},
+\qquad
+c_0\coloneqq\frac{(\gamma/4)^{k-1}}{(k-1)!},
+\end{align*}
+and take $\eta>0$ with $\eta K^k/c_0\le\beta$. For sufficiently large $s$, put
+\begin{align*}
+D_0&\coloneqq\binom{\lfloor\gamma s/2\rfloor}{k-1},\\
+B&\coloneqq\left\{v\in S\colon
+\left|\{A\in\tbinom W{k-1}\colon A\cup\{v\}\notin H\}\right|\ge D_0\right\}.
+\end{align*}
+The sets counted for different vertices $v\in S$ are different missing edges, because each contains exactly one vertex of $S$. Also $D_0\ge c_0s^{k-1}$ for large $s$. Hence, writing $b=|B|$, we have
+\begin{align*}
+bD_0\le\eta n^k\le\eta K^ks^k,
+\qquad b\le\beta s.
+\end{align*}
+
+Let $U=W\cup B$. We claim that $\nu(H[U])\le b$. Suppose instead that $H[U]$ contains a matching of size $b+1$. Extend it in turn through every vertex of $S\setminus B$, using $k-1$ unused vertices of $W$ for each new edge. Before each step, the matching has at most $s$ edges. The original $b+1$ edges use at most $k(b+1)$ vertices of $W$, and at most $s-b-1$ previously added edges use another $(k-1)(s-b-1)$. The number of available vertices of $W$ is therefore at least
+\begin{align*}
+(n-s)-k(b+1)-(k-1)(s-b-1)
+&=n-ks-b-1\\
+&\ge\gamma s-\beta s-1\ge\lfloor\gamma s/2\rfloor.
+\end{align*}
+There are at least $D_0$ possible $(k-1)$-sets among them. The current center is not in $B$, so fewer than $D_0$ of these sets fail to form an edge with it. An extension is therefore possible at every step. We obtain $b+1+(s-b)=s+1$ disjoint edges, a contradiction.
+
+Since $|U|\ge n-s\ge(k-1)s$ and $b\le\beta s$, we have $|U|\ge4k^3b$. Applying \cref{lem:sparse-matching} to $H[U]$ gives
+\begin{align*}
+|H|&\le\binom nk-\binom{|U|}k+M(|U|,b)\\
+&=\binom nk-\binom{|U|-b}k
+=\binom nk-\binom{n-s}k.
+\end{align*}
+If equality holds, every $k$-set meeting $S\setminus B$ belongs to $H$, and $H[U]$ is a complete $b$-cover. If $T\subseteq U$ is its set of $b$ centers, then $H=\mathcal A(V(H),(S\setminus B)\cup T)$.
+\end{proof}
+
+\subsection{Hypergraphs containing a large clique}
+
+We next prove the exact bound when a genuine large clique is available. This is a variant of the large-clique step in Chi, Sun, and Wang~\cite[Lemma 8.7]{CSW2026}, with a different clique-size threshold and a proof using random disjoint blocks and a bipartite matching bound. Its vertices can complete a partial matching. This turns the matching restriction into a bound on the number of outside vertices covered by disjoint edges.
+\begin{lemma}\label{lem:local-clique}
+Fix $k\ge3$. For all sufficiently large $s$, let $k(s+1)\le n\le(k+1/2)s$, and let $H$ be an $n$-vertex $k$-graph with $\nu(H)\le s$. If $H$ contains a complete $k$-graph on
+\begin{align*}
+u\coloneqq\lfloor(k-1/6)s\rfloor
+\end{align*}
+vertices, then $|H|\le C(s)$. Equality holds only when $H$ is a complete $k$-graph on $ks+k-1$ vertices, together with isolated vertices.
+\end{lemma}
+\begin{proof}
+Let $Q$ be the vertex set of the given clique, and put
+\begin{align*}
+W\coloneqq V(H)\setminus Q,\qquad
+N\coloneqq|W|,\qquad
+d\coloneqq ks+k-1-u,\qquad
+C\coloneqq\binom{u}{k-1}.
+\end{align*}
+For fixed $k$ and sufficiently large $s$, the assumptions imply
+\begin{align}
+&1\le d<N,\qquad N\to\infty,\qquad u\ge\frac32(k-1)N,\nonumber\\
+&u\ge(k-1)(d+1),\qquad u\ge N(k-1)+1.
+\label{eq:clique-size-conditions}
+\end{align}
+For example, $N\le(2/3)s+1$ while $u\ge(k-1/6)s-1$, so the third inequality has a positive linear difference between its sides for every fixed $k\ge3$. The other inequalities follow from $n\ge ks+k$, $d=s/6+O_k(1)$, and the same estimates.
+
+Every matching consisting of edges that meet $W$ covers at most $d$ vertices of $W$. To see this, let such a matching have $h$ edges and cover $w>d$ outside vertices. We already have $h\le s$. Its edges use $kh-w$ vertices of $Q$, leaving at least
+\begin{align*}
+u-kh+w\ge u-kh+d+1=k(s+1-h)
+\end{align*}
+unused vertices of the clique. Partitioning this many vertices into $s+1-h$ $k$-sets extends the matching to size $s+1$, a contradiction.
+
+Let $E_j$ be the number of edges of $H$ containing exactly $j$ vertices of $W$, for $0\le j\le k$. We first bound $E_1$. Choose uniformly an ordered collection of $N$ pairwise disjoint $(k-1)$-sets in $Q$. Form a bipartite graph $G$ whose two vertex classes are $W$ and these $N$ sets, joining $v$ to $A$ when $A\cup\{v\}\in H$. A matching in $G$ gives disjoint hyperedges using one distinct outside vertex each, so $\nu(G)\le d$. Write $\nu(G)=d-e$, where $e\ge0$ depends on the sample. By K\H{o}nig's theorem, $G$ has a vertex cover of size $d-e$, and hence at most $N(d-e)$ edges. Each sampled block is a uniform $(k-1)$-set of $Q$, so $\E|G|=NE_1/C$. It follows that
+\begin{align}
+D\coloneqq dC-E_1\ge0,\qquad
+\E e\le d-\frac{\E|G|}{N}=\frac DC.
+\label{eq:singleton-deficit}
+\end{align}
+
+Fix $2\le j\le k$ and set $b=\lfloor N/j\rfloor$. In addition to the first $N$ blocks, sample $b$ pairwise disjoint $(k-j)$-sets $B_1,\ldots,B_b$ in $Q$, disjoint from those blocks. The sampling is possible because
+\begin{align*}
+(k-1)N+(k-j)b\le\tfrac32(k-1)N\le u.
+\end{align*}
+The joint distribution is uniform among all such disjoint collections. In particular, each $B_\ell$ is uniform among the $(k-j)$-sets of $Q$; independence between blocks is not needed. When $j=k$, the sets $B_\ell$ are empty.
+
+Condition on all these blocks, and choose a maximum matching in $G$. Let $T\subseteq W$ be its set of matched vertices, so $|T|=d-e$. Independently choose $b$ uniformly random disjoint $j$-sets $I_1,\ldots,I_b$ of $W$. Insert all tested edges $I_\ell\cup B_\ell$ that belong to $H$, deleting the singleton-outside matching edges whose outside vertices lie in an inserted $I_\ell$. The new edges have disjoint inside blocks, so no further conflict occurs. The number of additional covered outside vertices is
+\begin{align*}
+\sum_{\ell\in[b]}|I_\ell\setminus T|\,\1_{\{I_\ell\cup B_\ell\in H\}}\le e,
+\end{align*}
+by the outside-vertex bound proved above. Each successful test with $I_\ell\nsubseteq T$ contributes at least one. Each test has probability at most $\binom dj/\binom Nj$ of lying entirely in $T$. Averaging first over the $I_\ell$ and then over the inside blocks, and using \cref{eq:singleton-deficit}, yields
+\begin{align*}
+\frac{bE_j}{\binom Nj\binom{u}{k-j}}
+\le\frac{b\binom dj}{\binom Nj}+\E e
+\le\frac{b\binom dj}{\binom Nj}+\frac DC.
+\end{align*}
+Equivalently,
+\begin{align}
+E_j\le\binom dj\binom{u}{k-j}
++\frac{\binom Nj}{\lfloor N/j\rfloor}\binom{u}{k-j}\frac DC.
+\label{eq:multiple-outside-count}
+\end{align}
+
+We now sum these estimates. Since $Q$ is complete, $E_0=\binom uk$, while $E_1=dC-D$. Set
+\begin{align*}
+\Theta\coloneqq\frac1C\sum_{2\le j\le k}
+\frac{\binom Nj}{\lfloor N/j\rfloor}\binom{u}{k-j}.
+\end{align*}
+Vandermonde's identity and \cref{eq:multiple-outside-count} give
+\begin{align}
+|H|\le\binom{u+d}k-(1-\Theta)D.
+\label{eq:local-clique-deficit}
+\end{align}
+It remains to check that $\Theta<1$. For $2\le j\le k$, we have $\lfloor N/j\rfloor\ge(N-j+1)/j\ge(N-k+1)/j$. Hence
+\begin{align*}
+\Theta
+&\le\frac{N}{N-k+1}\left(\frac{\binom{u+N-1}{k-1}}{\binom{u}{k-1}}-1\right),\\
+\frac{\binom{u+N-1}{k-1}}{\binom{u}{k-1}}
+&=\prod_{0\le h\le k-2}\left(1+\frac{N-1}{u-h}\right)
+\le\exp\left(\frac{(k-1)(N-1)}{u-k+2}\right)<e^{2/3}.
+\end{align*}
+The last strict inequality follows from $u\ge\frac32(k-1)N$. Since $N\to\infty$ and $e^{2/3}-1<1$, we indeed have $\Theta<1$ for sufficiently large $s$. Now $u+d=ks+k-1$, so \cref{eq:local-clique-deficit} proves the required upper bound.
+
+Suppose equality holds. Then $D=0$. In the first sampling, every graph $G$ has at most $Nd$ edges, and their average is exactly $Nd$ by \cref{eq:singleton-deficit}. Thus every sample has exactly $Nd$ edges. A minimum vertex cover consisting of $p$ vertices on one side and $q$ on the other has $p+q=d$ and covers at most $N(p+q)-pq$ edges. Equality forces $pq=0$. Consequently every sampled graph consists either of $d$ complete rows or of $d$ complete columns.
+
+For a $(k-1)$-set $A\subseteq Q$, define
+\begin{align*}
+I(A)\coloneqq\{v\in W\colon A\cup\{v\}\in H\}.
+\end{align*}
+If some $I(A)$ is nonempty and proper, every sample containing $A$ must have $d$ complete rows, so $I(A)$ is a fixed $d$-set $T$. Any $(k-1)$-set disjoint from $A$ can be included with $A$ in a sample, and therefore has the same set $T$ of neighbors. For an arbitrary $(k-1)$-set $A'$, choose a $(k-1)$-set disjoint from $A\cup A'$, which is possible by \cref{eq:clique-size-conditions}. Applying the preceding observation twice gives $I(A')=T$.
+
+If no $I(A)$ is nonempty and proper, each is either empty or all of $W$. Two $(k-1)$-sets that differ in one vertex can be completed by the same $N-1$ disjoint blocks, because $u\ge N(k-1)+1$. Every sample has exactly $d$ full columns, so the two sets must have the same type. Any two $(k-1)$-sets can be connected by one-vertex changes, forcing all $I(A)$ to be empty or all to equal $W$. This would give zero or $N$ full columns, contrary to $0<d<N$.
+
+It follows that exactly $d$ outside vertices, forming a set $T$, have complete links on $Q$, and every other outside vertex has empty singleton link. Suppose an edge $E$ nevertheless meets $W\setminus T$. For each $v\in T\setminus E$, choose a fresh $(k-1)$-set in $Q\setminus E$ and use its complete link with $v$. The choices can be made disjoint because $u\ge(k-1)(d+1)$ and $|E\cap Q|\le k-1$. Together with $E$, these edges form a matching covering
+\begin{align*}
+|E\cap W|+|T\setminus E|=d+|E\cap(W\setminus T)|>d
+\end{align*}
+outside vertices, a contradiction. Therefore every edge lies in $Q\cup T$. Equality of the edge count forces the whole clique on this $(ks+k-1)$-set.
+\end{proof}
+
+\subsection{Shifting and the conclusion}
+
+To use \cref{lem:local-clique}, we must obtain a genuine clique from a family that is only close to one. We use shifts only inside the proposed clique vertex set. For two such vertices $i<j$, replace an edge $E$ containing $j$ and not $i$ by $(E\setminus\{j\})\cup\{i\}$ if that latter edge is absent; otherwise leave $E$ unchanged. This operation preserves the number of edges and the number of edges contained in the proposed clique.
+
+It also cannot increase the matching number. Indeed, a matching in the shifted family contains at most one new edge, since every new edge contains $i$. If the matching has a new edge $E'$, replace it by the original edge obtained by exchanging $i$ for $j$. This is already a matching unless another edge $F$ uses $j$. In that case, the survival of $F$ under the shift means that $(F\setminus\{j\})\cup\{i\}$ was also an original edge. Replacing the two edges simultaneously gives an original matching of the same size.
+
+The next lemma follows the shifting and equality argument of Chi, Sun, and Wang~\cite[Theorem 8.8]{CSW2026}, using \cref{lem:local-clique} for the large-clique step. Its assumption involves only missing edges inside the proposed clique.
+\begin{lemma}\label{lem:clique-exact}
+Fix $k\ge3$. There are $\eta>0$ and $s_0$ such that the following holds. Let $s\ge s_0$, $k(s+1)\le n\le(k+1/2)s$, and let $H$ be an $n$-vertex $k$-graph with $\nu(H)\le s$. If a set $Q_0$ of size $ks+k-1$ satisfies
+\begin{align*}
+\left|\binom{Q_0}k\setminus H\right|\le\eta s^k,
+\end{align*}
+then $|H|\le C(s)$, with equality only for a complete $(ks+k-1)$-vertex clique.
+\end{lemma}
+\begin{proof}
+Put $m=ks+k-1$ and $u=\lfloor(k-1/6)s\rfloor$, and label $Q_0$ by $[m]$. Apply shifts within $Q_0$ until none changes the family. A nontrivial shift decreases the sum, over all edges, of the labels of their vertices in $Q_0$, so the process terminates. Let $H'$ be the resulting family. It has the same number of edges and the same number of missing edges inside $Q_0$ as $H$, and $\nu(H')\le s$.
+
+If $H'$ misses a $k$-set contained in $[u]$, then it misses every $k$-set in $Q_0\setminus[u]$. Indeed, each of those sets lies above the missing set in the componentwise order, and successive shifts inside $Q_0$ would otherwise imply that the missing set is present. Thus $H'$ would miss at least $\binom{m-u}k$ edges of $Q_0$. Since $m-u=s/6+O_k(1)$, we have $\binom{m-u}k\ge s^k/(12^kk!)$ for sufficiently large $s$. Taking $\eta<1/(12^kk!)$ excludes this possibility. Consequently $[u]$ spans a complete $k$-graph in $H'$, and \cref{lem:local-clique} gives $|H|=|H'|\le C(s)$.
+
+If equality holds, \cref{lem:local-clique} says that $H'$ is an $m$-vertex clique. Consider the last nontrivial shift in the sequence, with shifted vertices $i,j$. Just before that shift, every edge of this clique avoiding $i,j$ was already present. Thus the preceding family contains a clique on at least $m-2\ge u$ vertices. It has matching number at most $s$ and size $C(s)$, so the equality case of \cref{lem:local-clique} implies that it too is an $m$-vertex clique. Repeat this argument backwards through the finite shift sequence. The original family $H$ is therefore an $m$-vertex clique.
+\end{proof}
+
+We can now combine stability with the two local bounds. The argument also explains why the threshold on $s$ is uniform in $n$.
+\begin{proof}[Proof of \cref{thm:matching}]
+Suppose the conclusion fails for arbitrarily large $s$. Then there is a sequence of nonstandard families $H_i$ with $s_i\to\infty$, $n_i\ge k(s_i+1)$, $\nu(H_i)\le s_i$, and $|H_i|\ge D(n_i,s_i)$. Here a family is nonstandard if it violates the numerical bound or attains the bound without having either stated extremal form.
+
+By \cref{lem:sparse-matching}, none of these counterexamples has $n_i\ge4k^3s_i$: in that range the lemma gives $|H_i|\le M(n_i,s_i)\le D(n_i,s_i)$, and equality forces a standard cover. We may pass to a subsequence such that $n_i/s_i\to R\in[k,4k^3]$. Applying \cref{prop:matching-stability} with errors tending to zero, and then passing to one of its two alternatives, makes $H_i$ either $o(n_i^k)$-close to a complete $s_i$-cover or $o(n_i^k)$-close to a complete $(ks_i+k-1)$-vertex clique.
+
+In the cover case, $R=k$ is impossible: the cover density would tend to $1-(1-1/k)^k<1$, whereas $D(n_i,s_i)/\binom{n_i}k$ would tend to one. For $R>k$, comparison of limiting edge densities gives $R\ge\rho_k>k$, as explained after \cref{prop:matching-stability}. Choose $0<\gamma<R-k$ and take $K=4k^3$. Eventually $(k+\gamma)s_i\le n_i\le Ks_i$, and the number of missing cover edges is smaller than the error allowed by \cref{lem:cover-exact}. Hence
+\begin{align*}
+D(n_i,s_i)\le|H_i|\le M(n_i,s_i)\le D(n_i,s_i),
+\end{align*}
+and equality forces a complete cover, contrary to the choice of $H_i$.
+
+In the clique case, comparison of limiting densities gives $R\le\rho_k<k+1/2$, including $R=k$. Thus eventually $n_i\le(k+1/2)s_i$. Since $n_i=O_k(s_i)$, the number of missing clique edges is $o(s_i^k)$. Applying \cref{lem:clique-exact} gives
+\begin{align*}
+D(n_i,s_i)\le|H_i|\le C(s_i)\le D(n_i,s_i),
+\end{align*}
+and equality forces a complete clique, again a contradiction. Both possible subsequences have been excluded, proving the theorem.
+\end{proof}

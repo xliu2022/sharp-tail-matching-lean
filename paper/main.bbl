@@ -1,0 +1,81 @@
+\begin{thebibliography}{10}
+
+\bibitem{AFHRRS2012}
+N.~Alon, P.~Frankl, H.~Huang, V.~R\"odl, A.~Ruci\'nski, and B.~Sudakov.
+\newblock Large matchings in uniform hypergraphs and the conjectures of
+  {Erd\H{o}s} and {Samuels}.
+\newblock {\em J. Combin. Theory Ser. A}, 119:1200--1215, 2012.
+
+\bibitem{AHS2012}
+N.~Alon, H.~Huang, and B.~Sudakov.
+\newblock Nonnegative $k$-sums, fractional covers, and probability of small
+  deviations.
+\newblock {\em J. Combin. Theory Ser. B}, 102:784--796, 2012.
+
+\bibitem{Billingsley1999}
+P.~Billingsley.
+\newblock {\em Convergence of Probability Measures}.
+\newblock Wiley Series in Probability and Statistics. John Wiley \& Sons, Inc.,
+  New York, second edition, 1999.
+
+\bibitem{BDE1976}
+B.~Bollob\'as, D.~E. Daykin, and P.~Erd\H{o}s.
+\newblock Sets of independent edges of a hypergraph.
+\newblock {\em Quart. J. Math. Oxford Ser. (2)}, 27(1):25--32, 1976.
+
+\bibitem{CLZ2026}
+M.~Cao, H.~Liu, and H.~Zhang.
+\newblock A near-optimal linear range for the {Erd\H{o}s} matching conjecture.
+\newblock arXiv:2608.19118v2, 2026.
+\newblock Preprint.
+
+\bibitem{CSW2026}
+C.~Chi, S.~Sun, and Y.~Wang.
+\newblock A proof of the {Erd\H{o}s} matching conjecture for large matchings
+  via sharp tail probability for sums of i.i.d. nonnegative random variables.
+\newblock arXiv:2610.16203v1, 2026.
+\newblock Preprint.
+
+\bibitem{Erdos1965}
+P.~Erd\H{o}s.
+\newblock A problem on independent $r$-tuples.
+\newblock {\em Ann. Univ. Sci. Budapest. E\"otv\"os Sect. Math.}, 8:93--95,
+  1965.
+
+\bibitem{Feige2006}
+U.~Feige.
+\newblock On sums of independent random variables with unbounded variance and
+  estimating the average degree in a graph.
+\newblock {\em SIAM J. Comput.}, 35(4):964--984, 2006.
+
+\bibitem{FLMW2026}
+P.~Frankl, H.~Lu, J.~Ma, and Y.~Wu.
+\newblock Towards the {Erd\H{o}s} matching conjecture for 4-uniform
+  hypergraphs: stability and applications.
+\newblock arXiv:2602.19230v2, 2026.
+\newblock Preprint.
+
+\bibitem{HHL2026}
+J.~Hou, C.~Hu, and X.~Liu.
+\newblock The {Erd\H{o}s} matching conjecture for 4-uniform hypergraphs.
+\newblock arXiv:2605.26060v2, 2026.
+\newblock Preprint.
+
+\bibitem{KOT2014}
+D.~K\"uhn, D.~Osthus, and T.~Townsend.
+\newblock Fractional and integer matchings in uniform hypergraphs.
+\newblock {\em European J. Combin.}, 38:83--96, 2014.
+
+\bibitem{Ling2026}
+Z.~Ling.
+\newblock On {Samuels}' conjecture.
+\newblock arXiv:2608.18392v1, 2026.
+\newblock Preprint.
+
+\bibitem{LMS2017}
+T.~{\L}uczak, K.~Mieczkowska, and M.~{\v S}ileikis.
+\newblock On maximal tail probability of sums of nonnegative, independent and
+  identically distributed random variables.
+\newblock {\em Statist. Probab. Lett.}, 129:12--16, 2017.
+
+\end{thebibliography}

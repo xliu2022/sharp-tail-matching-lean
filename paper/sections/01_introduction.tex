@@ -1,0 +1,67 @@
+\section{Introduction}\label{sec:introduction}
+
+Given an integer $k\ge2$, a \emph{$k$-uniform hypergraph}, or \emph{$k$-graph}, is a collection of $k$-subsets of a vertex set. We identify a hypergraph with its edge set and write $|H|$ for its number of edges. A \emph{matching} is a collection of pairwise disjoint edges, and the \emph{matching number} $\nu(H)$ is the largest size of a matching in $H$.
+
+The Erd\H{o}s matching conjecture~\cite[equation (9)]{Erdos1965} asks for the largest number of edges in an $n$-vertex $k$-graph with matching number at most $s$. Two constructions give the proposed answer. For $S\subseteq V$ with $|S|=s$, the \emph{complete $s$-cover} is
+\begin{align*}
+\mathcal A(V,S)\coloneqq\{E\in\tbinom Vk\colon E\cap S\ne\varnothing\}.
+\end{align*}
+Each matching in this hypergraph uses a distinct vertex of $S$ for each of its edges. Thus its matching number is at most $s$, and it has $\binom nk-\binom{n-s}k$ edges. The second construction consists of all $k$-sets in a set $Q$ of size $k(s+1)-1$. A matching of size $s+1$ would require one more vertex than $Q$ contains. For later use, set
+\begin{align}
+M(n,s)&\coloneqq\binom nk-\binom{n-s}k, &
+C(s)&\coloneqq\binom{ks+k-1}k, &
+D(n,s)&\coloneqq\max\{M(n,s),C(s)\}.
+\label{eq:matching-counts}
+\end{align}
+
+For $k=4$ and sufficiently large $s$, the conjecture was proved by Hou, Hu, and Liu~\cite{HHL2026}. Chi, Sun, and Wang~\cite[Theorem 1.4]{CSW2026} proved the conjectured bound for every fixed $k$ and all sufficiently large $s$, uniformly over the nontrivial range of $n$.
+\begin{theorem}[Chi--Sun--Wang]\label{thm:matching}
+For every integer $k\ge3$, there exists $s_0(k)$ such that the following holds. If $s\ge s_0(k)$, $n\ge k(s+1)$, and $H$ is an $n$-vertex $k$-graph with $\nu(H)\le s$, then $|H|\le D(n,s)$. Equality holds only when $H$ is a complete $s$-cover or a complete $k$-graph on $ks+k-1$ vertices, together with isolated vertices. A standard construction is extremal precisely when its size equals $D(n,s)$.
+\end{theorem}
+
+The probability theorem behind this result also has two natural extremal constructions. For a probability law $P$ on $[0,\infty)$, let
+\begin{align}
+m(P)&\coloneqq\int t\,dP(t), &
+F_j(P)&\coloneqq\Pr(X_1+\cdots+X_j\ge1),
+\label{eq:tail-definition}
+\end{align}
+where $X_1,\ldots,X_j$ are independent with common law $P$. We put $F_0(P)=0$. For $0\le x\le1/k$, define
+\begin{align}
+B_x&\coloneqq(1-x)\delta_0+x\delta_1, &
+C_{k,x}&\coloneqq(1-kx)\delta_0+kx\delta_{1/k}.
+\label{eq:standard-laws}
+\end{align}
+Both laws have mean $x$. Under $B_x$, the sum reaches one as soon as one sample is nonzero. Under $C_{k,x}$, all $k$ samples must be nonzero. Consequently, $F_k(B_x)=1-(1-x)^k$ and $F_k(C_{k,x})=(kx)^k$.
+
+{\L}uczak, Mieczkowska, and {\v S}ileikis~\cite{LMS2017} conjectured that the larger of these two values is optimal. They proved the bound for $k=3$ and for $k\ge5$ when $x<1/(2k-1)$. The following theorem of Chi, Sun, and Wang~\cite[Theorem 1.2]{CSW2026} gives the bound for all $k$, together with all maximizing laws.
+\begin{theorem}[Chi--Sun--Wang]\label{thm:tail}
+For every integer $k\ge1$ and every $x\ge0$,
+\begin{align}
+\sup_{m(P)\le x}F_k(P)=
+\begin{cases}
+\max\{1-(1-x)^k,(kx)^k\},&0\le x\le1/k,\\
+1,&x\ge1/k.
+\end{cases}
+\label{eq:sharp-tail}
+\end{align}
+For $k\ge2$, there is a unique $\beta_k\in(0,1/k)$ such that $1-(1-\beta_k)^k=(k\beta_k)^k$. For $0<x<\beta_k$, the unique maximizing law is $B_x$; for $\beta_k<x\le1/k$, it is $C_{k,x}$; at $x=\beta_k$, these are the only two maximizing laws. At $x=0$ the only feasible law is $\delta_0$. For $k=1$ and $0\le x\le1$, the unique maximizing law is $B_x$. For $x>1/k$, a feasible law is maximizing if and only if it is supported on $[1/k,\infty)$.
+\end{theorem}
+
+The correspondence between the two theorems comes from vertex weights. The connection between fractional covers and tails of sums of independent samples already appears in Alon, Huang, and Sudakov~\cite[Lemma 3.3]{AHS2012} and Alon, Frankl, Huang, R\"odl, Ruci\'nski, and Sudakov~\cite[proof of Theorem 2.1]{AFHRRS2012}; {\L}uczak, Mieczkowska, and {\v S}ileikis~\cite[Lemma 3.2]{LMS2017} give the corresponding equivalence with the asymptotic fractional matching conjecture. If the vertices in $S$ have weight one and all other vertices have weight zero, a $k$-set has weight at least one exactly when it meets $S$. If the vertices in $Q$ have weight $1/k$, a $k$-set has weight at least one exactly when it lies in $Q$. Writing $x=s/n$, the two edge densities tend to $1-(1-x)^k$ and $(kx)^k$, respectively. The equality classification in \cref{thm:tail} identifies precisely these two configurations in the limit.
+
+We use the approximate fractional-cover statement in Cao, Liu, and Zhang~\cite[Lemma 3.2]{CLZ2026} to apply this correspondence to hypergraphs with bounded matching number. It gives vertex weights of total at most $s+o(n)$ that cover all but $o(n^k)$ edges. An integer matching bound does not give an exact fractional cover of the same weight. For example, the minimum fractional cover weight of the complete $k$-graph on $ks+k-1$ vertices is $(ks+k-1)/k>s$. The role of earlier regularity and rounding arguments is discussed in \cref{sec:stability}.
+
+We present complete proofs of \cref{thm:tail,thm:matching} by simplifying and expanding the arguments of Chi, Sun, and Wang~\cite{CSW2026}. The main theorems are attributed to Chi, Sun, and Wang throughout. The purpose is to make the dependencies, the equality arguments, and the numerical verifications explicit. In particular, no inequality from the technical appendix is left as an unspecified calculation, and the use of approximate covers is separated from the arguments that give exact edge counts. Local citations identify inherited lemmas and distinguish changes in their proofs or quantitative forms.
+
+\paragraph{The probability proof.}
+Two mixtures reduce the problem to the mean $x=\beta_k$: adding mass at one treats smaller means, and adding mass at zero treats larger means. A maximizing law has the form $P=(1-kx)\delta_0+kxQ$, where $Q$ is supported on $[0,1]$ and has mean $1/k$. For independent $Y_i\sim Q$, the quantity $w=k\E(Y_1+\cdots+Y_k-1)_+$ lies between zero and $k(1-1/k)^k$. The two endpoints correspond exactly to the two laws in \cref{eq:standard-laws}.
+
+To exclude an interior value of $w$, we first compare the tails and expected excesses of all partial sums. A product lower bound for the failure probability yields concave upper bounds for the partial-sum tails. An interpolation argument combines these bounds with the elementary recurrence between successive excesses. For $k\le5$, this already excludes every interior value of $w$. For larger $k$, it excludes an initial interval and supplies the stronger estimates needed in the remaining range.
+
+The remaining argument uses optimality of the law. The function $z\mapsto\Pr(X_1+\cdots+X_{k-1}\ge1-z)$ lies below an affine function and agrees with it almost everywhere under the maximizing law. This relation determines the conditional law of a sample given failure. A covariance identity then bounds the conditional variance. The bound forces the support into a low interval and a separated high interval. If the low interval has positive conditional mean, a cubic test function produces a contradictory lower bound for the same conditional variance. If its mean is zero, the law is $B_x$. Together with the zero-excess case, this proves the critical-mean classification.
+
+\paragraph{The matching proof.}
+The approximate cover theorem and compactness turn \cref{thm:tail} into a stability statement: a hypergraph whose size is close to $D(n,s)$ is close to a standard cover or a standard clique. Near a cover, vertices with almost complete links allow a greedy extension of any residual matching; the resulting smaller matching problem has an elementary exact solution. Near a clique, shifting first reveals a genuine large clique. We then count edges according to the number of vertices outside it. Random disjoint blocks in the clique give a bipartite graph, and K\H{o}nig's theorem bounds the edges with exactly one outside vertex. A deficit in this bound controls all possible gains from edges with several outside vertices, with a coefficient strictly smaller than one. This gives the exact clique bound and its equality case.
+
+\paragraph{Organization and notation.}
+\Cref{sec:reduction} gives the normalization and critical-mean reduction. \Cref{sec:comparison} develops the product and interpolation arguments. \Cref{sec:support,sec:exclusion} prove the support restriction and exclude the remaining maximizing laws, and \cref{sec:equality} completes \cref{thm:tail}. \Cref{sec:stability,sec:exact} prove stability and the exact matching theorem. The appendix proves the numerical estimates used in the probability argument. We write $[j]=\{1,\ldots,j\}$, $u_+=\max\{u,0\}$, and $A\triangle B$ for symmetric difference. All random variables declared as copies of a law are independent unless a conditioning is explicitly stated. The integer $t$ indexes comparison nodes in the probability proof; the letter $s$ is reserved for the matching parameter in the hypergraph sections.

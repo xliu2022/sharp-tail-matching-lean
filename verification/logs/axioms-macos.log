@@ -1,0 +1,488 @@
+SharpTailMatching.sharp_tail_bound (k : ℕ) (hk : 1 ≤ k) (x : ℝ) (hx : 0 ≤ x)
+  (μ : MeasureTheory.ProbabilityMeasure NNReal) (hmean : SharpTailMatching.mean μ ≤ ENNReal.ofReal x) :
+  SharpTailMatching.tailProbability k μ ≤ SharpTailMatching.sharpTailValue k x
+'SharpTailMatching.sharp_tail_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.sharp_tail_attained (k : ℕ) (hk : 1 ≤ k) (x : ℝ) (hx : 0 ≤ x) :
+  ∃ μ,
+    SharpTailMatching.mean μ ≤ ENNReal.ofReal x ∧
+      SharpTailMatching.tailProbability k μ = SharpTailMatching.sharpTailValue k x
+'SharpTailMatching.sharp_tail_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.critical_mean_exists_unique (k : ℕ) (hk : 2 ≤ k) :
+  ∃! β, 0 < β ∧ β < (↑k)⁻¹ ∧ 1 - (1 - β) ^ k = (↑k * β) ^ k
+'SharpTailMatching.critical_mean_exists_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.sharp_tail_equality (k : ℕ) (hk : 2 ≤ k) (β : ℝ) (hβpos : 0 < β) (hβlt : β < (↑k)⁻¹)
+  (hβcross : 1 - (1 - β) ^ k = (↑k * β) ^ k) (x : ℝ) (hx : 0 < x) (hxle : x ≤ (↑k)⁻¹)
+  (μ : MeasureTheory.ProbabilityMeasure NNReal) (hmean : SharpTailMatching.mean μ ≤ ENNReal.ofReal x) :
+  SharpTailMatching.tailProbability k μ = SharpTailMatching.sharpTailValue k x ↔
+    x < β ∧ ↑μ = SharpTailMatching.unitBernoulliMeasure x ∨
+      x = β ∧ (↑μ = SharpTailMatching.unitBernoulliMeasure x ∨ ↑μ = SharpTailMatching.smallBernoulliMeasure k x) ∨
+        β < x ∧ ↑μ = SharpTailMatching.smallBernoulliMeasure k x
+'SharpTailMatching.sharp_tail_equality' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.zero_mean_iff (μ : MeasureTheory.ProbabilityMeasure NNReal) :
+  SharpTailMatching.mean μ = 0 ↔ ↑μ = MeasureTheory.Measure.dirac 0
+'SharpTailMatching.zero_mean_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.one_sample_equality (x : ℝ) (hx : 0 ≤ x) (hxle : x ≤ 1) (μ : MeasureTheory.ProbabilityMeasure NNReal)
+  (hmean : SharpTailMatching.mean μ ≤ ENNReal.ofReal x) :
+  SharpTailMatching.tailProbability 1 μ = SharpTailMatching.sharpTailValue 1 x ↔
+    ↑μ = SharpTailMatching.unitBernoulliMeasure x
+'SharpTailMatching.one_sample_equality' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.tail_eq_one_iff (k : ℕ) (hk : 1 ≤ k) (μ : MeasureTheory.ProbabilityMeasure NNReal) :
+  SharpTailMatching.tailProbability k μ = 1 ↔ ↑μ (Set.Iio (↑k)⁻¹) = 0
+'SharpTailMatching.tail_eq_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.large_matching_bound (k : ℕ) (hk : 3 ≤ k) :
+  ∃ s₀,
+    ∀ (s n : ℕ),
+      s₀ ≤ s →
+        k * (s + 1) ≤ n →
+          ∀ (H : Finset (Finset (Fin n))),
+            SharpTailMatching.IsUniform k H →
+              SharpTailMatching.MatchingNumberAtMost s H →
+                H.card ≤ max (SharpTailMatching.coverSize k n s) (SharpTailMatching.cliqueSize k s)
+'SharpTailMatching.large_matching_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.large_matching_equality (k : ℕ) (hk : 3 ≤ k) :
+  ∃ s₀,
+    ∀ (s n : ℕ),
+      s₀ ≤ s →
+        k * (s + 1) ≤ n →
+          ∀ (H : Finset (Finset (Fin n))),
+            SharpTailMatching.IsUniform k H →
+              SharpTailMatching.MatchingNumberAtMost s H →
+                (H.card = max (SharpTailMatching.coverSize k n s) (SharpTailMatching.cliqueSize k s) ↔
+                  SharpTailMatching.IsCompleteCover k s H ∧
+                      SharpTailMatching.cliqueSize k s ≤ SharpTailMatching.coverSize k n s ∨
+                    SharpTailMatching.IsStandardClique k s H ∧
+                      SharpTailMatching.coverSize k n s ≤ SharpTailMatching.cliqueSize k s)
+'SharpTailMatching.large_matching_equality' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.ScalarCertificates.fourth_node_positive_gap {c h : ℝ} (hc0 : 0 ≤ c) (hc1 : c ≤ 1 / 2) (hh0 : 0 < h)
+  (hh1 : h ≤ 1 / 5) (hG : SharpTailMatching.ScalarCertificates.fourthNodeG c h ≤ 1) :
+  SharpTailMatching.ScalarCertificates.fourthNodeT c h / 4 <
+    81 / 256 - SharpTailMatching.ScalarCertificates.fourthNodeA c h
+'SharpTailMatching.ScalarCertificates.fourth_node_positive_gap' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.ScalarCertificates.derivative_boundary_positive {k c : ℝ} (hk : 0 < k) (hc0 : 11 / 24 ≤ c)
+  (hc1 : c ≤ 1 / 2) :
+  0 <
+    (3 - 6 * c) * k ^ 3 + (-5 / 6 + 14 * c - 15 * c ^ 2) * k ^ 2 + (-1 / 6 - 5 * c / 3 + 21 * c ^ 2 - 5 * c ^ 3) * k +
+      c * (7 * c ^ 2 - 1 / 3)
+'SharpTailMatching.ScalarCertificates.derivative_boundary_positive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.RationalCertificates.phi_lower_bound_large {n k : ℝ} (hn : 5 ≤ n) (hk : n + 2 ≤ k) :
+  1 / (500 * n ^ 3) < SharpTailMatching.RationalCertificates.phi n k (11 / 24)
+'SharpTailMatching.RationalCertificates.phi_lower_bound_large' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.RationalCertificates.phi_lower_bound_four {k : ℝ} (hk : 6 ≤ k) :
+  1 / 4000 < SharpTailMatching.RationalCertificates.phi 4 k (11 / 24 + 1 / (24 * k))
+'SharpTailMatching.RationalCertificates.phi_lower_bound_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.InterpolationAlgebra.local_multiplier_inequality (d dnext g κ c α γprev γ : ℝ) (hstep : d + g ≤ dnext)
+  (hcap : g ≤ α * d) (hγ : 0 ≤ γ) (hκ : γ ≤ κ) (hrec : γ * (1 + α) = γprev - c + κ * α) :
+  κ * g - c * d ≤ γ * dnext - γprev * d
+'SharpTailMatching.InterpolationAlgebra.local_multiplier_inequality' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.InterpolationAlgebra.endpoint_comparison (N : ℕ) (term γ d : ℕ → ℝ)
+  (hlocal : ∀ j < N, term j ≤ γ (j + 1) * d (j + 1) - γ j * d j) (hzero : d 0 = 0) (hend : d N ≤ 0) (hγ : 0 ≤ γ N) :
+  ∑ j ∈ Finset.range N, term j ≤ 0
+'SharpTailMatching.InterpolationAlgebra.endpoint_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.CubicAlgebra.negative_part_estimate {b w z : ℝ} (hb : 0 ≤ b) (hbw : b ≤ w) :
+  (z - w) * (w - b) ^ 3 / 3 ≤ (z - b) ^ 2 * w ^ 2 / 12
+'SharpTailMatching.CubicAlgebra.negative_part_estimate' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Matching.sparse_matching_bound_and_equality.{u_1} {α : Type u_1} [DecidableEq α] {k b : ℕ}
+  {V : Finset α} {H : Finset (Finset α)} (hk : 2 ≤ k) (hV : SharpTailMatching.Matching.IsOn V H)
+  (hu : SharpTailMatching.Matching.IsUniform k H) (hν : SharpTailMatching.Matching.MatchingNumberAtMost b H)
+  (hn : 4 * k ^ 3 * b ≤ V.card) :
+  H.card ≤ V.card.choose k - (V.card - b).choose k ∧
+    (H.card = V.card.choose k - (V.card - b).choose k →
+      ∃ S ⊆ V, S.card = b ∧ H = SharpTailMatching.Matching.coverFamily k V S)
+'SharpTailMatching.Matching.sparse_matching_bound_and_equality' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.sharp_tail_bound_of_critical_bound (k : ℕ) (hk : 2 ≤ k) (β : ℝ) (hβpos : 0 < β)
+  (hβlt : β < (↑k)⁻¹) (hβcross : 1 - (1 - β) ^ k = (↑k * β) ^ k)
+  (critical_bound :
+    ∀ (ν : MeasureTheory.ProbabilityMeasure NNReal),
+      SharpTailMatching.mean ν ≤ ENNReal.ofReal β → SharpTailMatching.tailProbability k ν ≤ (↑k * β) ^ k)
+  (x : ℝ) (hx : 0 ≤ x) (μ : MeasureTheory.ProbabilityMeasure NNReal)
+  (hmean : SharpTailMatching.mean μ ≤ ENNReal.ofReal x) :
+  SharpTailMatching.tailProbability k μ ≤ SharpTailMatching.sharpTailValue k x
+'SharpTailMatching.Probability.sharp_tail_bound_of_critical_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.exists_maximizer (k : ℕ) (x : ℝ) (_hx : 0 ≤ x) :
+  ∃ μ, SharpTailMatching.Probability.Maximizes k x μ ∧ ↑μ (Set.Ioi 1) = 0
+'SharpTailMatching.Probability.exists_maximizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.maximizer_normalized_representation {k : ℕ} (hk : 1 ≤ k) {x : ℝ} (hx : 0 < x)
+  (hxlt : x < (↑k)⁻¹) {μ : MeasureTheory.ProbabilityMeasure NNReal}
+  (hμ : SharpTailMatching.Probability.Maximizes k x μ) :
+  ∃ Q,
+    ↑μ = ENNReal.ofReal (1 - ↑k * x) • MeasureTheory.Measure.dirac 0 + ENNReal.ofReal (↑k * x) • ↑Q ∧
+      ↑Q (Set.Ioi 1) = 0 ∧ SharpTailMatching.mean Q = ENNReal.ofReal (↑k)⁻¹
+'SharpTailMatching.Probability.maximizer_normalized_representation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.capped_cubic_inequality.{u_1, u_2} {Ω : Type u_1} {ι : Type u_2} [MeasurableSpace Ω]
+  [Fintype ι] (μ : MeasureTheory.Measure Ω) [MeasureTheory.IsProbabilityMeasure μ] (X : ι → Ω → ℝ)
+  (hX : ∀ (i : ι), Measurable (X i)) (hindep : ProbabilityTheory.iIndepFun X μ) {a : ι → ℝ} {b : ℝ} (hb : 0 ≤ b)
+  (hsupport : ∀ (i : ι), ∀ᵐ (ω : Ω) ∂μ, X i ω ∈ Set.Icc (a i) (a i + b)) (hcenter : ∀ (i : ι), ∫ (ω : Ω), X i ω ∂μ = 0)
+  {τ : ℝ} (hτ : 0 < τ) (z : ℝ) :
+  (ProbabilityTheory.variance (fun ω => ∑ i, X i ω) μ + max (z - b) 0 ^ 2 / 12) *
+      ∫ (ω : Ω), if ∑ i, X i ω < τ then (∑ i, X i ω + z) ^ 2 else 0 ∂μ ≥
+    max (τ + z - 2 * b) 0 ^ 3 / 3 * ∫ (ω : Ω), if τ ≤ ∑ i, X i ω then ∑ i, X i ω else 0 ∂μ
+'SharpTailMatching.Probability.capped_cubic_inequality' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.cantelli_variance_lower_bound.{u_1} {Ω : Type u_1} [MeasurableSpace Ω]
+  {μ : MeasureTheory.Measure Ω} [MeasureTheory.IsProbabilityMeasure μ] {X : Ω → ℝ} (hX : MeasureTheory.MemLp X 2 μ)
+  {y ξ : ℝ} (hy : y < ∫ (ω : Ω), X ω ∂μ) (hξ : ξ < 1) (hmass : ξ ≤ μ.real {ω | X ω ≤ y}) :
+  ξ * (∫ (ω : Ω), X ω ∂μ - y) ^ 2 / (1 - ξ) ≤ ProbabilityTheory.variance X μ
+'SharpTailMatching.Probability.cantelli_variance_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.maximizer_supporting_line {n : ℕ} {x : ℝ} (hx : 0 < x) (hxlt : x < (↑(n + 1))⁻¹)
+  {μ : MeasureTheory.ProbabilityMeasure NNReal} (hμ : SharpTailMatching.Probability.Maximizes (n + 1) x μ)
+  (z : NNReal) :
+  SharpTailMatching.Probability.sectionTail n μ z ≤
+    SharpTailMatching.Probability.sectionTail n μ 0 +
+      (SharpTailMatching.tailProbability (n + 1) μ - SharpTailMatching.Probability.sectionTail n μ 0) / x * ↑z
+'SharpTailMatching.Probability.maximizer_supporting_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.SupportAlgebra.no_intermediate_contact {u μ ξ v : ℝ} (hu0 : 0 < u) (hu1 : u < 1 / 3) (hμ0 : 0 ≤ μ)
+  (hμ1 : μ ≤ (1 - 3 * u) / 20) (hξ0 : 1 / 16 ≤ ξ) (hξ1 : ξ ≤ 17 / 20) (hupper : v ≤ μ * (1 + 13 * u / 24 - μ))
+  (hlower : ξ * (1 - μ - ξ) ^ 2 / (1 - ξ) ≤ v) : False
+'SharpTailMatching.SupportAlgebra.no_intermediate_contact' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.ExclusionAlgebra.normalized_variance_contradiction {θ u b v : ℝ} (hθ0 : 0 < θ) (hθ1 : θ < 1)
+  (hu0 : 0 ≤ u) (hu1 : u < 1 / 3) (hb0 : 0 ≤ b) (hb1 : b ≤ u + (7 - 5 * θ) / 32)
+  (hvupper : v + 3 / 5 * (1 - θ) * b < SharpTailMatching.ExclusionAlgebra.Φ u)
+  (hvlower : 9 * max θ (1 / 4) / 40 * (19 / 20 + 23 * u / 20 - 2 * b) ^ 3 < v) : False
+'SharpTailMatching.ExclusionAlgebra.normalized_variance_contradiction' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.ProductAlgebra.bounded_product_lower (n ℓ : ℕ) (z : Fin n → ℝ) {m r : ℝ} (hm : 0 ≤ m) (hr : m < r)
+  (hz0 : ∀ (i : Fin n), 0 ≤ z i) (hzm : ∀ (i : Fin n), z i ≤ m) (hs0 : ↑ℓ * m ≤ ∑ i, z i)
+  (hs1 : ∑ i, z i ≤ (↑ℓ + 1) * m) : (1 - m / r) ^ ℓ * (1 - (∑ i, z i - ↑ℓ * m) / r) ≤ ∏ i, (1 - z i / r)
+'SharpTailMatching.ProductAlgebra.bounded_product_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Matching.local_cover_exact.{u_2} {k : ℕ} (hk : 3 ≤ k) {γ K : ℝ} (hγ : 0 < γ) (hK : ↑k + γ ≤ K) :
+  ∃ η,
+    0 < η ∧
+      ∃ s₀,
+        ∀ {β : Type u_2} [inst : DecidableEq β] (V S : Finset β) (H : Finset (Finset β)),
+          s₀ ≤ S.card →
+            (↑k + γ) * ↑S.card ≤ ↑V.card →
+              ↑V.card ≤ K * ↑S.card →
+                SharpTailMatching.Matching.IsOn V H →
+                  SharpTailMatching.Matching.IsUniform k H →
+                    SharpTailMatching.Matching.MatchingNumberAtMost S.card H →
+                      S ⊆ V →
+                        ↑(SharpTailMatching.Matching.coverFamily k V S \ H).card ≤ η * ↑V.card ^ k →
+                          H.card ≤ V.card.choose k - (V.card - S.card).choose k ∧
+                            (H.card = V.card.choose k - (V.card - S.card).choose k ↔
+                              ∃ T ⊆ V, T.card = S.card ∧ H = SharpTailMatching.Matching.coverFamily k V T)
+'SharpTailMatching.Matching.local_cover_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.CriticalEstimates.critical_parameter_lower {k : ℕ} (hk : 2 ≤ k) {c : ℝ} (hc : 0 ≤ c)
+  (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) : 11 / 24 + 2 / (25 * ↑k) < c
+'SharpTailMatching.CriticalEstimates.critical_parameter_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.CriticalEstimates.critical_elementary_bounds {k : ℕ} (hk : 6 ≤ k) {c : ℝ} (hc0 : 0 ≤ c)
+  (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) :
+  have x := 1 / (↑k + c);
+  have a := ↑k * x;
+  12 / 13 < a ∧ a < 1 ∧ 5 / 12 < a * c ∧ 1 / 3 < (1 - x) ^ k ∧ (1 - x) ^ k < Real.exp (-1) ∧ Real.exp (-1) < 3 / 8
+'SharpTailMatching.CriticalEstimates.critical_elementary_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.ProductBound.bounded_independent_product_bound.{u_1, u_2} {Ω : Type u_1} {ι : Type u_2}
+  [MeasurableSpace Ω] [Fintype ι] [DecidableEq ι] [Nonempty ι] (μ : MeasureTheory.Measure Ω)
+  [MeasureTheory.IsProbabilityMeasure μ] (X : ι → Ω → ℝ) (hX : ∀ (i : ι), Measurable (X i))
+  (hi : ProbabilityTheory.iIndepFun X μ) (M : ℝ) (hM : 0 ≤ M) (hbound : ∀ (i : ι), ∀ᵐ (ω : Ω) ∂μ, 0 ≤ X i ω ∧ X i ω ≤ M)
+  (hp : 0 < SharpTailMatching.Probability.ProductBound.failureProbability μ X)
+  (hm : ∀ (i : ι), ∫ (ω : Ω), X i ω ∂μ < SharpTailMatching.Probability.ProductBound.conditionalDeficit μ X) :
+  ∃ z,
+    (∀ (i : ι), 0 ≤ z i ∧ z i ≤ ∫ (ω : Ω), X i ω ∂μ) ∧
+      ∑ i, z i = SharpTailMatching.Probability.ProductBound.balance μ X ∧
+        ∏ i, (1 - z i / SharpTailMatching.Probability.ProductBound.conditionalDeficit μ X) ≤
+          SharpTailMatching.Probability.ProductBound.failureProbability μ X
+'SharpTailMatching.Probability.ProductBound.bounded_independent_product_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.ProductBound.equal_mean_failure_lower.{u_1} {Ω : Type u_1} [MeasurableSpace Ω]
+  (μ : MeasureTheory.Measure Ω) [MeasureTheory.IsProbabilityMeasure μ] (j ℓ : ℕ) (hj : 0 < j) (X : Fin j → Ω → ℝ)
+  (hX : ∀ (i : Fin j), Measurable (X i)) (hi : ProbabilityTheory.iIndepFun X μ) (M : ℝ) (hM : 0 ≤ M)
+  (hbound : ∀ (i : Fin j), ∀ᵐ (ω : Ω) ∂μ, 0 ≤ X i ω ∧ X i ω ≤ M) (m : ℝ)
+  (hmean : ∀ (i : Fin j), ∫ (ω : Ω), X i ω ∂μ = m) (hjm : ↑j * m ≤ 1)
+  (hp : 0 < SharpTailMatching.Probability.ProductBound.failureProbability μ X)
+  (hrlo : 1 - (↑j - ↑ℓ) * m ≤ SharpTailMatching.Probability.ProductBound.conditionalDeficit μ X)
+  (hrhi : SharpTailMatching.Probability.ProductBound.conditionalDeficit μ X ≤ 1 - (↑j - ↑ℓ - 1) * m) :
+  (1 - m / SharpTailMatching.Probability.ProductBound.conditionalDeficit μ X) ^ ℓ * (1 - (↑j - ↑ℓ) * m) /
+      SharpTailMatching.Probability.ProductBound.conditionalDeficit μ X ≤
+    SharpTailMatching.Probability.ProductBound.failureProbability μ X
+'SharpTailMatching.Probability.ProductBound.equal_mean_failure_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.ProductBound.small_deviation.{u_1} {Ω : Type u_1} [MeasurableSpace Ω]
+  (μ : MeasureTheory.Measure Ω) [MeasureTheory.IsProbabilityMeasure μ] (j : ℕ) (Y : Fin j → Ω → ℝ)
+  (hY : ∀ (i : Fin j), Measurable (Y i)) (hYi : ∀ (i : Fin j), MeasureTheory.Integrable (Y i) μ)
+  (hi : ProbabilityTheory.iIndepFun Y μ) (hnonneg : ∀ (i : Fin j), ∀ᵐ (ω : Ω) ∂μ, 0 ≤ Y i ω)
+  (hmean : ∀ (i : Fin j), ∫ (ω : Ω), Y i ω ∂μ ≤ 1) (ε : ℝ) (hε : 0 < ε) (hεhalf : ε ≤ 1 / 2) :
+  ε / (1 + ε) ≤ μ.real {ω | ∑ i, Y i ω < ↑j + ε}
+'SharpTailMatching.Probability.ProductBound.small_deviation' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.normalized_excess_zero_rigidity {k : ℕ} (hk : 1 ≤ k)
+  (μ : MeasureTheory.ProbabilityMeasure NNReal) (hsupp : ↑μ (Set.Ioi 1) = 0)
+  (hmean : SharpTailMatching.mean μ = ENNReal.ofReal (↑k)⁻¹)
+  (hw : SharpTailMatching.Probability.normalizedExcess k μ = 0) : ↑μ = MeasureTheory.Measure.dirac (↑k)⁻¹
+'SharpTailMatching.Probability.normalized_excess_zero_rigidity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.normalized_excess_max_rigidity {k : ℕ} (hk : 2 ≤ k)
+  (μ : MeasureTheory.ProbabilityMeasure NNReal) (hsupp : ↑μ (Set.Ioi 1) = 0)
+  (hmean : SharpTailMatching.mean μ = ENNReal.ofReal (↑k)⁻¹)
+  (hw : SharpTailMatching.Probability.normalizedExcess k μ = SharpTailMatching.Probability.maxNormalizedExcess k) :
+  ↑μ = SharpTailMatching.unitBernoulliMeasure (↑k)⁻¹
+'SharpTailMatching.Probability.normalized_excess_max_rigidity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.maximizer_covariance_identity {n : ℕ} {x : ℝ} (hx : 0 < x) (hxlt : x < (↑(n + 1))⁻¹)
+  {μ : MeasureTheory.ProbabilityMeasure NNReal} (hμ : SharpTailMatching.Probability.Maximizes (n + 1) x μ) :
+  SharpTailMatching.Probability.failureExcessParameter n x μ *
+      (SharpTailMatching.Probability.supportCutoff n x μ - SharpTailMatching.Probability.conditionalDeficit n μ) =
+    SharpTailMatching.Probability.conditionalVariance n μ +
+      ↑(n + 1) / (2 * (1 - SharpTailMatching.tailProbability (n + 1) μ)) *
+        SharpTailMatching.Probability.covarianceRemainder n μ
+'SharpTailMatching.Probability.maximizer_covariance_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.maximizer_ae_support_gap {n : ℕ} {x c : ℝ} (hx : 0 < x) (hxlt : x < (↑(n + 1))⁻¹)
+  {μ : MeasureTheory.ProbabilityMeasure NNReal} (hμ : SharpTailMatching.Probability.Maximizes (n + 1) x μ)
+  (hc : 11 / 24 ≤ c) (hcritical : 1 - ↑(n + 1) * x = c * x)
+  (hprox :
+    SharpTailMatching.Probability.supportCutoff n x μ - SharpTailMatching.Probability.conditionalDeficit n μ <
+      (SharpTailMatching.Probability.failureScale n x μ - 3 * x) / 20) :
+  ∀ᵐ (y : NNReal) ∂↑μ,
+    ↑y ≤ x + SharpTailMatching.Probability.failureScale n x μ / 16 ∨
+      x + 17 * SharpTailMatching.Probability.failureScale n x μ / 20 < ↑y ∧
+        ↑y ≤ SharpTailMatching.Probability.supportCutoff n x μ
+'SharpTailMatching.Probability.maximizer_ae_support_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.weighted_interpolation (k q : ℕ) (hk : 1 ≤ k) (e f eStar fStar κ c α Γ : ℕ → ℝ)
+  (he0 : e 1 = 0) (hestar0 : eStar 1 = 0) (he : ∀ (j : ℕ), 1 ≤ j → j < k → e j + f j ≤ e (j + 1))
+  (hstar : ∀ (j : ℕ), 1 ≤ j → j < k → eStar (j + 1) = eStar j + fStar j) (hend : e k ≤ eStar k)
+  (hprefix : ∀ (j : ℕ), 1 ≤ j → j ≤ q → 0 ≤ e j ∧ eStar j = 0)
+  (hcap : ∀ (j : ℕ), q < j → j < k → f j - fStar j ≤ α j * (e j - eStar j)) (hκ : ∀ j < k, 0 ≤ κ j)
+  (hκmono : ∀ (j : ℕ), j + 1 < k → κ j ≤ κ (j + 1)) (hc : ∀ j < k, 0 ≤ c j) (hα : ∀ (j : ℕ), q < j → j < k → 0 ≤ α j)
+  (hbase : ∀ j ≤ q, Γ j = κ j) (hrec : ∀ (j : ℕ), q < j → j < k → Γ j * (1 + α j) = Γ (j - 1) - c j + κ j * α j)
+  (hΓ : ∀ j < k, 0 ≤ Γ j) :
+  ∑ j ∈ Finset.range (k - 1), (κ (j + 1) * f (j + 1) - c (j + 1) * e (j + 1)) ≤
+    ∑ j ∈ Finset.range (k - 1), (κ (j + 1) * fStar (j + 1) - c (j + 1) * eStar (j + 1))
+'SharpTailMatching.Probability.weighted_interpolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.ProductBound.normalized_failure_envelope.{u_1} {Ω : Type u_1} [MeasurableSpace Ω]
+  (μ : MeasureTheory.Measure Ω) [MeasureTheory.IsProbabilityMeasure μ] (k t : ℕ) (hk : 0 < k) (ht : 0 < t)
+  (X : Fin k → Ω → ℝ) (hX : ∀ (i : Fin k), Measurable (X i)) (hi : ProbabilityTheory.iIndepFun X μ) (M : ℝ) (hM : 0 ≤ M)
+  (hbound : ∀ (i : Fin k), ∀ᵐ (ω : Ω) ∂μ, 0 ≤ X i ω ∧ X i ω ≤ M) (hmean : ∀ (i : Fin k), ∫ (ω : Ω), X i ω ∂μ = (↑k)⁻¹) :
+  SharpTailMatching.EnvelopeAlgebra.failureCurve (↑t) t
+      (SharpTailMatching.Probability.ProductBound.scaledExcess μ k X) ≤
+    SharpTailMatching.Probability.ProductBound.failureProbability μ X
+'SharpTailMatching.Probability.ProductBound.normalized_failure_envelope' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Matching.clique_bound_and_singleton_equality_of_weight.{u_1, u_2} {A : Type u_1} {W : Type u_2}
+  [DecidableEq A] [DecidableEq W] [Fintype A] [Fintype W] [AddGroup W] {k s : ℕ} {H : Finset (Finset (A ⊕ W))}
+  (hk : 2 ≤ k) (hu : SharpTailMatching.Matching.IsUniform k H)
+  (hν : SharpTailMatching.Matching.MatchingNumberAtMost s H)
+  (hQ : SharpTailMatching.Matching.cliqueFamily k (Finset.map Function.Embedding.inl Finset.univ) ⊆ H)
+  (hN : k ≤ Fintype.card W)
+  (hpack : ∀ j ∈ Finset.Icc 2 k, (k - 1) * Fintype.card W + (k - j) * (Fintype.card W / j) ≤ Fintype.card A)
+  (hweight :
+    SharpTailMatching.Matching.cliqueWeightSum k (Fintype.card A) (Fintype.card W) <
+      ↑((Fintype.card A).choose (k - 1))) :
+  H.card ≤ (Fintype.card A + (k * (s + 1) - 1 - Fintype.card A)).choose k ∧
+    (H.card = (Fintype.card A + (k * (s + 1) - 1 - Fintype.card A)).choose k →
+      (SharpTailMatching.Matching.edgeLayer 1 H).card =
+        (k * (s + 1) - 1 - Fintype.card A) * (Fintype.card A).choose (k - 1))
+'SharpTailMatching.Matching.clique_bound_and_singleton_equality_of_weight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.CriticalEstimates.phi_at_critical_large {n k : ℕ} (hn : 5 ≤ n) (hnk : n + 2 ≤ k) {c : ℝ} (hc : 0 ≤ c)
+  (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) :
+  1 / (500 * ↑n ^ 3) < SharpTailMatching.RationalCertificates.phi (↑n) (↑k) c
+'SharpTailMatching.CriticalEstimates.phi_at_critical_large' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.CriticalEstimates.phi_at_critical_four {k : ℕ} (hk : 6 ≤ k) {c : ℝ} (hc : 0 ≤ c)
+  (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) :
+  1 / 4000 < SharpTailMatching.RationalCertificates.phi 4 (↑k) c
+'SharpTailMatching.CriticalEstimates.phi_at_critical_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.maximizer_upper_support_positive {n : ℕ} {x c : ℝ} (hx : 0 < x) (hxlt : x < (↑(n + 1))⁻¹)
+  {μ : MeasureTheory.ProbabilityMeasure NNReal} (hμ : SharpTailMatching.Probability.Maximizes (n + 1) x μ)
+  (hc : 11 / 24 ≤ c) (hcritical : 1 - ↑(n + 1) * x = c * x)
+  (hprox :
+    SharpTailMatching.Probability.supportCutoff n x μ - SharpTailMatching.Probability.conditionalDeficit n μ <
+      (SharpTailMatching.Probability.failureScale n x μ - 3 * x) / 20) :
+  0 < ↑μ {y | x + 17 * SharpTailMatching.Probability.failureScale n x μ / 20 < ↑y}
+'SharpTailMatching.Probability.maximizer_upper_support_positive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.CriticalEstimates.node_deficitTest_gap {n k : ℕ} (hn : 4 ≤ n) (hnk : n + 2 ≤ k) {c : ℝ} (hc : 0 ≤ c)
+  (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) :
+  3 * (↑k / (↑k + c)) / 20 <
+    SharpTailMatching.ScalarCertificates.deficitTest (↑n + 1) (↑k / (↑k + c))
+      (SharpTailMatching.CriticalEstimates.nodeZ n k c)
+'SharpTailMatching.CriticalEstimates.node_deficitTest_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.TailEstimates.fourth_binomial_tail_strict {k : ℕ} (hk : 5 ≤ k) {c : ℝ} (hc0 : 0 ≤ c)
+  (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) :
+  SharpTailMatching.TailEstimates.binomialTail 4 k c <
+    4 * (81 / 256 - SharpTailMatching.ScalarCertificates.fourthNodeA c (↑k)⁻¹)
+'SharpTailMatching.TailEstimates.fourth_binomial_tail_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.sharp_tail_equality_of_critical (k : ℕ) (hk : 2 ≤ k) (β : ℝ) (hβpos : 0 < β)
+  (hβlt : β < (↑k)⁻¹) (hβcross : 1 - (1 - β) ^ k = (↑k * β) ^ k)
+  (hbound :
+    ∀ (ν : MeasureTheory.ProbabilityMeasure NNReal),
+      SharpTailMatching.mean ν ≤ ENNReal.ofReal β → SharpTailMatching.tailProbability k ν ≤ (↑k * β) ^ k)
+  (hclass :
+    ∀ (ν : MeasureTheory.ProbabilityMeasure NNReal),
+      SharpTailMatching.mean ν ≤ ENNReal.ofReal β →
+        SharpTailMatching.tailProbability k ν = (↑k * β) ^ k →
+          ↑ν = SharpTailMatching.unitBernoulliMeasure β ∨ ↑ν = SharpTailMatching.smallBernoulliMeasure k β)
+  (x : ℝ) (hx : 0 < x) (hxle : x ≤ (↑k)⁻¹) (μ : MeasureTheory.ProbabilityMeasure NNReal)
+  (hmean : SharpTailMatching.mean μ ≤ ENNReal.ofReal x) :
+  SharpTailMatching.tailProbability k μ = SharpTailMatching.sharpTailValue k x ↔
+    x < β ∧ ↑μ = SharpTailMatching.unitBernoulliMeasure x ∨
+      x = β ∧ (↑μ = SharpTailMatching.unitBernoulliMeasure x ∨ ↑μ = SharpTailMatching.smallBernoulliMeasure k x) ∨
+        β < x ∧ ↑μ = SharpTailMatching.smallBernoulliMeasure k x
+'SharpTailMatching.Probability.sharp_tail_equality_of_critical' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.critical_cost_multipliers_nonnegative (k t : ℕ) (hk : 6 ≤ k) (ht : 4 ≤ t) (htk : t < k)
+  (c : ℝ) (hc : 0 ≤ c) (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) (j : ℕ) :
+  j < k →
+    0 ≤
+      SharpTailMatching.Probability.interpolationMultiplier (k - t)
+        (fun j =>
+          ↑t * (↑t - 1) / (2 * ↑k) * SharpTailMatching.Probability.shortBinomialWeight k (↑k / (↑k + c)) (c / ↑k) j)
+        (SharpTailMatching.Probability.binomialCost k (↑k / (↑k + c)) (c / ↑k))
+        (fun j => SharpTailMatching.Probability.ComparisonGeometry.chordSlope (↑(k - j)) (↑t) (↑t + 1)) j
+'SharpTailMatching.Probability.critical_cost_multipliers_nonnegative' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.ComparisonGeometry.critical_base_deficit_bounds {k t : ℕ} (hk : 6 ≤ k) (ht : 4 ≤ t)
+  {c : ℝ} (hc : 0 ≤ c) (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) :
+  have x := 1 / (↑k + c);
+  have p0 := (1 - x) ^ k;
+  have rb := x * (↑t + c) * SharpTailMatching.Probability.ComparisonGeometry.nodeFailureValue t / p0;
+  have L := ↑t * (↑t - 1) / (2 * ↑k);
+  x < rb ∧ L * x / (rb - x) ^ 2 < 9 / 10
+'SharpTailMatching.Probability.ComparisonGeometry.critical_base_deficit_bounds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.initial_exclusion_small (k : ℕ) (hk : 2 ≤ k) (hk5 : k ≤ 5) (c a : ℝ) (hc : 0 ≤ c)
+  (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) (ha : 0 < a) (ha1 : a ≤ 1)
+  (haratio : (1 - a) / a = c / ↑k) (μ : MeasureTheory.ProbabilityMeasure NNReal) (hsupp : ↑μ (Set.Ioi 1) = 0)
+  (hmean : SharpTailMatching.mean μ = ENNReal.ofReal (↑k)⁻¹)
+  (hlarge : a ^ k ≤ SharpTailMatching.tailProbability k (SharpTailMatching.Probability.addZeroLaw μ (1 - a) ⋯ ⋯)) :
+  SharpTailMatching.Probability.normalizedExcess k μ = 0 ∨
+    SharpTailMatching.Probability.normalizedExcess k μ =
+      SharpTailMatching.Probability.ComparisonGeometry.maxExcessNode k
+'SharpTailMatching.Probability.initial_exclusion_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.initial_exclusion_large (k : ℕ) (hk : 6 ≤ k) (c a : ℝ) (hc : 0 ≤ c)
+  (hcross : SharpTailMatching.CriticalEstimates.criticalDifference k c = 1) (ha : 0 < a) (ha1 : a ≤ 1)
+  (haratio : (1 - a) / a = c / ↑k) (μ : MeasureTheory.ProbabilityMeasure NNReal) (hsupp : ↑μ (Set.Ioi 1) = 0)
+  (hmean : SharpTailMatching.mean μ = ENNReal.ofReal (↑k)⁻¹)
+  (hlarge : a ^ k ≤ SharpTailMatching.tailProbability k (SharpTailMatching.Probability.addZeroLaw μ (1 - a) ⋯ ⋯)) :
+  SharpTailMatching.Probability.normalizedExcess k μ = 0 ∨
+    SharpTailMatching.Probability.ComparisonGeometry.maxExcessNode 4 <
+        SharpTailMatching.Probability.normalizedExcess k μ ∧
+      SharpTailMatching.Probability.normalizedExcess k μ ≤
+        SharpTailMatching.Probability.ComparisonGeometry.maxExcessNode k
+'SharpTailMatching.Probability.initial_exclusion_large' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.conditionalUpperProbability_lower {n : ℕ} {x q : ℝ} (hx : 0 < x) (hxlt : x < (↑(n + 1))⁻¹)
+  {μ L U : MeasureTheory.ProbabilityMeasure NNReal} (hμ : SharpTailMatching.Probability.Maximizes (n + 1) x μ)
+  (hq0 : 0 ≤ q) (hq1 : q < 1) (hmix : ↑μ = ENNReal.ofReal q • ↑L + ENNReal.ofReal (1 - q) • ↑U) {b : NNReal}
+  (hLb : ∀ᵐ (z : NNReal) ∂↑L, z ≤ b) (hUb : ∀ᵐ (z : NNReal) ∂↑U, b < z) (hlam : ↑(n + 1) * (1 - q) ≤ 1) :
+  5 / 8 * SharpTailMatching.Probability.conditionalUpperMean n μ b ≤
+    SharpTailMatching.Probability.conditionalUpperProbability n μ b
+'SharpTailMatching.Probability.conditionalUpperProbability_lower' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Matching.local_near_clique_exact.{u_1} {α : Type u_1} [DecidableEq α] [Fintype α] {k s : ℕ}
+  {H : Finset (Finset α)} {Q₀ : Finset α} (hk : 3 ≤ k) (hs : 120 * k ≤ s) (hlower : k * (s + 1) ≤ Fintype.card α)
+  (hupper : 2 * Fintype.card α ≤ (2 * k + 1) * s) (hQ₀ : Q₀.card = k * (s + 1) - 1)
+  (hu : SharpTailMatching.Matching.IsUniform k H) (hν : SharpTailMatching.Matching.MatchingNumberAtMost s H)
+  (hmissing : ↑(SharpTailMatching.Matching.cliqueFamily k Q₀ \ H).card ≤ 1 / (2 * 12 ^ k * ↑k.factorial) * ↑s ^ k) :
+  H.card ≤ (k * (s + 1) - 1).choose k ∧
+    (H.card = (k * (s + 1) - 1).choose k ↔
+      ∃ R, R.card = k * (s + 1) - 1 ∧ H = SharpTailMatching.Matching.cliqueFamily k R)
+'SharpTailMatching.Matching.local_near_clique_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Matching.exists_capacity_matching_cover.{u_1} {α : Type u_1} [DecidableEq α] [Fintype α]
+  {H : Finset (Finset α)} {c : α → ℝ} (hc : ∀ (v : α), 0 < c v) (hedges : ∀ e ∈ H, e.Nonempty) :
+  ∃ φ z,
+    SharpTailMatching.Matching.IsCapacityMatching H c φ ∧
+      SharpTailMatching.Matching.IsFractionalCover H z ∧ (∀ (v : α), z v ≤ 1) ∧ ∑ e, φ e = ∑ v, c v * z v
+'SharpTailMatching.Matching.exists_capacity_matching_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Matching.weighted_rectangular_regularity.{u} (k t : ℕ) {ε : ℝ} (hε : 0 < ε) :
+  ∃ T,
+    ∀ {β : Type u} [inst : Fintype β] [DecidableEq β] [Nonempty β] (c : β → Fin t) (f : (Fin k → β) → ℝ),
+      (∀ (x : Fin k → β), 0 ≤ f x ∧ f x ≤ 1) →
+        ∃ J x x_1 c' g,
+          (∀ (x : β), g (c' x) = c x) ∧
+            Fintype.card J ≤ T ∧ SharpTailMatching.Matching.irregularMass c' f ε ≤ ε * ↑(Fintype.card (Fin k → β))
+'SharpTailMatching.Matching.weighted_rectangular_regularity' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Probability.critical_normalized_maximizer_proximity {k : ℕ} (hk : 6 ≤ k) {x : ℝ} (hx : 0 < x)
+  (hxlt : x < (↑k)⁻¹) (hcross : 1 - (1 - x) ^ k = (↑k * x) ^ k) {μ Q : MeasureTheory.ProbabilityMeasure NNReal}
+  (hμ : SharpTailMatching.Probability.Maximizes k x μ)
+  (hrep : ↑μ = ENNReal.ofReal (1 - ↑k * x) • MeasureTheory.Measure.dirac 0 + ENNReal.ofReal (↑k * x) • ↑Q)
+  (hsupp : ↑Q (Set.Ioi 1) = 0) (hmean : SharpTailMatching.mean Q = ENNReal.ofReal (↑k)⁻¹)
+  (hnonzero : SharpTailMatching.Probability.normalizedExcess k Q ≠ 0) :
+  SharpTailMatching.Probability.supportCutoff (k - 1) x μ - SharpTailMatching.Probability.conditionalDeficit (k - 1) μ <
+    (SharpTailMatching.Probability.failureScale (k - 1) x μ - 3 * x) / 20
+'SharpTailMatching.Probability.critical_normalized_maximizer_proximity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Probability.maximizer_proximity_rigid {n : ℕ} (hn : 6 ≤ n + 1) {x c : ℝ} (hx : 0 < x)
+  (hxlt : x < (↑(n + 1))⁻¹) {μ : MeasureTheory.ProbabilityMeasure NNReal}
+  (hμ : SharpTailMatching.Probability.Maximizes (n + 1) x μ) (ha : 12 / 13 < ↑(n + 1) * x) (hc0 : 11 / 24 < c)
+  (hc1 : c ≤ 1 / 2) (hcritical : 1 - ↑(n + 1) * x = c * x) (hp₀ : (1 - x) ^ (n + 1) < Real.exp (-1))
+  (hprox :
+    SharpTailMatching.Probability.supportCutoff n x μ - SharpTailMatching.Probability.conditionalDeficit n μ <
+      (SharpTailMatching.Probability.failureScale n x μ - 3 * x) / 20) :
+  ↑μ = SharpTailMatching.unitBernoulliMeasure x
+'SharpTailMatching.Probability.maximizer_proximity_rigid' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Matching.approximate_fractional_cover.{u} {k : ℕ} (hk : 2 ≤ k) {ξ ρ : ℝ} (hξ : 0 ≤ ξ) (hρ : 0 < ρ) :
+  ∃ n₀,
+    ∀ {α : Type u} [inst : Fintype α] [DecidableEq α],
+      n₀ ≤ Fintype.card α →
+        ∀ {x : ℝ},
+          x ≤ ξ →
+            ∀ (H : Finset (Finset α)),
+              SharpTailMatching.Matching.IsUniform k H →
+                (∀ M ⊆ H, SharpTailMatching.Matching.IsMatching M → ↑M.card ≤ x * ↑(Fintype.card α)) →
+                  ∃ w,
+                    (∀ (v : α), 0 ≤ w v ∧ w v ≤ 1) ∧
+                      ∑ v, w v ≤ (x + ρ) * ↑(Fintype.card α) ∧
+                        ↑(SharpTailMatching.Matching.uncoveredFamily H w).card ≤ ρ * ↑(Fintype.card α) ^ k
+'SharpTailMatching.Matching.approximate_fractional_cover' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Matching.candidate_density_le_binomial_max {k s n : ℕ} (hk : 2 ≤ k) (hs : 1 ≤ s)
+  (hn : k * (s + 1) ≤ n) :
+  max (1 - (1 - ↑s / ↑n) ^ k) ((↑k * (↑s / ↑n)) ^ k) ≤
+    ↑k.factorial * max ↑(SharpTailMatching.coverSize k n s) ↑(SharpTailMatching.cliqueSize k s) / ↑n ^ k + ↑k ^ 2 / ↑n
+'SharpTailMatching.Matching.candidate_density_le_binomial_max' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+SharpTailMatching.Matching.matching_stability.{u} {k : ℕ} (hk : 3 ≤ k) {ε : ℝ} (hε : 0 < ε) :
+  ∃ δ,
+    0 < δ ∧
+      ∃ s₀,
+        ∀ (s : ℕ),
+          s₀ ≤ s →
+            ∀ {α : Type u} [inst : Fintype α] [inst_1 : DecidableEq α],
+              k * (s + 1) ≤ Fintype.card α →
+                ∀ (H : Finset (Finset α)),
+                  SharpTailMatching.Matching.IsUniform k H →
+                    SharpTailMatching.Matching.MatchingNumberAtMost s H →
+                      max ↑(SharpTailMatching.coverSize k (Fintype.card α) s) ↑(SharpTailMatching.cliqueSize k s) -
+                            δ * ↑(Fintype.card α) ^ k ≤
+                          ↑H.card →
+                        (∃ S,
+                            S.card = s ∧
+                              ↑(H \ SharpTailMatching.Matching.coverFamily k Finset.univ S).card +
+                                  ↑(SharpTailMatching.Matching.coverFamily k Finset.univ S \ H).card ≤
+                                ε * ↑(Fintype.card α) ^ k) ∨
+                          ∃ Q,
+                            Q.card = k * (s + 1) - 1 ∧
+                              ↑(H \ SharpTailMatching.Matching.cliqueFamily k Q).card +
+                                  ↑(SharpTailMatching.Matching.cliqueFamily k Q \ H).card ≤
+                                ε * ↑(Fintype.card α) ^ k
+'SharpTailMatching.Matching.matching_stability' depends on axioms: [propext, Classical.choice, Quot.sound]
+SharpTailMatching.Matching.matching_branch_separation (k : ℕ) (hk : 3 ≤ k) :
+  SharpTailMatching.Matching.FiniteBranchSeparation k
+'SharpTailMatching.Matching.matching_branch_separation' depends on axioms: [propext, Classical.choice, Quot.sound]

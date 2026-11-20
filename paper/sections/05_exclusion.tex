@@ -1,0 +1,498 @@
+\section{Excluding an intermediate maximizing distribution}\label{sec:exclusion}
+
+We retain the assumptions and notation of \cref{sec:support}. The exclusion follows the framework of Chi, Sun, and Wang~\cite[Sections 5--6]{CSW2026}, with the cubic estimate from \cref{lem:cubic} replacing their normal-approximation argument.
+By \cref{lem:support-gap}, a potential maximizing distribution with $0<w<W_k$ is concentrated on two separated intervals.
+We will prove that its lower part must have mean zero.
+The contact condition then determines the upper part, leaving the Bernoulli distribution $B_x$ and contradicting $w<W_k$.
+
+We first prove a consequence of the product bound that will be applied to sums of lower observations.
+It provides a lower bound on their failure probability using only their means. This is the bound conjectured by Feige~\cite{Feige2006} in the stated range of $\varepsilon$ and follows from Ling~\cite[Corollary 1.3]{Ling2026}. We include a direct proof from \cref{lem:product}.
+
+\begin{lemma}\label{lem:small-deviation}
+Let $Y_1,\ldots,Y_j$ be independent nonnegative random variables with $\E Y_i\le1$.
+If $0<\varepsilon\le1/2$, then
+\begin{align}
+ \Pr\left(\sum_{i\in[j]}Y_i<j+\varepsilon\right)
+ \ge\frac{\varepsilon}{1+\varepsilon}.
+ \label{eq:small-deviation}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+Truncating each variable at $j+\varepsilon$ preserves the event that the sum is below $j+\varepsilon$.
+After truncation, add a nonnegative constant to each variable so that its mean becomes one.
+Adding these constants can only decrease the probability on the left of \cref{eq:small-deviation}.
+It is therefore enough to prove the assertion for bounded variables with mean one.
+
+Set $m\coloneqq(j+\varepsilon)^{-1}$ and $S\coloneqq m\sum_{i\in[j]}Y_i$.
+Write $p\coloneqq\Pr(S<1)$ and $r\coloneqq\E[1-S\mid S<1]$, and put $\zeta\coloneqq r/m$.
+Since $\E S=jm<1$, we have $p>0$ and
+\begin{align*}
+ p\zeta=\frac{\E(1-S)_+}{m}\ge\frac{1-jm}{m}=\varepsilon.
+\end{align*}
+If $\zeta\le1+\varepsilon$, this already gives the desired bound.
+We may therefore assume $\zeta>1+\varepsilon$, so $r>m$.
+
+Apply \cref{lem:product} to the variables $mY_i$.
+It supplies numbers $z_i\in[0,m]$ with $\sum_i z_i=r-\varepsilon m=m(\zeta-\varepsilon)$ and
+\begin{align*}
+ \log p\ge\sum_i\log\left(1-\frac{z_i}{r}\right).
+\end{align*}
+By concavity of the logarithm, its value at a point of $[0,m]$ is at least the chord joining the endpoint values.
+Thus
+\begin{align*}
+ \log p
+ \ge\sum_i\frac{z_i}{m}\log\left(1-\frac mr\right)
+ =(\zeta-\varepsilon)\log\left(1-\frac1\zeta\right).
+\end{align*}
+For $u>1$, the derivative of $(u-\varepsilon)\log(1-1/u)$ is
+\begin{align*}
+ \sum_{h\ge2}\left(1-\varepsilon-\frac1h\right)u^{-h}\ge0.
+\end{align*}
+Since $\zeta>1+\varepsilon$, we conclude that
+\begin{align*}
+ \log p\ge\log\left(\frac{\varepsilon}{1+\varepsilon}\right),
+\end{align*}
+which proves \cref{eq:small-deviation}.
+\end{proof}
+
+Let $X_L$ and $X_U$ have the conditional distributions of $P$ on the lower and upper intervals from \cref{lem:support-gap}, respectively.
+Then
+\begin{align}
+ P=q\mathcal L(X_L)+(1-q)\mathcal L(X_U),\qquad
+ 0\le X_L\le x+D/16<x+17D/20<X_U\le M,
+ \label{eq:two-components}
+\end{align}
+where $0<q<1$ and $\mathcal L$ denotes distribution.
+Both components have positive mass: this is part of \cref{lem:support-gap} for the upper component, and follows from the atom at zero for the lower component.
+Define
+\begin{align}
+ x_0&\coloneqq\E X_L,
+ &A&\coloneqq M-x_0,
+ &J&\coloneqq X_U-x_0,\notag\\
+ \lambda&\coloneqq k(1-q),
+ &m&\coloneqq k(x-x_0)=\lambda\E J.
+ \label{eq:mixture-parameters}
+\end{align}
+The support of $X_U$ is above $x$, so $x_0<x$ and $A>D$.
+We will repeatedly use
+\begin{align}
+ D=A-\frac mk,
+ \qquad 1-kx_0=\delta+m.
+ \label{eq:mixture-identities}
+\end{align}
+
+The contact condition has a particularly strong consequence at an upper value $y$.
+One contribution to failure of the other $k-1$ variables comes from choosing the lower component every time.
+For almost every such $y$, \cref{eq:contact-failure} therefore gives
+\begin{align}
+ \frac{p(M-y)}D
+ \ge q^{k-1}\Pr\left(\sum_{i\in[k-1]}X_{L,i}<1-y\right),
+ \label{eq:upper-contact-lower-failure}
+\end{align}
+where the $X_{L,i}$ are independent copies of $X_L$.
+Because $M-y<3D/20$, this inequality forces the probability on its right to be small.
+The next lemma applies \cref{lem:small-deviation} to make that restriction explicit.
+
+\begin{lemma}\label{lem:upper-component}
+Either $x_0=0$ and $P=B_x$, or $x_0>0$ and
+\begin{align}
+ J>m+\delta-\frac{3x_0}{17}\quad\text{almost surely},
+ \qquad \lambda<a,
+ \qquad 0<a-\lambda\le a-\frac mA<a,
+ \qquad q\le\frac DA.
+ \label{eq:upper-component-bounds}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+We first estimate $q^{k-1}/p_0$ without assuming $x_0>0$.
+By the variance decomposition for the mixture in \cref{eq:two-components},
+\begin{align*}
+ \Var(S_k)
+ &\ge kq(1-q)(\E X_U-x_0)^2\\
+ &=\frac{\lambda}{q}(\E X_U-x)^2
+ >\frac{\lambda}{q}\left(\frac{17D}{20}\right)^2.
+\end{align*}
+In the equality, we used $\E X_U-x=q(\E X_U-x_0)$.
+On the other hand, \cref{eq:unconditional-variance,eq:mean-deficit-proximity,eq:critical-numerical-bounds} give
+\begin{align*}
+ \frac{\Var(S_k)}{D^2}=\frac BD
+ <1+\frac{13}{24}\frac xD<\frac{85}{72}.
+\end{align*}
+It follows that $\lambda/q<250/153$.
+Using $\log q>-(1-q)/q$ and $p_0<e^{-1}$, we obtain
+\begin{align}
+ \frac{q^{k-1}}{p_0}>e^{1-250/153}=e^{-97/153}>\frac12.
+ \label{eq:lower-component-mass}
+\end{align}
+
+If $x_0=0$, then $X_L=0$ almost surely.
+For an upper value $y<1$, the probability on the right of \cref{eq:upper-contact-lower-failure} is one.
+Dividing by $p\le p_0$ and using \cref{eq:lower-component-mass} would give $(M-y)/D>1/2$, whereas the upper support interval gives $(M-y)/D<3/20$.
+Thus $X_U=1$ almost surely, and $M=1$.
+The mean constraint then gives $P=B_x$.
+
+Assume henceforth that $x_0>0$.
+Suppose an upper contact value satisfies $J=y-x_0\le m/a$.
+By \cref{eq:mixture-identities},
+\begin{align*}
+ 1-y-(k-1)x_0
+ =\delta+m-J
+ \ge\delta+m-\frac ma
+ =cx_0.
+\end{align*}
+For the last equality, use $m=k(x-x_0)$, $a=kx$, and $\delta=cx$.
+Apply \cref{lem:small-deviation} to the $k-1$ variables $X_{L,i}/x_0$, with $\varepsilon=c$.
+The resulting probability in \cref{eq:upper-contact-lower-failure} is at least $c/(1+c)>3/10$.
+Together with \cref{eq:lower-component-mass}, this gives $(M-y)/D>3/20$, a contradiction.
+We have proved $J>m/a$ almost surely.
+Taking expectations in $m=\lambda\E J$ now gives $\lambda<a$, and hence $q>1-x$.
+In particular,
+\begin{align*}
+ \frac{q^{k-1}}{p_0}>1.
+\end{align*}
+
+If an upper contact value instead satisfies $J\le m+\delta-3x_0/17$, then
+$1-y-(k-1)x_0\ge3x_0/17$.
+Apply \cref{lem:small-deviation} with $\varepsilon=3/17$.
+The probability in \cref{eq:upper-contact-lower-failure} is at least $3/20$, which again contradicts $(M-y)/D<3/20$.
+This proves the asserted almost-sure bound on $J$.
+Finally, $J\le A$ gives $m/A\le\lambda$, so $0<a-\lambda\le a-m/A<a$.
+The same inequality and \cref{eq:mixture-identities} yield
+$q=1-\lambda/k\le1-m/(kA)=D/A$.
+\end{proof}
+
+We now exclude $x_0>0$ by comparing two estimates for the conditional variance.
+The first retains the cross-component contribution in \cref{eq:covariance-identity}.
+The second applies \cref{lem:cubic} to a sum of lower observations.
+
+\begin{proposition}\label{prop:no-interior-maximizer}
+For $k\ge6$, no maximizing distribution at mean $\beta_k$ has $0<w<W_k$.
+\end{proposition}
+
+\begin{proof}
+Suppose that such a distribution exists.
+The alternative $P=B_x$ in \cref{lem:upper-component} has $w=W_k$, so $x_0>0$.
+Normalize lengths by $A$ and put
+\begin{align}
+ \theta&\coloneqq1-\frac{m}{aA},
+ \qquad u\coloneqq\frac{x_0}{A},\notag\\
+ \alpha&\coloneqq\frac{m}{kA},
+ \qquad d\coloneqq\frac DA=1-\alpha,\notag\\
+ e&\coloneqq\frac{M-r}{A},
+ \qquad b\coloneqq\frac{\esssup X_L}{A},\notag\\
+ v&\coloneqq\frac{\Var(S_k\mid S_k<1)}{A^2},
+ \qquad V\coloneqq\frac{k\Var(X_L)}{A^2},\notag\\
+ z&\coloneqq\frac{B-m}{A}=\theta+(1-c)u-e,\notag\\
+ \tau&\coloneqq\frac{1-kx_0}{A}=1-\theta+cu.
+ \label{eq:normalized-mixture}
+\end{align}
+In this proof, $v$ denotes the normalized conditional variance in \cref{eq:normalized-mixture}; the variance in \cref{sec:support} was unnormalized.
+By \cref{lem:upper-component}, $0<\theta<1$ and $q>1-x>5/6$.
+Also $V>0$, since $X_L$ has positive mean and an atom at zero.
+
+The definitions give $m/A=a(1-\theta)$ and $x/A=u+\alpha$.
+Using \cref{eq:mean-deficit-proximity} and the upper bound on $X_L$ in \cref{eq:two-components}, we obtain
+\begin{align}
+ 0<u<\frac13,
+ \qquad 0\le e<\frac{1-3u-4\alpha}{20},
+ \qquad u\le b\le u+\frac{7-5\theta}{32},
+ \qquad \tau+z=1+u-e.
+ \label{eq:normalized-ranges}
+\end{align}
+Here $D>3x$ becomes $1-\alpha>3(u+\alpha)$.
+For the bound on $b$, first observe that
+\begin{align*}
+ b\le\frac{x+D/16}{A}
+ =u+\frac1{16}+\frac{15\alpha}{16}.
+\end{align*}
+Then use $\alpha=x(1-\theta)\le(1-\theta)/6$.
+
+We first derive an upper bound for $v$ that also involves the separation of the two components.
+Let $I$ be the integral term on the right of \cref{eq:covariance-identity}, divided by $A^2$.
+Thus
+\begin{align*}
+ v+I=\frac BAe.
+\end{align*}
+Put $b_0\coloneqq Ab$.
+There are lower contact points approaching the essential supremum $b_0$.
+By monotonicity of $h$ and \cref{eq:supporting-line}, these points imply
+\begin{align*}
+ h(y)-h(0)\ge\frac{pb_0}{D}\qquad(y>b_0).
+\end{align*}
+In the expectation defining $I$, retain only pairs with one lower and one upper observation.
+Their two orientations give equal contributions, so
+\begin{align*}
+ I
+ &\ge\frac{\lambda q b_0}{DA^2}
+       \E[(X_U-X_L)(X_U-b_0)]\\
+ &>\frac{63}{80}q\frac{b_0}{A^2}\lambda\E(X_U-X_L)\\
+ &=\frac{63}{80}qa(1-\theta)b
+ >\frac35(1-\theta)b.
+\end{align*}
+For the second line, use $X_U-b_0>63D/80$ from \cref{eq:two-components}; for the third, use $\lambda\E(X_U-X_L)=m$.
+The last inequality follows from $q>5/6$ and $a>12/13$.
+Furthermore,
+\begin{align*}
+ \frac BA=1+(1-c)u-c\alpha-e\le1+\frac{13u}{24}-e.
+\end{align*}
+The same quadratic estimate used in \cref{eq:small-conditional-variance}, now with the bound for $e$ in \cref{eq:normalized-ranges}, yields
+\begin{align}
+ v+\frac35(1-\theta)b
+ <\Phi(u)\coloneqq\frac{(114+83u)(1-3u)}{2400}
+ \le\frac{19}{400}.
+ \label{eq:normalized-variance-upper}
+\end{align}
+
+We next examine the sum when every observation comes from the lower component.
+For independent copies $X_{L,i}$, define
+\begin{align}
+ Z&\coloneqq\sum_{i\in[k]}\frac{X_{L,i}-x_0}{A},
+ &R&\coloneqq\frac p{q^k},
+ &K_0&\coloneqq\frac{\Pr(Z\ge\tau)}R,
+ &K_1&\coloneqq\frac{\E[Z\1_{\{Z\ge\tau\}}]}R.
+ \label{eq:lower-tail-quantities}
+\end{align}
+The inequality $q>1-x$ and $p\le p_0=(1-x)^k$ give $R<1$.
+Also $Z$ is centered and has variance $V$.
+
+To compare these quantities with failure of the full mixture, realize each $X_i$ by an independent choice between $X_L$ and $X_U$.
+Let $N$ count the upper choices, and write $\mathcal F\coloneqq\{S_k<1\}$.
+Thus $N$ has binomial distribution with parameters $k$ and $1-q$.
+Define
+\begin{align}
+ T_U&\coloneqq\frac{M-X_U}{A},
+ &\nu&\coloneqq\E T_U,
+ &g&\coloneqq\frac{\lambda\nu}{d},
+ &\gamma&\coloneqq\Pr(N\ge1\mid\mathcal F),
+ &\ell&\coloneqq a-\lambda.
+ \label{eq:upper-count-quantities}
+\end{align}
+Here $\ell>0$ by \cref{lem:upper-component}.
+The tilted distribution in \cref{eq:failure-tilt} gives
+\begin{align*}
+ \E[N\mid\mathcal F]
+ =\frac{k(1-q)}D\E(M-X_U)=g.
+\end{align*}
+Since $0\le T_U<3d/20$ and $\lambda(1-\nu)=m/A=a(1-\theta)$, we obtain
+\begin{align}
+ 0\le\gamma\le g<\frac{3(1-\theta)}{17}<\frac{1-\theta}{5},
+ \qquad \frac qd=1-\frac gk,
+ \qquad a\theta=\ell+dg.
+ \label{eq:upper-count-bounds}
+\end{align}
+For the bound on $g$, note that $g<3\lambda/20$ and
+$\lambda=a(1-\theta)/(1-\nu)<20(1-\theta)/17$.
+The second identity follows from
+$d=1-\lambda(1-\nu)/k=q+\lambda\nu/k$; the third follows by subtracting $\lambda(1-\nu)=a(1-\theta)$ from $a$.
+
+Expanding the variance of the mixture gives another useful identity.
+Indeed, the within-component and between-component contributions yield
+\begin{align*}
+ \frac{\Var(S_k)}{A^2}
+ =qV+\lambda\Var(T_U)+\lambda q(1-\nu)^2.
+\end{align*}
+Using \cref{eq:unconditional-variance}, the left side is $dB/A=d(z+\lambda(1-\nu))$.
+Since $d=q+(1-q)\nu$, rearrangement gives
+\begin{align}
+ qV=dz+\Theta,
+ \qquad
+ \Theta\coloneqq\lambda\E[T_U(1-T_U)]\in[0,dg].
+ \label{eq:lower-variance-identity}
+\end{align}
+Consequently,
+\begin{align}
+ V\ge z,
+ \qquad
+ V\le\frac{z+g}{1-g/k}.
+ \label{eq:lower-variance-bounds}
+\end{align}
+For the first inequality, use $d\ge q$ when $z\ge0$; if $z<0$, it is immediate from $V>0$.
+
+We also need the lower bound $\gamma\ge5g/8$.
+It is immediate if $g=0$, so suppose $g>0$.
+Because every upper value exceeds every lower value, $\Pr(\mathcal F\mid N=n)$ is nonincreasing in $n$.
+Conditional on $N\ge1$, the covariance of $N$ and this decreasing function is nonpositive.
+Therefore
+\begin{align*}
+ \E[N\mid\mathcal F,N\ge1]
+ \le\E[N\mid N\ge1]=\frac{\lambda}{1-q^k}.
+\end{align*}
+Together with $g=\E[N\mid\mathcal F]$, this gives
+\begin{align*}
+ \gamma\ge\frac{1-q^k}{\lambda}g\ge\frac58g.
+\end{align*}
+Here we used $q^k\le e^{-\lambda}$ and $0<\lambda<a<1$, so
+$(1-e^{-\lambda})/\lambda\ge1-e^{-1}>5/8$.
+
+Counting failures with no upper observation gives
+$q^k\Pr(Z<\tau)=p(1-\gamma)$.
+Since $q=1-x+\ell/k$, we also have
+\begin{align*}
+ \frac1R=\frac{q^k}{p}
+ \ge\left(\frac q{1-x}\right)^k
+ =\left(1+\frac{\ell}{k(1-x)}\right)^k>1+\ell.
+\end{align*}
+Substituting these facts in the definition of $K_0$ yields
+\begin{align}
+ K_0=\frac1R-1+\gamma>\ell+\frac58g.
+ \label{eq:lower-tail-mass}
+\end{align}
+
+We now show that the upper tail of $Z$ is large relative to its variance.
+Taking expectations in the first inequality of \cref{eq:upper-component-bounds}, and using $m=\lambda\E J$ and $\delta=cx=c(x_0+m/k)$, gives
+\begin{align*}
+ \frac{\ell}{a}\E J>\left(c-\frac3{17}\right)x_0.
+\end{align*}
+As $J\le A$, it follows that
+\begin{align*}
+ u<\frac{\ell}{a(c-3/17)}.
+\end{align*}
+Using $z\le\theta+(1-c)u$, $a\theta=\ell+dg$, and \cref{eq:lower-variance-bounds}, we obtain
+\begin{align*}
+ V
+ &<\frac dq\left[\frac{14\ell}{17a(c-3/17)}+\left(1+\frac da\right)g\right]\\
+ &<\frac65\left(\frac{10}{3}\ell+\frac{25}{12}g\right)
+ =4\ell+\frac52g
+ <4K_0.
+\end{align*}
+The second line uses $d\le1$, $q>5/6$, $a>12/13$, and $c>11/24$.
+Since $\tau>0$ and $K_1\ge\tau K_0$, we have proved
+\begin{align}
+ K_0>\frac V4,
+ \qquad \frac{K_1}{V}>\frac\tau4.
+ \label{eq:lower-tail-first-moment-basic}
+\end{align}
+In particular, if $\theta\le1/4$, then $\tau=1-\theta+cu>3/4$, so $K_1/V>3/16$.
+
+For $\theta\ge1/4$, a stronger bound follows from the conditional mean.
+Put $d_L\coloneqq-\E[Z\mid Z<\tau]$.
+Centering $Z$ and using $\Pr(Z<\tau)=R(1-\gamma)$ gives
+\begin{align*}
+ K_1=(1-\gamma)d_L.
+\end{align*}
+Under $\mathcal F$, the variable $(S_k-kx_0)/A$ has mean $-z$ and variance $v$.
+On $N=0$, it has conditional mean $-d_L$.
+The variance between the events $N=0$ and $N\ge1$ therefore gives
+\begin{align*}
+ |d_L-z|^2\le\frac{v\gamma}{1-\gamma};
+\end{align*}
+when $\gamma=0$, this means $d_L=z$.
+For $\theta\ge1/4$, \cref{eq:normalized-ranges} implies
+$z>\theta-1/20\ge4\theta/5$.
+Using also $v<1/20$ and $g<(1-\theta)/5$, we conclude that
+\begin{align*}
+ K_1
+ &\ge(1-\gamma)z-\sqrt{v\gamma(1-\gamma)}\\
+ &\ge(1-g)z-\sqrt{vg}
+ >(1-g)z-\frac1{10}.
+\end{align*}
+The last expression is positive, since $z\ge4\theta/5$ and $\theta\ge1/4$.
+Dividing by the upper bound for $V$ in \cref{eq:lower-variance-bounds}, and using $k\ge6$, now gives
+\begin{align}
+ \frac{K_1}{V}
+ &\ge
+ \frac{\bigl((4+\theta)/5-1/(8\theta)\bigr)(29+\theta)}
+ {30\bigl(1+(1-\theta)/(4\theta)\bigr)}
+ >\frac{3\theta}{4}.
+ \label{eq:lower-tail-first-moment-strong}
+\end{align}
+For completeness, subtracting $3\theta/4$ from the middle expression gives
+\begin{align*}
+ \frac{8\theta^3-411\theta^2+698\theta-145}{300(3\theta+1)}.
+\end{align*}
+The numerator is concave on $[1/4,1]$ and takes the positive values $63/16$ and $150$ at the endpoints.
+This verifies the final inequality in \cref{eq:lower-tail-first-moment-strong} throughout the stated interval.
+
+It remains to turn this first-moment bound into a contradiction to \cref{eq:normalized-variance-upper}.
+Set $\sigma\coloneqq\max\{\theta,1/4\}$.
+By \cref{eq:lower-tail-first-moment-basic,eq:lower-tail-first-moment-strong},
+\begin{align*}
+ \frac{K_1}{V}>\frac{3\sigma}{4}.
+\end{align*}
+On failure, $(S_k-kx_0)/A+z$ has conditional mean zero.
+Retaining only the event that all observations are lower therefore gives
+\begin{align*}
+ q^k\E[(Z+z)^2\1_{\{Z<\tau\}}]\le pv,
+\end{align*}
+or $\E[(Z+z)^2\1_{\{Z<\tau\}}]\le Rv$.
+Each summand of $Z$ has a support interval of length at most $b$.
+Moreover, \cref{eq:normalized-ranges} implies
+\begin{align*}
+ \tau+z-2b
+ >\frac{19}{20}+\frac{23u}{20}-2b
+ >\frac{11}{48}.
+\end{align*}
+For the second inequality, use $b\le u+(7-5\theta)/32$, $u<1/3$, and $\theta>0$.
+Apply \cref{lem:cubic} to this sum $Z$.
+After substituting the definitions of $K_1$ and $R$ and dividing by $RV$, we obtain
+\begin{align*}
+ v\ge\frac{K_1}{3V}
+ \frac{(\tau+z-2b)^3}{1+(z-b)_+^2/(12V)}.
+\end{align*}
+The denominator is less than $10/9$: indeed, \cref{eq:lower-variance-bounds} gives
+$(z-b)_+^2/V\le z_+$, while
+$z<1+13/72<4/3$.
+Consequently,
+\begin{align}
+ v>\frac{9\sigma}{40}\left(\frac{19}{20}+\frac{23u}{20}-2b\right)^3.
+ \label{eq:normalized-variance-lower}
+\end{align}
+
+We finish with two elementary comparisons, according to the value of $\theta$.
+If $\theta\le3/4$, then $\sigma\in[1/4,3/4]$ and $1-\theta\ge1-\sigma$.
+Combining \cref{eq:normalized-variance-upper,eq:normalized-variance-lower} gives
+\begin{align*}
+ \frac{19}{400}
+ >f_\sigma(b)\coloneqq
+ \frac{9\sigma}{40}\left(\frac{19}{20}-2b\right)_+^3
+ +\frac35(1-\sigma)b.
+\end{align*}
+For each fixed $b\ge0$, the last expression is affine in $\sigma$.
+It is enough to bound its values at $\sigma=1/4$ and $\sigma=3/4$.
+The function $f_{1/4}$ increases on $[0,\infty)$: on $[0,19/40]$, its derivative is
+$9/20-(27/80)(19/20-2b)^2>0$, and beyond that interval it is linear with positive slope.
+Thus
+\begin{align*}
+ f_{1/4}(b)\ge f_{1/4}(0)
+ =\frac{61731}{1280000}>\frac{19}{400}.
+\end{align*}
+If $0\le b\le19/40$, the substitution $y=19/20-2b$ gives
+\begin{align*}
+ f_{3/4}(b)=\frac{27}{160}y^3-\frac3{40}y+\frac{57}{800}.
+\end{align*}
+The minimum for $y\ge0$ occurs at $y=\sqrt{4/27}$, so
+\begin{align*}
+ f_{3/4}(b)
+ \ge\frac{57}{800}-\frac1{20}\sqrt{\frac4{27}}
+ >\frac{41}{800}>\frac{19}{400}.
+\end{align*}
+For $b\ge19/40$, the linear term alone is at least $57/800$.
+Both endpoint bounds contradict the displayed upper bound for $f_\sigma(b)$.
+
+Finally, suppose that $\theta\ge3/4$.
+Then \cref{eq:normalized-ranges} gives $b\le u+13/128$, and hence
+\begin{align*}
+ \frac{19}{20}+\frac{23u}{20}-2b
+ \ge\frac{239}{320}-\frac{17u}{20}
+ >\frac7{10}-\frac{3u}{4}>0.
+\end{align*}
+Since $9\sigma/40\ge27/160>1/6$, \cref{eq:normalized-variance-lower} implies
+\begin{align*}
+ v>\frac16\left(\frac7{10}-\frac{3u}{4}\right)^3.
+\end{align*}
+For $0\le u\le1/3$, direct expansion gives
+\begin{align*}
+ \frac16\left(\frac7{10}-\frac{3u}{4}\right)^3-\Phi(u)
+ &=\frac{29}{3000}-\frac{91u}{1200}
+   +\frac{481u^2}{1600}-\frac{9u^3}{128}\\
+ &\ge\frac{29}{3000}-\frac{91u}{1200}+\frac{887u^2}{3200}\\
+ &=\frac14\left(u-\frac16\right)^2+\frac1{432}
+   +\frac{11745u^2+3240u+176}{432000}
+ >0.
+\end{align*}
+The second line uses $u^3\le u^2/3$.
+Thus $v>\Phi(u)$, contrary to \cref{eq:normalized-variance-upper}.
+Both ranges lead to a contradiction, proving the proposition.
+\end{proof}

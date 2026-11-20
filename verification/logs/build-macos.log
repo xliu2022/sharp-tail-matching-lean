@@ -1,0 +1,349 @@
+✔ [3211/3302] Built SharpTailMatching.InterpolationAlgebra (5.9s)
+✔ [3418/3441] Built SharpTailMatching.BinomialTailBounds (6.6s)
+✔ [3420/3504] Built SharpTailMatching.CentralBinomial (6.7s)
+✔ [3480/3579] Built SharpTailMatching.ProductAlgebra (6.9s)
+⚠ [3610/3728] Built SharpTailMatching.SmallDeviationAlgebra (7.1s)
+warning: SharpTailMatching/SmallDeviationAlgebra.lean:65:62: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: SharpTailMatching/SmallDeviationAlgebra.lean:65:62: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: SharpTailMatching/SmallDeviationAlgebra.lean:68:51: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: SharpTailMatching/SmallDeviationAlgebra.lean:88:60: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3613/3728] Built SharpTailMatching.CubicAlgebra (7.2s)
+warning: SharpTailMatching/CubicAlgebra.lean:113:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: SharpTailMatching/CubicAlgebra.lean:135:54: Variable name `hτ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hτ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3614/3728] Built SharpTailMatching.SupportAlgebra (7.8s)
+warning: SharpTailMatching/SupportAlgebra.lean:19:5: Variable name `hμ0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hμ0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3615/3728] Built SharpTailMatching.Probability.CriticalMean (8.1s)
+✔ [3616/3728] Built SharpTailMatching.Matching.Basic (1.6s)
+✔ [3617/3729] Built SharpTailMatching.Probability.Basic (3.6s)
+✔ [3619/3730] Built SharpTailMatching.TailNumerics (3.4s)
+✔ [3620/3752] Built SharpTailMatching.Probability.BinomialAverage (3.0s)
+⚠ [3621/3752] Built SharpTailMatching.ReciprocalPower (3.4s)
+warning: SharpTailMatching/ReciprocalPower.lean:12:54: Variable name `hq1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hq1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3623/3752] Built SharpTailMatching.Probability.WeightedInterpolation (3.8s)
+✔ [3626/3753] Built SharpTailMatching.Probability.EnvelopeAlgebra (3.9s)
+✔ [3630/3753] Built SharpTailMatching.ProximityAlgebra (3.7s)
+✔ [3633/3753] Built SharpTailMatching.Matching.HeadlineBridge (1.3s)
+✔ [3635/3753] Built SharpTailMatching.Matching.RegularityEnergy (3.2s)
+✔ [3637/3753] Built SharpTailMatching.Probability.Endpoints (3.4s)
+✔ [3638/3753] Built SharpTailMatching.Matching.FiniteMinimax (2.5s)
+✔ [3639/3753] Built SharpTailMatching.Probability.Reduction (3.7s)
+✔ [3640/3753] Built SharpTailMatching.PositivePolynomials (14s)
+✔ [3641/3753] Built SharpTailMatching.Probability.CurveGeometry (4.5s)
+✔ [3642/3753] Built SharpTailMatching.ScalarCertificates (15s)
+✔ [3643/3757] Built SharpTailMatching.Matching.RectangularRegularity (3.3s)
+✔ [3644/3757] Built SharpTailMatching.Matching.FractionalDuality (2.1s)
+⚠ [3645/3757] Built SharpTailMatching.Matching.BinomialApproximation (4.7s)
+warning: SharpTailMatching/Matching/BinomialApproximation.lean:183:5: Variable name `hs` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hs
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [3646/3757] Built SharpTailMatching.Probability.Cubic (3.8s)
+warning: SharpTailMatching/Probability/Cubic.lean:208:25: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/Probability/Cubic.lean:295:30: `Set.mem_setOf_eq` has been deprecated: Use `Set.mem_ofPred_eq` instead
+
+Hint: Replace the deprecated name:
+  S̵e̵t̵.̵m̵e̵m̵_̵s̵e̵t̵O̵f̵_̵e̵q̵S̲e̲t̲.̲m̲e̲m̲_̲o̲f̲P̲r̲e̲d̲_̲e̲q̲
+✔ [3647/3757] Built SharpTailMatching.Probability.Capping (3.4s)
+✔ [3649/3757] Built SharpTailMatching.Probability.Cantelli (4.3s)
+⚠ [3650/3762] Built SharpTailMatching.Probability.MixtureRigidity (3.1s)
+warning: SharpTailMatching/Probability/MixtureRigidity.lean:24:65: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/Probability/MixtureRigidity.lean:59:5: Variable name `hp0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hp0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3654/3788] Built SharpTailMatching.ExclusionAlgebra (9.3s)
+✔ [3666/3788] Built SharpTailMatching.Probability.Normalization (3.9s)
+✔ [3669/3788] Built SharpTailMatching.Matching.CapacityDuality (2.2s)
+✔ [3670/3790] Built SharpTailMatching.Probability.ComparisonNodes (3.9s)
+✔ [3672/3790] Built SharpTailMatching.Matching.WeakRegularity (3.2s)
+✔ [3675/3791] Built SharpTailMatching.Matching.Relabel (1.9s)
+✔ [3677/3805] Built SharpTailMatching.CriticalEstimates (4.3s)
+✔ [3681/3805] Built SharpTailMatching.Matching.CapacityZero (2.0s)
+✔ [3683/3807] Built SharpTailMatching.Probability.ProductIteration (3.8s)
+✔ [3686/3807] Built SharpTailMatching.Matching.AtomCosts (3.3s)
+✔ [3687/3807] Built SharpTailMatching.Probability.EqualityReduction (4.0s)
+✔ [3690/3807] Built SharpTailMatching.Matching.Sparse (13s)
+✔ [3693/3807] Built SharpTailMatching.Matching.HypergraphTuples (3.0s)
+⚠ [3695/3807] Built Challenge (2.8s)
+warning: Challenge.lean:62:8: declaration uses `sorry`
+warning: Challenge.lean:70:8: declaration uses `sorry`
+warning: Challenge.lean:76:8: declaration uses `sorry`
+warning: Challenge.lean:85:8: declaration uses `sorry`
+warning: Challenge.lean:98:8: declaration uses `sorry`
+warning: Challenge.lean:104:8: declaration uses `sorry`
+warning: Challenge.lean:113:8: declaration uses `sorry`
+warning: Challenge.lean:152:8: declaration uses `sorry`
+warning: Challenge.lean:160:8: declaration uses `sorry`
+✔ [3697/3807] Built SharpTailMatching.Probability.InterpolationSlopes (4.8s)
+✔ [3698/3807] Built SharpTailMatching.Probability.Variation (6.2s)
+⚠ [3699/3807] Built SharpTailMatching.Matching.CompactStability (3.6s)
+warning: SharpTailMatching/Matching/CompactStability.lean:42:23: Variable name `t` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _t
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/Matching/CompactStability.lean:95:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+✔ [3700/3807] Built SharpTailMatching.Probability.FiniteProduct (4.0s)
+✔ [3701/3807] Built SharpTailMatching.Matching.Bipartite (4.1s)
+✔ [3702/3807] Built SharpTailMatching.CriticalLowerBound (5.7s)
+✔ [3703/3807] Built SharpTailMatching.Matching.ShiftingBasic (1.9s)
+✔ [3704/3807] Built SharpTailMatching.RationalCertificates (11s)
+⚠ [3705/3807] Built SharpTailMatching.ExclusionEstimates (7.1s)
+warning: SharpTailMatching/ExclusionEstimates.lean:22:5: Variable name `hθ` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hθ
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/ExclusionEstimates.lean:51:18: Variable name `hθ0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hθ0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/ExclusionEstimates.lean:136:40: Variable name `hc1` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hc1
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3706/3807] Built SharpTailMatching.Matching.InitialPartition (3.3s)
+✔ [3707/3807] Built SharpTailMatching.Matching.GreedyRounding (3.6s)
+✔ [3708/3807] Built SharpTailMatching.Matching.CoverExact (5.8s)
+✔ [3709/3807] Built SharpTailMatching.Probability.Sections (3.9s)
+✔ [3710/3807] Built SharpTailMatching.Matching.ShiftingClosure (2.2s)
+✔ [3711/3807] Built SharpTailMatching.Probability.BinaryProducts (4.1s)
+✔ [3712/3807] Built SharpTailMatching.Probability.FiniteCapping (3.6s)
+✔ [3713/3807] Built SharpTailMatching.Matching.FiniteSampling (3.1s)
+✔ [3714/3807] Built SharpTailMatching.Matching.ReducedRounding (3.1s)
+✔ [3715/3807] Built SharpTailMatching.CriticalProbabilityEstimates (4.8s)
+✔ [3716/3807] Built SharpTailMatching.Matching.Clique (2.0s)
+✔ [3717/3807] Built SharpTailMatching.Matching.LawRigidity (2.7s)
+✔ [3718/3807] Built SharpTailMatching.Probability.ProductLimits (2.0s)
+✔ [3719/3807] Built SharpTailMatching.Probability.FailureTilt (3.8s)
+✔ [3720/3807] Built SharpTailMatching.Matching.ReducedCover (2.6s)
+✔ [3721/3807] Built SharpTailMatching.Matching.CliqueSampling (2.8s)
+✔ [3722/3807] Built SharpTailMatching.Matching.DisjointBlocks (3.0s)
+⚠ [3723/3807] Built SharpTailMatching.ExclusionMoments (7.7s)
+warning: SharpTailMatching/ExclusionMoments.lean:143:19: Variable name `hu0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hu0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3724/3807] Built SharpTailMatching.Probability.IndependentProduct (3.0s)
+✔ [3725/3807] Built SharpTailMatching.Probability.FailureMoments (3.1s)
+✔ [3726/3807] Built SharpTailMatching.Matching.ReducedCapacityCover (2.7s)
+✔ [3727/3807] Built SharpTailMatching.PhiMonotonicity (4.7s)
+✔ [3728/3807] Built SharpTailMatching.MultiplierPositivity (4.7s)
+✔ [3729/3807] Built SharpTailMatching.Matching.CliqueBlocks (2.9s)
+✔ [3730/3807] Built SharpTailMatching.Probability.VarianceIdentity (2.5s)
+✔ [3731/3807] Built SharpTailMatching.Matching.ApproximateCover (2.9s)
+✔ [3732/3807] Built SharpTailMatching.Probability.EndpointRigidity (3.2s)
+✔ [3733/3807] Built SharpTailMatching.Probability.ProductConsequences (4.3s)
+✔ [3734/3807] Built SharpTailMatching.Probability.ConditionalMoments (2.4s)
+✔ [3735/3807] Built SharpTailMatching.AnalyticNodeBounds (4.5s)
+✔ [3736/3807] Built SharpTailMatching.Matching.CliqueTests (3.6s)
+✔ [3737/3807] Built SharpTailMatching.Matching.EditDistance (2.1s)
+✔ [3738/3807] Built SharpTailMatching.Matching.EmpiricalSampling (2.5s)
+✔ [3739/3807] Built SharpTailMatching.Probability.ComparisonEnvelopes (2.5s)
+✔ [3740/3807] Built SharpTailMatching.BinomialNodes (2.4s)
+✔ [3741/3807] Built SharpTailMatching.Matching.CliqueLayerBounds (2.3s)
+✔ [3742/3807] Built SharpTailMatching.Probability.StopLoss (2.5s)
+⚠ [3743/3807] Built SharpTailMatching.Matching.WeightEditing (3.1s)
+warning: SharpTailMatching/Matching/WeightEditing.lean:85:0: automatically included section variable(s) unused in theorem `SharpTailMatching.Matching.card_outside_le_uncovered`:
+  [Fintype α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: SharpTailMatching/Matching/WeightEditing.lean:175:42: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [3744/3807] Built SharpTailMatching.Probability.EnvelopeSupport (2.6s)
+✔ [3745/3807] Built SharpTailMatching.Matching.CliqueWeights (2.5s)
+✔ [3746/3807] Built SharpTailMatching.NodeComparison (2.7s)
+✔ [3747/3807] Built SharpTailMatching.Matching.CliqueRigidity (2.7s)
+✔ [3748/3807] Built SharpTailMatching.Probability.Covariance (2.8s)
+✔ [3749/3807] Built SharpTailMatching.Probability.PartialSums (2.8s)
+✔ [3750/3807] Built SharpTailMatching.Probability.Symmetrization (2.2s)
+✔ [3751/3807] Built SharpTailMatching.Matching.CliqueExactNumeric (2.5s)
+✔ [3752/3807] Built SharpTailMatching.Probability.ConditionalTails (2.4s)
+✔ [3753/3807] Built SharpTailMatching.FourthNodeTail (2.7s)
+✔ [3754/3807] Built SharpTailMatching.Matching.CliqueExact (1.6s)
+✔ [3755/3807] Built SharpTailMatching.Probability.IidInterpolation (2.2s)
+✔ [3756/3807] Built SharpTailMatching.Probability.StopLossSecants (2.1s)
+✔ [3757/3807] Built SharpTailMatching.Matching.CliqueShiftExact (2.0s)
+✔ [3758/3807] Built SharpTailMatching.Probability.Thinning (2.1s)
+⚠ [3759/3807] Built SharpTailMatching.Probability.SupportGap (4.2s)
+warning: SharpTailMatching/Probability/SupportGap.lean:123:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [3760/3807] Built SharpTailMatching.Probability.CostMultipliers (2.8s)
+✔ [3761/3807] Built SharpTailMatching.Matching.ExactAssembly (2.1s)
+✔ [3762/3807] Built SharpTailMatching.Probability.CostInterpolation (2.2s)
+✔ [3763/3807] Built SharpTailMatching.Probability.NodeWeights (3.0s)
+⚠ [3764/3807] Built SharpTailMatching.Probability.CubicMoments (2.4s)
+warning: SharpTailMatching/Probability/CubicMoments.lean:55:18: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: SharpTailMatching/Probability/CubicMoments.lean:68:18: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+warning: SharpTailMatching/Probability/CubicMoments.lean:102:10: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+warning: SharpTailMatching/Probability/CubicMoments.lean:113:10: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+✔ [3765/3807] Built SharpTailMatching.Probability.InitialExclusion (2.7s)
+✔ [3766/3807] Built SharpTailMatching.Probability.WeightedNodes (3.4s)
+✔ [3767/3807] Built SharpTailMatching.Probability.UpperSupport (3.7s)
+✔ [3768/3807] Built SharpTailMatching.Probability.BaseDeficitBounds (4.7s)
+⚠ [3769/3807] Built SharpTailMatching.Matching.BranchSeparation (6.1s)
+warning: SharpTailMatching/Matching/BranchSeparation.lean:106:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [3770/3807] Built SharpTailMatching.Probability.Components (1.9s)
+✔ [3771/3807] Built SharpTailMatching.Probability.NodeProximity (2.6s)
+✔ [3772/3807] Built SharpTailMatching.Probability.MixtureMoments (1.6s)
+✔ [3773/3807] Built SharpTailMatching.Probability.WeightedThinning (1.0s)
+✔ [3774/3807] Built SharpTailMatching.Probability.ComponentCovariance (1.0s)
+⚠ [3775/3807] Built SharpTailMatching.Probability.UpperMass (2.7s)
+warning: SharpTailMatching/Probability/UpperMass.lean:66:28: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [3776/3807] Built SharpTailMatching.Probability.ThinningDeficit (2.3s)
+✔ [3777/3807] Built SharpTailMatching.Probability.ComponentFailure (2.1s)
+✔ [3778/3807] Built SharpTailMatching.Probability.ActualProximity (2.1s)
+✔ [3779/3807] Built SharpTailMatching.Probability.RefinedCovariance (3.6s)
+⚠ [3780/3807] Built SharpTailMatching.Probability.UpperComponent (3.1s)
+warning: SharpTailMatching/Probability/UpperComponent.lean:17:47: Variable name `hx` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hx
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: SharpTailMatching/Probability/UpperComponent.lean:79:67: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3781/3807] Built SharpTailMatching.Probability.UpperCount (1.6s)
+warning: SharpTailMatching/Probability/UpperCount.lean:37:36: This simp argument is unused:
+  Nat.cast_sum
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [upperCount, upperIndicator]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: SharpTailMatching/Probability/UpperCount.lean:48:20: This simp argument is unused:
+  Finset.sum_eq_zero_iff
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [upperCount, not_lt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [3782/3807] Built SharpTailMatching.Probability.LowerEvent (1.8s)
+✔ [3783/3807] Built SharpTailMatching.Probability.LowerVariance (1.9s)
+✔ [3784/3807] Built SharpTailMatching.Probability.LowerPositive (1.7s)
+⚠ [3785/3807] Built SharpTailMatching.Probability.ConditionalSplit (1.9s)
+warning: SharpTailMatching/Probability/ConditionalSplit.lean:75:24: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [3786/3807] Built SharpTailMatching.Probability.CountAntitone (1.0s)
+✔ [3787/3807] Built SharpTailMatching.Probability.CountMixture (1.7s)
+✔ [3788/3807] Built SharpTailMatching.Probability.CountCorrelation (1.0s)
+✔ [3789/3807] Built SharpTailMatching.Probability.CountBounds (1.6s)
+⚠ [3790/3807] Built SharpTailMatching.Probability.LowerConditionalMoments (1.6s)
+warning: SharpTailMatching/Probability/LowerConditionalMoments.lean:77:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [3791/3807] Built SharpTailMatching.Probability.LowerTailMoments (1.9s)
+✔ [3792/3807] Built SharpTailMatching.Probability.LowerCubic (2.3s)
+✔ [3793/3807] Built SharpTailMatching.Probability.ExclusionObjects (1.6s)
+✔ [3794/3807] Built SharpTailMatching.Probability.ExclusionIdentities (1.8s)
+⚠ [3795/3807] Built SharpTailMatching.Probability.ExclusionRanges (1.7s)
+warning: SharpTailMatching/Probability/ExclusionRanges.lean:60:43: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: SharpTailMatching/Probability/ExclusionRanges.lean:98:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: SharpTailMatching/Probability/ExclusionRanges.lean:141:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3796/3807] Built SharpTailMatching.Probability.ExclusionMoments (1.8s)
+warning: SharpTailMatching/Probability/ExclusionMoments.lean:55:48: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: SharpTailMatching/Probability/ExclusionMoments.lean:94:65: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: SharpTailMatching/Probability/ExclusionMoments.lean:94:65: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [3797/3807] Built SharpTailMatching.Probability.Exclusion (1.5s)
+✔ [3798/3807] Built SharpTailMatching.Probability.CriticalClassification (1.6s)
+✔ [3799/3807] Built SharpTailMatching.Probability.Main (1.4s)
+✔ [3800/3807] Built SharpTailMatching.Matching.ProbabilityStability (1.4s)
+✔ [3801/3807] Built SharpTailMatching.Matching.WeightStability (1.8s)
+✔ [3802/3807] Built SharpTailMatching.Matching.Stability (2.1s)
+✔ [3803/3807] Built SharpTailMatching.Matching.Main (1.4s)
+✔ [3804/3807] Built SharpTailMatching (1.4s)
+✔ [3806/3807] Built Solution (1.4s)
+Build completed successfully (3807 jobs).

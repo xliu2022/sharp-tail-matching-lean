@@ -1,0 +1,64 @@
+module
+
+public import SharpTailMatching.ScalarCertificates
+public import SharpTailMatching.CriticalEstimates
+public import SharpTailMatching.CriticalProbabilityEstimates
+public import SharpTailMatching.PhiMonotonicity
+public import SharpTailMatching.FourthNodeTail
+public import SharpTailMatching.PositivePolynomials
+public import SharpTailMatching.RationalCertificates
+public import SharpTailMatching.CubicAlgebra
+public import SharpTailMatching.SupportAlgebra
+public import SharpTailMatching.ExclusionAlgebra
+public import SharpTailMatching.ProductAlgebra
+public import SharpTailMatching.SmallDeviationAlgebra
+public import SharpTailMatching.InterpolationAlgebra
+public import SharpTailMatching.Probability.Basic
+public import SharpTailMatching.Probability.Main
+public import SharpTailMatching.Probability.Endpoints
+public import SharpTailMatching.Probability.CriticalMean
+public import SharpTailMatching.Probability.Reduction
+public import SharpTailMatching.Probability.EqualityReduction
+public import SharpTailMatching.Probability.Normalization
+public import SharpTailMatching.Probability.Cubic
+public import SharpTailMatching.Probability.Cantelli
+public import SharpTailMatching.Probability.Variation
+public import SharpTailMatching.Probability.Sections
+public import SharpTailMatching.Probability.FailureTilt
+public import SharpTailMatching.Probability.VarianceIdentity
+public import SharpTailMatching.Probability.ConditionalMoments
+public import SharpTailMatching.Probability.StopLoss
+public import SharpTailMatching.Probability.ProductConsequences
+public import SharpTailMatching.Probability.EndpointRigidity
+public import SharpTailMatching.Probability.Symmetrization
+public import SharpTailMatching.Probability.SupportGap
+public import SharpTailMatching.Probability.UpperSupport
+public import SharpTailMatching.Probability.WeightedInterpolation
+public import SharpTailMatching.Probability.ComparisonEnvelopes
+public import SharpTailMatching.Probability.IidInterpolation
+public import SharpTailMatching.Probability.Thinning
+public import SharpTailMatching.Probability.InitialExclusion
+public import SharpTailMatching.Probability.CostMultipliers
+public import SharpTailMatching.Probability.BaseDeficitBounds
+public import SharpTailMatching.Probability.RefinedCovariance
+public import SharpTailMatching.Probability.CountBounds
+public import SharpTailMatching.Probability.LowerVariance
+public import SharpTailMatching.Probability.LowerConditionalMoments
+public import SharpTailMatching.Matching.Basic
+public import SharpTailMatching.Matching.Main
+public import SharpTailMatching.Matching.Sparse
+public import SharpTailMatching.Matching.CoverExact
+public import SharpTailMatching.Matching.CliqueLayerBounds
+public import SharpTailMatching.Matching.CliqueShiftExact
+public import SharpTailMatching.Matching.CapacityZero
+public import SharpTailMatching.Matching.WeakRegularity
+public import SharpTailMatching.Matching.ApproximateCover
+public import SharpTailMatching.Matching.BinomialApproximation
+
+/-!
+# Verified components of the sharp tail and matching development
+
+This root imports completed proof modules only. The full probability upper
+bound, all maximizing-law cases, and the exact large matching theorem with
+both structural equality classes are proved without auxiliary theorem premises.
+-/

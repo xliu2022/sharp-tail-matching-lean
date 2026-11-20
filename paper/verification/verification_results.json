@@ -1,0 +1,55 @@
+{
+  "fourth_node_identity": true,
+  "node_difference_3_2": true,
+  "node_difference_4_3": true,
+  "derivative_boundary_identity": true,
+  "target_substitution_identity": true,
+  "P_coefficients": [
+    {
+      "j": 0,
+      "degree": 12,
+      "minimum_coefficient": "6"
+    },
+    {
+      "j": 1,
+      "degree": 11,
+      "minimum_coefficient": "25"
+    },
+    {
+      "j": 2,
+      "degree": 10,
+      "minimum_coefficient": "40"
+    },
+    {
+      "j": 3,
+      "degree": 9,
+      "minimum_coefficient": "30"
+    },
+    {
+      "j": 4,
+      "degree": 8,
+      "minimum_coefficient": "10"
+    },
+    {
+      "j": 5,
+      "degree": 7,
+      "minimum_coefficient": "1"
+    }
+  ],
+  "P4_coefficients": {
+    "degree": 8,
+    "minimum_coefficient": "1",
+    "coefficients_in_ascending_order": [
+      "181495655296977271/10836841536",
+      "686615422318476713/43347366144",
+      "90220597308501601/14449122048",
+      "28681346604690545/21673683072",
+      "3542063783479817/21673683072",
+      "178426019505295/14449122048",
+      "28568345451247/43347366144",
+      "57181472051/1806140256",
+      "1"
+    ]
+  },
+  "all_exact_checks_passed": true
+}
