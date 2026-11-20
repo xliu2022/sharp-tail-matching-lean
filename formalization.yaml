@@ -17,10 +17,10 @@ classification:
   - math.CO
   - math.PR
   msc2020:
-  - 05C65
-  - 05C70
-  - 60E15
-  - 68V15
+  - "05C65"
+  - "05C70"
+  - "60E15"
+  - "68V15"
 sources:
 - title: A proof of the Erdős matching conjecture for large matchings via sharp tail
     probability for sums of i.i.d. nonnegative random variables
